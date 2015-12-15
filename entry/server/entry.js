@@ -1,2 +1,2 @@
 import 'TodoApp/todo-methods';
-import 'TodoApp/server/todo-subscriptions'
+import 'TodoApp/server/todo-publications';
