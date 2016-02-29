@@ -2,9 +2,6 @@
 body {
   font-family: sans-serif;
   background-color: #315481;
-  background-image: url(../img/scratched-texture.jpg);
-  background-attachment: fixed;
-
   position: absolute;
   top: 0;
   bottom: 0;
@@ -49,7 +46,7 @@ form {
   position: relative;
 }
 
-.new-task input {
+.newTask input {
   box-sizing: border-box;
   padding: 10px 0;
   background: transparent;
@@ -59,7 +56,7 @@ form {
   font-size: 1em;
 }
 
-.new-task input:focus{
+.newTask input:focus{
   outline: 0;
 }
 
@@ -102,11 +99,11 @@ li.private {
   border-color: #ddd;
 }
 
-header .hide-completed {
+header .hideCompleted {
   float: right;
 }
 
-.toggle-private {
+.togglePrivate {
   margin-left: 5px;
 }
 
@@ -120,7 +117,7 @@ header .hide-completed {
     clear: both;
   }
 
-  .new-task input {
+  .newTask input {
     padding-bottom: 5px;
   }
 }

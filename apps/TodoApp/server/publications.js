@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import Tasks from 'TodoApp/collections/Tasks';
 
 // This code only runs on the server

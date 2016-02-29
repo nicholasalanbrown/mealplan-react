@@ -1,27 +1,14 @@
-# kickstart-flowrouter by thereactivestack
+# kickstart-meteor-react-flowrouter
 
-Kickstart a project with FlowRouter fast!
+Kickstart a project with Meteor, React and FlowRouter fast!
 
-If you would like a simpler kickstart, see the [kickstart-simple project](https://github.com/thereactivestack/kickstart-simple).
+1. git clone https://github.com/thereactivestack/kickstart-meteor-react-flowrouter.git
+1. cd kickstart-meteor-react-flowrouter
+1. meteor
 
-If you would like a more sophisticated kickstart with code splitting, see the [kickstart-hugeapp project](https://github.com/thereactivestack/kickstart-hugeapp).
+You can try [other kickstart projects](https://github.com/thereactivestack/kickstart) with ReactRouter, FlowRouter or Redux.
 
-Clone this project to start a FlowRouter project using Meteor, React.js and Webpack.
-
-1. `git clone https://github.com/thereactivestack/kickstart-flowrouter.git`
-1. `cd kickstart-simple`
-1. `meteor`
-
-## The stack & features
-- Include the simple todo app example
-- ES6 modules
-- Meteor
-- React.js
-- FlowRouter / ReactLayout
-- Webpack (bundle your app / assets and send them to Meteor)
-- Hot-reload with no page refresh in development mode
-- Optimize your code in production mode
-- Give access to NPM by using packages.json
+## Get tutorials and more examples at [TheReactiveStack.com](https://thereactivestack.com)
 
 # Production
 You can use meteor run, meteor build, mup or anything working with Meteor.
@@ -35,7 +22,7 @@ You can use meteor run, meteor build, mup or anything working with Meteor.
 ## Deploy with Meteor-up
 `mup deploy`
 
-## Cordova
+# Cordova
 You need to do those 3 steps to make it works with iOS or Android:
 
 1. Add the platform to your Meteor project
@@ -50,4 +37,4 @@ You need to do those 3 steps to make it works with iOS or Android:
     App.accessRule('http://192.168.1.100:3500/*');
     ```
 
-1. Replace localhost by your local ip address in `/entry/webpack.conf.js`.
+1. Replace localhost by your local ip address in `webpack.json`.

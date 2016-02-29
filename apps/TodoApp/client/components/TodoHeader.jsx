@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
 
 const LoginButtons = BlazeToReact('loginButtons');
 
@@ -7,7 +8,7 @@ export default class TodoHeader extends Component {
     hideCompleted: PropTypes.bool,
     toggleHideCompleted: PropTypes.func.isRequired,
     incompleteCount: PropTypes.number.isRequired
-  }
+  };
 
   handleSubmit(event) {
     // Prevent default browser form submit
@@ -28,7 +29,7 @@ export default class TodoHeader extends Component {
 
     if (Meteor.userId()) {
       form = (
-        <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+        <form className="newTask" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" name="text" placeholder="Type to add new tasks" />
         </form>
       );
@@ -37,11 +38,11 @@ export default class TodoHeader extends Component {
     return (
       <header>
         <h1>
-          <img src={require('../img/check.png')} alt="" />
+          <img src={require('TodoApp/client/img/check.png')} alt="" />
           Todo List ({this.props.incompleteCount})
         </h1>
 
-        <label className="hide-completed">
+        <label className="hideCompleted">
           <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
           Hide Completed Tasks
         </label>
