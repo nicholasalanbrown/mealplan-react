@@ -8,6 +8,7 @@ Kickstart a project with Meteor, React and FlowRouter fast!
 
 You can try [other kickstart projects](https://github.com/thereactivestack/kickstart) with ReactRouter, FlowRouter or Redux.
 
+
 ## [Learn how to be productive with Meteor and Webpack in 7 days on TheReactiveStack.com](https://thereactivestack.com)
 
 # Production
