@@ -5,9 +5,6 @@ Schema.DefaultMeals = new SimpleSchema({
     type: Number,
     defaultValue: 3,
     allowedValues: [0,1,2,3,4,5,6,7],
-    autoform: {
-      type: 'select'
-    }
   }
 });
 
@@ -23,9 +20,6 @@ Schema.UserProfile = new SimpleSchema({
       type: Number,
       defaultValue: 2,
       allowedValues: [1,2,3,4,5,6],
-      autoform: {
-        type: 'select'
-      }
     }
 });
 

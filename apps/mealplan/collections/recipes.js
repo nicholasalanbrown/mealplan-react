@@ -6,37 +6,15 @@ var Schema = {};
 
 Schema.RecipeIngredient = new SimpleSchema({
   _id: {
-    type: String,
-    autoform : {
-      options: function () {
-
-        return Nutrition.find().map(function(n){return {label: n.name.long, value: n.name.long};})
-
-        /*
-        let names = Nutrition.find().map(function(item){return {label: item.name.long, value: item.name.long}})
-        return names;
-
-        let names = Ingredients.find({}, {sort: {name: 1}}).map(function(item){return {label: item.name, value: item._id}})
-        return names.sort(function (a, b) {
-          return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
-        });
-        */
-      }
-    }
+    type: String
   },
   name: {
     type: String,
     optional: true,
-    autoform: {
-      type: 'hidden'
-    }
   },
   pluralName: {
     type: String,
     optional: true,
-    autoform: {
-      type: 'hidden'
-    }
   },
   quantity: {
     type: Number,
@@ -47,9 +25,6 @@ Schema.RecipeIngredient = new SimpleSchema({
     type: String,
     optional: true,
     allowedValues: ["lbs", "cups", "oz", "tbsp", "tsp", "pinch", "dash", "quart", "pint"],
-    autoform: {
-      type: 'select'
-    }
   },
   suffix: {
     type: String,
@@ -67,12 +42,6 @@ Recipes.attachSchema(new SimpleSchema({
   cuisine: {
     type: String,
     label: "Cuisine category",
-    autoform : {
-      options: function () {
-        let categories = Cuisines.find({}, {sort: {name: 1}}).map(function(item){return {label: item.name, value: item._id}})
-        return categories;
-      }
-    }
   },
   servings: {
     type: Number,
@@ -82,10 +51,6 @@ Recipes.attachSchema(new SimpleSchema({
     type: String,
     label: "Type of dish",
     allowedValues: ["main", "side", "full"],
-    autoform: {
-      type: 'select',
-      options: [{label: "Main dish", value: "main"}, {label: "Side dish", value:"side"}, {label: "Full meal", value: "full"}]
-    }
   },
   ingredients: {
     type: [Schema.RecipeIngredient],

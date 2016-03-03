@@ -20,16 +20,6 @@ Ingredients.attachSchema(new SimpleSchema({
   containsFoods: {
       type: [String],
       label: "Foods this ingredient contains",
-      autoform: {
-        type: "universe-select",
-        afFieldInput: {
-          multiple: true
-        },
-        options: function () {
-          let names = Foods.find({}, {sort: {name: 1}}).map(function(item){return {label: item.name, value: item._id}})
-          return names;
-        }
-      }
   },
   isPaleo: {
     type: Boolean,
