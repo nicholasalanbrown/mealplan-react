@@ -1,2 +1,2 @@
 import './publications';
-import 'TodoApp/methods';
+import 'mealplan/methods';

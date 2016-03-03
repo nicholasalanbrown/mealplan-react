@@ -1,6 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 
-import 'TodoApp/methods';
+import 'mealplan/methods';
 import './routes';
 
 Accounts.ui.config({

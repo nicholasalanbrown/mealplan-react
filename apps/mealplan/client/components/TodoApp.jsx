@@ -4,8 +4,8 @@ import ReactMixin from 'react-mixin';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 
-import Tasks from 'TodoApp/collections/Tasks';
-import 'TodoApp/client/css/TodoApp.import.css'
+import Tasks from 'mealplan/collections/Tasks';
+import 'mealplan/client/css/TodoApp.import.css'
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class TodoMain extends Component {

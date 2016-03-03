@@ -38,13 +38,13 @@ export default class TodoHeader extends Component {
     return (
       <header>
         <h1>
-          <img src={require('TodoApp/client/img/check.png')} alt="" />
+          <img src={require('mealplan/client/img/check.png')} alt="" />
           Todo List ({this.props.incompleteCount})
         </h1>
 
         <label className="hideCompleted">
           <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
-          Hide Completed Tasksaaaa
+          Hide Completed Tasksaaaabcsdeqqqeee
         </label>
 
         <LoginButtons />

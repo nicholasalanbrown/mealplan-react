@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import Tasks from 'TodoApp/collections/Tasks';
+import Tasks from 'mealplan/collections/Tasks';
 
 Meteor.methods({
   addTask: function (text) {

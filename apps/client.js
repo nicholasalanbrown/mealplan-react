@@ -1,5 +1,5 @@
 import { FlowRouter } from 'meteor/meteorhacks:flow-router';
 
-import 'TodoApp/client';
+import 'mealplan/client';
 
 FlowRouter.initialize();
