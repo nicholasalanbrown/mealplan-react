@@ -1,5 +1,4 @@
 import './publications';
-import 'mealplan/methods';
 import 'mealplan/server/methods/cuisines';
 import 'mealplan/server/methods/emails';
 import 'mealplan/server/methods/foods';
