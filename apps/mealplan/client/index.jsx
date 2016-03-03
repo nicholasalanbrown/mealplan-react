@@ -1,6 +1,13 @@
 import { Accounts } from 'meteor/accounts-base';
 
-import 'mealplan/methods';
+import '../server/methods/cuisines';
+import '../server/methods/emails';
+import '../server/methods/foods';
+import '../server/methods/ingredients';
+import '../server/methods/plans';
+import '../server/methods/recipes';
+import '../server/methods/shopping';
+
 import './routes';
 
 Accounts.ui.config({

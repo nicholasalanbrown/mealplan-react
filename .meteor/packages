@@ -28,7 +28,6 @@ service-configuration
 accounts-password
 blaze-html-templates
 kadira:flow-router
-meteorhacks:flow-router
 kadira:react-layout
 
 aldeed:simple-schema
