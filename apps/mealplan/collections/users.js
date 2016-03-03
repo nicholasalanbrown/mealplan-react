@@ -1,0 +1,52 @@
+var Schema = {};
+
+Schema.DefaultMeals = new SimpleSchema({
+  dinners: {
+    type: Number,
+    defaultValue: 3,
+    allowedValues: [0,1,2,3,4,5,6,7],
+    autoform: {
+      type: 'select'
+    }
+  }
+});
+
+Schema.UserProfile = new SimpleSchema({
+    name: {
+        type: String,
+        optional: true
+    },
+    defaultMeals: {
+      type: Schema.DefaultMeals
+    },
+    householdMembers: {
+      type: Number,
+      defaultValue: 2,
+      allowedValues: [1,2,3,4,5,6],
+      autoform: {
+        type: 'select'
+      }
+    }
+});
+
+Schema.User = new SimpleSchema({
+    createdAt: {
+        type: Date
+    },
+    profile: {
+        type: Schema.UserProfile,
+        optional: true
+    },
+    services: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    },
+    roles: {
+        type: Object,
+        optional: true,
+        blackbox: true
+    }
+});
+
+Meteor.users.attachSchema(Schema.User);

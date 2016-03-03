@@ -61,6 +61,7 @@ logging@1.0.8
 mdg:validation-error@0.2.0
 meteor@1.1.10
 meteor-base@1.0.1
+meteorhacks:flow-router@1.19.0
 meteorhacks:kadira@2.28.2
 meteorhacks:meteorx@1.4.1
 meteortoys:toykit@2.2.1
