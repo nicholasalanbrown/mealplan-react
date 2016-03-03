@@ -23,7 +23,22 @@ webpack:css
 webpack:assets
 
 accounts-ui
+accounts-facebook
+service-configuration
 accounts-password
 blaze-html-templates
-meteorhacks:flow-router
+kadira:flow-router
 kadira:react-layout
+
+aldeed:simple-schema
+aldeed:collection2
+underscore
+check
+sacha:spin
+email
+meteorhacks:kadira
+kadira:debug
+alanning:roles
+percolate:synced-cron
+momentjs:moment
+msavin:mongol
