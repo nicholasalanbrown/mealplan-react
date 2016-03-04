@@ -1,9 +1,9 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactLayout } from 'meteor/kadira:react-layout';
-import TodoApp from './components/TodoApp';
+import App from './components/App';
 
 FlowRouter.route('/', {
   action() {
-    ReactLayout.render(TodoApp);
+    ReactLayout.render(App);
   }
 });

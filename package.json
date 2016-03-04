@@ -1,8 +1,8 @@
 {
-  "name": "kickstart-meteor-react-router",
+  "name": "mealplan",
   "private": "true",
-  "version": "1.0.0",
-  "description": "Kickstart a project with Meteor, React and react-router fast!",
+  "version": "0.0.1",
+  "description": "Adaptive meal planning app",
   "main": "apps/server.js",
   "browser": "apps/client.js",
   "dependencies": {
