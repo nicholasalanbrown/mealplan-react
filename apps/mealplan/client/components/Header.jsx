@@ -3,26 +3,7 @@ import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
 
 const LoginButtons = BlazeToReact('loginButtons');
 
-export default class TodoHeader extends Component {
-  static propTypes = {
-    hideCompleted: PropTypes.bool,
-    toggleHideCompleted: PropTypes.func.isRequired,
-    incompleteCount: PropTypes.number.isRequired
-  };
-
-  handleSubmit(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form element
-    var text = event.target.text.value;
-
-    // Insert a task into the collection
-    Meteor.call('addTask', text);
-
-    // Clear form
-    event.target.text.value = '';
-  }
+export default class Header extends Component {
 
   render() {
     let form = null;
