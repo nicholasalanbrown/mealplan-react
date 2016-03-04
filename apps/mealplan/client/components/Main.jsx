@@ -7,7 +7,7 @@ export default class Main extends Component {
   render() {
     return (
       <Content>
-        <h1>Hell!</h1>
+        <h1>Main Page</h1>
       </Content>
     );
   }

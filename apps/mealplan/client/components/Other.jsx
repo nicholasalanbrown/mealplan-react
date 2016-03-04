@@ -6,7 +6,7 @@ export default class Other extends Component {
   render() {
     return (
       <Content>
-        <h1>Other!</h1>
+        <h1>Other Page</h1>
       </Content>
     );
   }
