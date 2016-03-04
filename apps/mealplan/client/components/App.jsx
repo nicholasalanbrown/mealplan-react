@@ -2,7 +2,6 @@ import { Component } from 'react';
 import ReactMixin from 'react-mixin';
 
 import Header from './Header';
-import Main from './Main';
 
 import Cuisines from 'mealplan/collections/Cuisines';
 import 'mealplan/client/css/TodoApp.import.css'
