@@ -1,10 +1,14 @@
 import { Component, PropTypes } from 'react';
+import Other from './Other';
+import Content from './Content';
 
 export default class Main extends Component {
 
   render() {
     return (
-      <h1>Hello!</h1>
+      <Content>
+        <h1>Hell!</h1>
+      </Content>
     );
   }
 }
