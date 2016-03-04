@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Main />
+        {this.props.content}
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
+import 'mealplan/client/css/TodoApp.import.css'
 
 const LoginButtons = BlazeToReact('loginButtons');
 
@@ -18,19 +19,10 @@ export default class Header extends Component {
 
     return (
       <header>
-        <h1>
-          <img src={require('mealplan/client/img/check.png')} alt="" />
-          Todo List ({this.props.incompleteCount})
-        </h1>
-
-        <label className="hideCompleted">
-          <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
-          Hide Completed Tasksaaaabcsdeqqqeee
-        </label>
-
-        <LoginButtons />
-
-        {form}
+        <ul>
+          <li><a href="/">Meal Plan</a></li>
+          <li><a href="/other">Other Page</a></li>
+        </ul>
       </header>
     );
   }
