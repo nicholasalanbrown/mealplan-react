@@ -6,3 +6,4 @@ import './methods/ingredients';
 import './methods/plans';
 import './methods/recipes';
 import './methods/shopping';
+import './cron/emails';
