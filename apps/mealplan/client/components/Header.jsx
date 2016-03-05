@@ -26,6 +26,13 @@ export default class Header extends Component {
                         <li className="pure-menu-item"><a href="/recipes" className="pure-menu-link">View All</a></li>
                     </ul>
                 </li>
+                <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" className="pure-menu-link">Ingredients</a>
+                    <ul className="pure-menu-children">
+                        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Add New</a></li>
+                        <li className="pure-menu-item"><a href="/ingredients" className="pure-menu-link">View All</a></li>
+                    </ul>
+                </li>
                 <li className="pure-menu-item pure-menu-selected">{loginLink}</li>
             </ul>
         </div>

@@ -3,6 +3,7 @@ import { ReactLayout } from 'meteor/kadira:react-layout';
 import App from './components/App';
 import Home from './components/Home';
 import RecipeList from './components/recipes/RecipeList';
+import IngredientList from './components/ingredients/IngredientList';
 import RecipeContent from './components/recipes/RecipeContent';
 
 FlowRouter.route("/", {
@@ -55,10 +56,13 @@ FlowRouter.route('/recipes/:recipeId', {
     name: "viewRecipe"
 });
 
-FlowRouter.route('/recipes/:recipeId', {
-    action: function(params) {
-    },
-    name: "viewRecipe"
+FlowRouter.route("/ingredients", {
+  action: function() {
+    ReactLayout.render(App, {
+      content: <IngredientList />
+    });
+  },
+  name: "listIngredients"
 });
 
 FlowRouter.route('/recipes/:recipeId/edit', {
