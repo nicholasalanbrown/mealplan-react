@@ -19,9 +19,34 @@ export default class RecipeContent extends Component {
   render() {
     let recipe = this.data.recipe[0]
     if (this.data.recipe.length > 0) {
+
+      var recipeIngredients = recipe.ingredients.map(function(ingredient, index) {
+        let quantity, measurement;
+        if (ingredient.quantity) {
+          quantity = ingredient.quantity+" ";
+        }
+        if (ingredient.measurement) {
+          measurement = ingredient.measurement+" ";
+        }
+        return (
+          <li key={index}>{quantity}{measurement}{ingredient.name}</li>
+        );
+      });
+
+      var recipeInstructions = recipe.instructions.map(function(instruction, index) {
+        return (
+          <li key={index}>{instruction}</li>
+        );
+      });
     return (
       <Content>
         <h1>{recipe.title}</h1>
+        <ul>
+          {recipeIngredients}
+        </ul>
+        <ol>
+          {recipeInstructions}
+        </ol>
       </Content>
     );
     }
