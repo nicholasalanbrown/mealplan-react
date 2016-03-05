@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
+
+$brand-primary: #509874;
+$font-headings: 'Lato';
+$font-text: 'Merriweather';
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  font-family: $font-headings;
+}
+
+p, a {
+  font-family: $font-text;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+#react-root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+.navbar {
+  margin: 0;
+  height: 60px;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: $brand-primary;
+  display: flex;
+  align-items: center;
+  a {
+    color: #fff;
+    font-family: $font-headings;
+    text-decoration: none;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      display: inline;
+    }
+  }
+}

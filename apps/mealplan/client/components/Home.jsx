@@ -8,7 +8,7 @@ export default class Home extends Component {
     return (
       <Content>
         <h1>Home Page</h1>
-        <button>button element</button>
+        <p>This is some text.</p>
       </Content>
     );
   }
