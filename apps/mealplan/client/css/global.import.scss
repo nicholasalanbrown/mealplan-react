@@ -9,6 +9,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-family: $font-headings;
 }
+p {
+  line-height: 1.7;
+}
 
 p, a {
   font-family: $font-text;
@@ -29,29 +32,46 @@ body {
   width: 100%;
 }
 
+[data-reactid=".0"] {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 42px;
 }
 
 .navbar {
-  margin: 0;
-  height: 60px;
+  height: 65px;
   width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
   background-color: $brand-primary;
   display: flex;
   align-items: center;
-  a {
+  justify-content: space-between;
+  .pure-menu-horizontal {
+    width: auto;
+    padding-right: 30px;
+  }
+  .brand {
+    padding-left: 30px;
+  }
+  .brand a, a.pure-menu-link {
     color: #fff;
     font-family: $font-headings;
-    text-decoration: none;
+    &:hover {
+      background-color: inherit;
+      color: #fff;
+    }
   }
-  ul {
-    padding: 0;
-    margin: 0;
-    li {
-      display: inline;
+  .pure-menu-children {
+    .pure-menu-link {
+      color: $brand-primary;
     }
   }
 }
