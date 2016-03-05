@@ -7,6 +7,10 @@ const LoginButtons = BlazeToReact('loginButtons');
 export default class Header extends Component {
 
   render() {
+    let loginLink = <a href="/sign-in" className="pure-menu-link">Sign In</a>;
+    if (Meteor.userId()) {
+      loginLink = <a href="#" className="pure-menu-link">Sign Out</a>;
+    }
     return (
       <Headroom>
       <nav className="navbar">
@@ -19,10 +23,10 @@ export default class Header extends Component {
                     <a href="#" className="pure-menu-link">Recipes</a>
                     <ul className="pure-menu-children">
                         <li className="pure-menu-item"><a href="#" className="pure-menu-link">Add New</a></li>
-                        <li className="pure-menu-item"><a href="#" className="pure-menu-link">View All</a></li>
+                        <li className="pure-menu-item"><a href="/recipes" className="pure-menu-link">View All</a></li>
                     </ul>
                 </li>
-                <li className="pure-menu-item pure-menu-selected"><a href="#" className="pure-menu-link">Sign In</a></li>
+                <li className="pure-menu-item pure-menu-selected">{loginLink}</li>
             </ul>
         </div>
       </nav>

@@ -2,7 +2,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactLayout } from 'meteor/kadira:react-layout';
 import App from './components/App';
 import Home from './components/Home';
-import Other from './components/Other';
+import RecipeList from './components/recipes/RecipeList';
+import RecipeContent from './components/recipes/RecipeContent';
 
 FlowRouter.route("/", {
   action: function() {
@@ -34,10 +35,23 @@ FlowRouter.route('/shopping', {
     name: "viewShoppingList"
 });
 
-FlowRouter.route('/recipes', {
-    action: function(params) {
-    },
-    name: "listRecipes"
+FlowRouter.route("/recipes", {
+  action: function() {
+    ReactLayout.render(App, {
+      content: <RecipeList />
+    });
+  },
+  name: "listRecipes"
+});
+
+FlowRouter.route('/recipes/:recipeId', {
+  action: function(params) {
+    console.log(params);
+    ReactLayout.render(App, {
+      content: <RecipeContent recipeId={params.recipeId}/>
+    });
+  },
+    name: "viewRecipe"
 });
 
 FlowRouter.route('/recipes/:recipeId', {
