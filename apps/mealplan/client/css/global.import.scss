@@ -57,6 +57,14 @@ h1 {
   .pure-menu-horizontal {
     width: auto;
     padding-right: 30px;
+    .pure-menu-children {
+      .pure-menu-link {
+        color: $brand-primary;
+      }
+    }
+    .pure-menu-list li a {
+      color: #fff;
+    }
   }
   .brand {
     padding-left: 30px;
@@ -67,11 +75,6 @@ h1 {
     &:hover {
       background-color: inherit;
       color: #fff;
-    }
-  }
-  .pure-menu-children {
-    .pure-menu-link {
-      color: $brand-primary;
     }
   }
 }
