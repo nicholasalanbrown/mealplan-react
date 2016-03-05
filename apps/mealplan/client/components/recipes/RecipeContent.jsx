@@ -9,17 +9,19 @@ import Recipes from 'mealplan/collections/Recipes';
 export default class RecipeContent extends Component {
 
   getMeteorData() {
-    Meteor.subscribe('singleRecipe', this.props.recipeId);
-    const recipe = Recipes.find().fetch();
+    var subscription = Meteor.subscribe('singleRecipe', this.props.recipeId);
     return {
-      recipe
+      subscriptionLoading: !subscription.ready(), // Use handle to show loading state
+      recipe: Recipes.find().fetch(),
     };
   }
 
   render() {
-    let recipe = this.data.recipe[0]
-    if (this.data.recipe.length > 0) {
-
+    if (this.data.subscriptionLoading) {
+      return <div></div>
+    }
+    else {
+      let recipe = this.data.recipe[0];
       var recipeIngredients = recipe.ingredients.map(function(ingredient, index) {
         let quantity, measurement;
         if (ingredient.quantity) {
@@ -49,9 +51,7 @@ export default class RecipeContent extends Component {
         </ol>
       </Content>
     );
-    }
-    else {
-      return <div></div>
+
     }
   }
 }

@@ -20,7 +20,7 @@ export default class RecipeList extends Component {
   render() {
     var recipeRows = this.data.recipes.map(function(recipe) {
       return (
-        <RecipeRow title={recipe.title} key={recipe._id} />
+        <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
       );
     });
     return (

@@ -10,7 +10,8 @@ FlowRouter.route("/", {
     ReactLayout.render(App, {
       content: <Home />
     });
-  }
+  },
+  name: 'home'
 });
 
 FlowRouter.route("/other", {
