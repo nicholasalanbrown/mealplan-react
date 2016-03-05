@@ -2,5 +2,8 @@
   "root": "apps",
   "devServer": {
     "host": "localhost"
+  },
+  "sass": {
+    "includePaths": ["apps/mealplan/client/css"]
   }
 }

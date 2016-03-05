@@ -1,6 +1,5 @@
 import { Component, PropTypes } from 'react';
 import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
-import 'mealplan/client/css/TodoApp.import.css'
 
 const LoginButtons = BlazeToReact('loginButtons');
 

@@ -4,7 +4,7 @@ import ReactMixin from 'react-mixin';
 import Header from './Header';
 
 import Cuisines from 'mealplan/collections/Cuisines';
-import 'mealplan/client/css/TodoApp.import.css'
+
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class App extends Component {
