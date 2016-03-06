@@ -3,6 +3,7 @@ import { ReactLayout } from 'meteor/kadira:react-layout';
 import App from './components/App';
 import Home from './components/Home';
 import SignIn from './components/accounts/SignIn';
+import AddRecipe from './components/recipes/AddRecipe';
 import RecipeList from './components/recipes/RecipeList';
 import IngredientList from './components/ingredients/IngredientList';
 import RecipeContent from './components/recipes/RecipeContent';
@@ -56,8 +57,12 @@ adminRoutes.route("/recipes", {
 });
 
 adminRoutes.route('/add/recipe', {
-    action: function(params) {
-    }
+  action: function() {
+    ReactLayout.render(App, {
+      content: <AddRecipe />
+    });
+  },
+  name: "addRecipe"
 })
 
 adminRoutes.route('/recipes/:recipeId', {
