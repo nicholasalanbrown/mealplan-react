@@ -78,7 +78,7 @@ export default class AddRecipe extends Component {
                     <Typeahead
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
-                        return ingredient.name;
+                        return ingredient.listName;
                       })}
                       maxVisible={15}
                       onOptionSelected={console.log('selected!')}
