@@ -43,6 +43,10 @@ a {
   text-decoration: none;
 }
 
+.pure-menu-children li a:hover {
+  color: #fff;
+}
+
 .navbar {
   height: 60px;
   width: 100%;
@@ -59,6 +63,9 @@ a {
     .pure-menu-children {
       .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:active {
         color: $brand-primary;
+      }
+      .pure-menu-link:hover {
+        color: #fff;
       }
     }
     .pure-menu-list li a {
