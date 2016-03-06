@@ -1,7 +1,9 @@
 import { Component, PropTypes } from 'react';
+import Typeahead from 'react-typeahead-component';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
+import OptionsTemplate from '../OptionsTemplate';
 
 import Cuisines from 'mealplan/collections/Cuisines';
 
@@ -17,7 +19,8 @@ export default class AddRecipe extends Component {
   }
 
   state = {
-    recipeDoc: {}
+    recipeDoc: {},
+    inputValue: 'fksdf'
   };
 
   handleChange = (e) => {
@@ -27,6 +30,21 @@ export default class AddRecipe extends Component {
     recipeDoc[name] = value;
     this.setState({ recipeDoc: recipeDoc });
     console.log(this.state.recipeDoc);
+  }
+
+  handleInputChange = (e) => {
+    let value = e.target.value;
+    this.setInputValue(value);
+  }
+
+  setInputValue = (value) => {
+      this.setState({
+          inputValue: value
+      });
+  }
+
+  handleIngredientSearch = (e) => {
+
   }
 
   handleSubmit = (e) => {
@@ -73,6 +91,18 @@ export default class AddRecipe extends Component {
                     <select name="servings" onChange={this.handleChange.bind(this)}>
                       {servingOptions}
                     </select>
+                    <select name="type" onChange={this.handleChange.bind(this)}>
+                      <option value="full">Full</option>
+                      <option value="main">Main</option>
+                      <option value="side">Side</option>
+                    </select>
+                    <Typeahead
+                      optionTemplate={OptionsTemplate}
+                      inputValue={this.state.inputValue}
+                      onChange={this.handleInputChange.bind(this)}
+                      placeholder='Search'
+                    />
+                    {/*}<input onChange={this.handleIngredientSearch.bind(this)} name="ingredientSearch" type="text" placeholder="Search for an ingredient" />*/}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
             </form>
