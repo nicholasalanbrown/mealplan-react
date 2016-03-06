@@ -2,6 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import Ingredients from 'mealplan/collections/Ingredients';
 
 Meteor.methods({
+  addIngredient: function (name) {
+    check(name, String);
+    Ingredients.insert({name: name});
+  },
   updateIngredientNames: function () {
     var ingredients = Ingredients.find().fetch();
     _.each(ingredients, function (item) {

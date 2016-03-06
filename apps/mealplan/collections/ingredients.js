@@ -20,6 +20,7 @@ Ingredients.attachSchema(new SimpleSchema({
   containsFoods: {
       type: [String],
       label: "Foods this ingredient contains",
+      optional: true
   },
   isPaleo: {
     type: Boolean,
@@ -28,7 +29,8 @@ Ingredients.attachSchema(new SimpleSchema({
   },
   isDairy: {
     type: Boolean,
-    label: "Is this a dairy item?"
+    label: "Is this a dairy item?",
+    optional: true
   }
 }));
 
