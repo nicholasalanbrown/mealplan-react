@@ -14,7 +14,7 @@ export default class Header extends Component {
     let linkList;
     let loginLink = <a href="/sign-in" className="pure-menu-link">Sign In</a>;
     if (Meteor.userId()) {
-      loginLink = <a onClick={this.handleLogout.bind(this)} href="#" className="pure-menu-link">Sign Out</a>;
+      loginLink = <a onClick={this.handleLogout.bind(this)} href="" className="pure-menu-link">Sign Out</a>;
     }
     if (Roles.userIsInRole(Meteor.userId(), 'admins')) {
       linkList =
@@ -23,14 +23,14 @@ export default class Header extends Component {
               <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                   <a href="#" className="pure-menu-link">Recipes</a>
                   <ul className="pure-menu-children">
-                      <li className="pure-menu-item"><a href="#" className="pure-menu-link">Add New</a></li>
+                      <li className="pure-menu-item"><a href="" className="pure-menu-link">Add New</a></li>
                       <li className="pure-menu-item"><a href="/recipes" className="pure-menu-link">View All</a></li>
                   </ul>
               </li>
               <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                   <a href="#" className="pure-menu-link">Ingredients</a>
                   <ul className="pure-menu-children">
-                      <li className="pure-menu-item"><a href="#" className="pure-menu-link">Add New</a></li>
+                      <li className="pure-menu-item"><a href="" className="pure-menu-link">Add New</a></li>
                       <li className="pure-menu-item"><a href="/ingredients" className="pure-menu-link">View All</a></li>
                   </ul>
               </li>
