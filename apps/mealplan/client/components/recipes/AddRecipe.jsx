@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import { Typeahead } from 'react-typeahead';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
@@ -18,7 +19,8 @@ export default class AddRecipe extends Component {
   }
 
   state = {
-    recipeDoc: {}
+    recipeDoc: {},
+    cuisineOptions: []
   };
 
   handleChange = (e) => {
@@ -35,21 +37,10 @@ export default class AddRecipe extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    let name = this.state.name;
-    let self = this;
-    Meteor.call('addIngredient', name, function(error, result) {
-      if(error) {
-        console.log(error)
-      }
-      else {
-        self.setState({ name: '' });
-        FlowRouter.go('listIngredients');
-      }
-    });
   }
 
   render() {
+    console.log(this.state);
     if (this.data.subscriptionLoading) {
       return <div></div>
     }
@@ -75,14 +66,24 @@ export default class AddRecipe extends Component {
                     <select name="cuisine">
                       {cuisineOptions}
                     </select>
+                    <label for="servings">Number of servings</label>
                     <select name="servings" onChange={this.handleChange.bind(this)}>
                       {servingOptions}
                     </select>
+                    <label for="type">Dish type</label>
                     <select name="type" onChange={this.handleChange.bind(this)}>
                       <option value="full">Full</option>
                       <option value="main">Main</option>
                       <option value="side">Side</option>
                     </select>
+                    <label for="ingredientSearch">Search for ingredients</label>
+                    <Typeahead
+                      name="ingredientSearch"
+                      options={this.data.cuisines.map(function(cuisine){
+                        return cuisine.name;
+                      })}
+                      maxVisible={5}
+                    />
                     {/*}<input onChange={this.handleIngredientSearch.bind(this)} name="ingredientSearch" type="text" placeholder="Search for an ingredient" />*/}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
