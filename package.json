@@ -8,8 +8,7 @@
   "dependencies": {
     "react": "~0.14.1",
     "react-mixin": "^3.0.3",
-    "react-headroom": "^1.7.3",
-    "react-typeahead-component": "^0.9.0"
+    "react-headroom": "^1.7.3"
   },
   "devDependencies": {
     "webpack": "^1.12.9",

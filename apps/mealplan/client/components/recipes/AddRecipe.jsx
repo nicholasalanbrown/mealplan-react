@@ -1,5 +1,4 @@
 import { Component, PropTypes } from 'react';
-import Typeahead from 'react-typeahead-component';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
@@ -19,8 +18,7 @@ export default class AddRecipe extends Component {
   }
 
   state = {
-    recipeDoc: {},
-    inputValue: 'fksdf'
+    recipeDoc: {}
   };
 
   handleChange = (e) => {
@@ -30,17 +28,6 @@ export default class AddRecipe extends Component {
     recipeDoc[name] = value;
     this.setState({ recipeDoc: recipeDoc });
     console.log(this.state.recipeDoc);
-  }
-
-  handleInputChange = (e) => {
-    let value = e.target.value;
-    this.setInputValue(value);
-  }
-
-  setInputValue = (value) => {
-      this.setState({
-          inputValue: value
-      });
   }
 
   handleIngredientSearch = (e) => {
@@ -96,12 +83,6 @@ export default class AddRecipe extends Component {
                       <option value="main">Main</option>
                       <option value="side">Side</option>
                     </select>
-                    <Typeahead
-                      optionTemplate={OptionsTemplate}
-                      inputValue={this.state.inputValue}
-                      onChange={this.handleInputChange.bind(this)}
-                      placeholder='Search'
-                    />
                     {/*}<input onChange={this.handleIngredientSearch.bind(this)} name="ingredientSearch" type="text" placeholder="Search for an ingredient" />*/}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
