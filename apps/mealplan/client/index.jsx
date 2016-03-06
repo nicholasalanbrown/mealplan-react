@@ -13,3 +13,10 @@ import './routes';
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
+
+Accounts.onLogin(function() {
+  var path = FlowRouter.current().path;
+  if(path === "/login"){
+    FlowRouter.go("home");
+  }
+});

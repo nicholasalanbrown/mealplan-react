@@ -6,6 +6,7 @@ import Header from './Header';
 export default class App extends Component {
   getMeteorData() {
     return {
+      loggingIn: Meteor.loggingIn(),
       user: Meteor.user()
     };
   }

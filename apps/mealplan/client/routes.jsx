@@ -8,21 +8,21 @@ import IngredientList from './components/ingredients/IngredientList';
 import RecipeContent from './components/recipes/RecipeContent';
 
 
-let public = FlowRouter.group {};
-let admin = FlowRouter.group {
-  triggersEnter: [ ->
-    unless Meteor.loggingIn() or Meteor.userId()
-      route = FlowRouter.current()
-      unless route.route.name is 'login'
-        Session.set 'redirectAfterLogin', route.path
-      FlowRouter.go ‘login’
-  ]
-};
+const publicRoutes = FlowRouter.group(
+  {
+    name: 'public'
+  }
+);
+const adminRoutes = FlowRouter.group(
+  {
+    name: 'admin'
+  }
+);
 
 
 //Global routes
 
-public.route("/", {
+publicRoutes.route("/", {
   action: function() {
     ReactLayout.render(App, {
       content: <Home />
@@ -34,7 +34,7 @@ public.route("/", {
 
 //Accounts
 
-public.route("/login", {
+publicRoutes.route("/login", {
   action: function() {
     ReactLayout.render(App, {
       content: <SignIn />
@@ -46,7 +46,7 @@ public.route("/login", {
 
 //Recipe routes
 
-admin.route("/recipes", {
+adminRoutes.route("/recipes", {
   action: function() {
     ReactLayout.render(App, {
       content: <RecipeList />
@@ -55,12 +55,12 @@ admin.route("/recipes", {
   name: "listRecipes"
 });
 
-admin.route('/add/recipe', {
+adminRoutes.route('/add/recipe', {
     action: function(params) {
     }
 })
 
-admin.route('/recipes/:recipeId', {
+adminRoutes.route('/recipes/:recipeId', {
   action: function(params) {
     console.log(params);
     ReactLayout.render(App, {
@@ -70,7 +70,7 @@ admin.route('/recipes/:recipeId', {
     name: "viewRecipe"
 });
 
-admin.route('/recipes/:recipeId/edit', {
+adminRoutes.route('/recipes/:recipeId/edit', {
     action: function(params) {
     },
     name: "editRecipe"
@@ -79,7 +79,7 @@ admin.route('/recipes/:recipeId/edit', {
 
 //Ingredient routes
 
-admin.route("/ingredients", {
+adminRoutes.route("/ingredients", {
   action: function() {
     ReactLayout.render(App, {
       content: <IngredientList />
@@ -88,23 +88,23 @@ admin.route("/ingredients", {
   name: "listIngredients"
 });
 
-admin.route('/add/ingredient', {
+adminRoutes.route('/add/ingredient', {
 
 })
 
-admin.route('/ingredients/:ingredientId/edit', {
+adminRoutes.route('/ingredients/:ingredientId/edit', {
 
 });
 
 
 //Food routes
 
-admin.route('/add/food', {
+adminRoutes.route('/add/food', {
     action: function(params) {
     }
 })
 
-admin.route('/foods/:foodId/edit', {
+adminRoutes.route('/foods/:foodId/edit', {
     action: function(params) {
     },
     name: "editFood"

@@ -7,7 +7,14 @@ const LoginButtons = BlazeToReact('loginButtons');
 export default class Header extends Component {
 
   handleLogout() {
-    Meteor.logout();
+    Meteor.logout(function(error) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        FlowRouter.go('login');
+      }
+    });
   }
 
   render() {

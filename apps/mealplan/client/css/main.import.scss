@@ -57,7 +57,7 @@ a {
         background-color: $brand-primary;
     }
     .pure-menu-children {
-      .pure-menu-link, .pure-menu-link:focus {
+      .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:active {
         color: $brand-primary;
       }
     }
