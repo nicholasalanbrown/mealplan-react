@@ -8,6 +8,8 @@ ul.typeahead-selector {
   border: 1px solid #000;
   background-color: #fff;
   list-style: none;
+  max-height: 200px;
+  overflow-y: scroll;
   li {
     text-decoration: none;
     a {

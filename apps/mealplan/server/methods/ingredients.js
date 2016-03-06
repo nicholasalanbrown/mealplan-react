@@ -1,10 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import Ingredients from 'mealplan/collections/Ingredients';
+import Nutrition from 'mealplan/collections/Nutrition';
 
 Meteor.methods({
-  addIngredient: function (name) {
-    check(name, String);
-    Ingredients.insert({name: name});
+  addIngredient: function (listName, databaseName) {
+    check(listName, String);
+    if (databaseName) {
+      let databaseIngredient = Nutrition.findOne({"name.long": databaseName});
+      databaseIngredient.listName = listName;
+      Ingredients.insert(databaseIngredient);
+    }
+    else {
+      Ingredients.insert({listName: listName});
+    }
   },
   updateIngredientNames: function () {
     var ingredients = Ingredients.find().fetch();

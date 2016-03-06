@@ -3,24 +3,28 @@ import { Typeahead } from 'react-typeahead';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
-import OptionsTemplate from '../OptionsTemplate';
 
 import Cuisines from 'mealplan/collections/Cuisines';
+import Ingredients from 'mealplan/collections/Ingredients';
+
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class AddRecipe extends Component {
 
   getMeteorData() {
     let subscription = Meteor.subscribe('allCuisines');
+    let ingredientSubscription = Meteor.subscribe('allIngredients');
     return {
-      subscriptionLoading: !subscription.ready(), // Use handle to show loading state
+      subscriptionLoading: !subscription.ready() || !ingredientSubscription.ready(),
       cuisines: Cuisines.find().fetch(),
+      ingredients: Ingredients.find().fetch()
     };
   }
 
   state = {
     recipeDoc: {},
-    cuisineOptions: []
+    cuisineOptions: [],
+    searchValue: ''
   };
 
   handleChange = (e) => {
@@ -29,18 +33,12 @@ export default class AddRecipe extends Component {
     let recipeDoc = this.state.recipeDoc;
     recipeDoc[name] = value;
     this.setState({ recipeDoc: recipeDoc });
-    console.log(this.state.recipeDoc);
-  }
-
-  handleIngredientSearch = (e) => {
-
   }
 
   handleSubmit = (e) => {
   }
 
   render() {
-    console.log(this.state);
     if (this.data.subscriptionLoading) {
       return <div></div>
     }
@@ -79,12 +77,12 @@ export default class AddRecipe extends Component {
                     <label for="ingredientSearch">Search for ingredients</label>
                     <Typeahead
                       name="ingredientSearch"
-                      options={this.data.cuisines.map(function(cuisine){
-                        return cuisine.name;
+                      options={this.data.ingredients.map(function(ingredient){
+                        return ingredient.name;
                       })}
-                      maxVisible={5}
+                      maxVisible={15}
+                      onOptionSelected={console.log('selected!')}
                     />
-                    {/*}<input onChange={this.handleIngredientSearch.bind(this)} name="ingredientSearch" type="text" placeholder="Search for an ingredient" />*/}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
             </form>

@@ -84,6 +84,9 @@ Meteor.publish("ingredients", function (ingredientIds) {
   ];
 });
 
+Nutrition._ensureIndex({
+  "name.long": "text"
+});
 
 Meteor.publish("search", function(searchValue) {
   if (!searchValue) {
