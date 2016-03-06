@@ -24,7 +24,7 @@ export default class SignIn extends Component {
     return (
       <Content>
         <h1>Sign In</h1>
-        <a onClick={this.handleClick.bind(this)} id="facebook-login" className="pure-button" href="#">Sign In with Facebook</a>
+        <a onClick={this.handleClick.bind(this)} id="facebook-login" className="pure-button center" href="">Sign In with Facebook</a>
       </Content>
     );
   }
