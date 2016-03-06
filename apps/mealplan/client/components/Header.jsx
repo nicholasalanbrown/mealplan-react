@@ -12,7 +12,7 @@ export default class Header extends Component {
 
   render() {
     let linkList;
-    let loginLink = <a href="/sign-in" className="pure-menu-link">Sign In</a>;
+    let loginLink = <a href={FlowRouter.path('login')} className="pure-menu-link">Sign In</a>;
     if (Meteor.userId()) {
       loginLink = <a onClick={this.handleLogout.bind(this)} href="" className="pure-menu-link">Sign Out</a>;
     }

@@ -8,9 +8,21 @@ import IngredientList from './components/ingredients/IngredientList';
 import RecipeContent from './components/recipes/RecipeContent';
 
 
+let public = FlowRouter.group {};
+let admin = FlowRouter.group {
+  triggersEnter: [ ->
+    unless Meteor.loggingIn() or Meteor.userId()
+      route = FlowRouter.current()
+      unless route.route.name is 'login'
+        Session.set 'redirectAfterLogin', route.path
+      FlowRouter.go ‘login’
+  ]
+};
+
+
 //Global routes
 
-FlowRouter.route("/", {
+public.route("/", {
   action: function() {
     ReactLayout.render(App, {
       content: <Home />
@@ -22,19 +34,19 @@ FlowRouter.route("/", {
 
 //Accounts
 
-FlowRouter.route("/sign-in", {
+public.route("/login", {
   action: function() {
     ReactLayout.render(App, {
       content: <SignIn />
     });
   },
-  name: 'signIn'
+  name: 'login'
 });
 
 
 //Recipe routes
 
-FlowRouter.route("/recipes", {
+admin.route("/recipes", {
   action: function() {
     ReactLayout.render(App, {
       content: <RecipeList />
@@ -43,12 +55,12 @@ FlowRouter.route("/recipes", {
   name: "listRecipes"
 });
 
-FlowRouter.route('/add/recipe', {
+admin.route('/add/recipe', {
     action: function(params) {
     }
 })
 
-FlowRouter.route('/recipes/:recipeId', {
+admin.route('/recipes/:recipeId', {
   action: function(params) {
     console.log(params);
     ReactLayout.render(App, {
@@ -58,7 +70,7 @@ FlowRouter.route('/recipes/:recipeId', {
     name: "viewRecipe"
 });
 
-FlowRouter.route('/recipes/:recipeId/edit', {
+admin.route('/recipes/:recipeId/edit', {
     action: function(params) {
     },
     name: "editRecipe"
@@ -67,7 +79,7 @@ FlowRouter.route('/recipes/:recipeId/edit', {
 
 //Ingredient routes
 
-FlowRouter.route("/ingredients", {
+admin.route("/ingredients", {
   action: function() {
     ReactLayout.render(App, {
       content: <IngredientList />
@@ -76,23 +88,23 @@ FlowRouter.route("/ingredients", {
   name: "listIngredients"
 });
 
-FlowRouter.route('/add/ingredient', {
+admin.route('/add/ingredient', {
 
 })
 
-FlowRouter.route('/ingredients/:ingredientId/edit', {
+admin.route('/ingredients/:ingredientId/edit', {
 
 });
 
 
 //Food routes
 
-FlowRouter.route('/add/food', {
+admin.route('/add/food', {
     action: function(params) {
     }
 })
 
-FlowRouter.route('/foods/:foodId/edit', {
+admin.route('/foods/:foodId/edit', {
     action: function(params) {
     },
     name: "editFood"

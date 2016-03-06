@@ -53,8 +53,11 @@ a {
   .pure-menu-horizontal {
     width: auto;
     padding-right: 30px;
+    .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
+        background-color: $brand-primary;
+    }
     .pure-menu-children {
-      .pure-menu-link {
+      .pure-menu-link, .pure-menu-link:focus {
         color: $brand-primary;
       }
     }
