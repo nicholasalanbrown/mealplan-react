@@ -6,10 +6,14 @@ const LoginButtons = BlazeToReact('loginButtons');
 
 export default class Header extends Component {
 
+  handleLogout() {
+    Meteor.logout();
+  }
+
   render() {
     let loginLink = <a href="/sign-in" className="pure-menu-link">Sign In</a>;
     if (Meteor.userId()) {
-      loginLink = <a href="#" className="pure-menu-link">Sign Out</a>;
+      loginLink = <a onClick={this.handleLogout.bind(this)} href="#" className="pure-menu-link">Sign Out</a>;
     }
     return (
       <Headroom>

@@ -34,7 +34,7 @@
 
   // Configure environment
   "env": {
-    "ROOT_URL": "http://198.211.116.19",
+    "ROOT_URL": "http://198.211.117.110",
     "MONGO_URL": "mongodb://admin:password@ds013898.mongolab.com:13898/mealplan"
   },
 

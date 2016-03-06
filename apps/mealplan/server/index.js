@@ -1,4 +1,5 @@
 import './publications';
+import './services';
 import './methods/cuisines';
 import './methods/emails';
 import './methods/foods';
