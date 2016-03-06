@@ -23,6 +23,7 @@ export default class AddRecipe extends Component {
 
   state = {
     recipeDoc: {},
+    ingredients: [],
     cuisineOptions: [],
     searchValue: ''
   };
@@ -33,6 +34,15 @@ export default class AddRecipe extends Component {
     let recipeDoc = this.state.recipeDoc;
     recipeDoc[name] = value;
     this.setState({ recipeDoc: recipeDoc });
+  }
+
+  handleSelect = (e) => {
+    console.log(e);
+    console.log(this.state.ingredients);
+    let ingredients = this.state.ingredients;
+    ingredients.push(e);
+    this.setState({ingredients: ingredients});
+    console.log(this.state);
   }
 
   handleSubmit = (e) => {
@@ -53,6 +63,17 @@ export default class AddRecipe extends Component {
           <option key={index} value={Number(number)}>{Number(number)}</option>
         );
       });
+      let selectedIngredients;
+      if (this.state.ingredients) {
+        selectedIngredients = this.state.ingredients.map(function (ingredient, index) {
+          return (
+            <p>
+              {ingredient}
+              <input type="text" />
+              <input type="text" />
+            </p>);
+        });
+      }
       return (
         <Content>
             <form onSubmit={this.handleSubmit.bind(this)} className="pure-form pure-form-stacked">
@@ -81,8 +102,9 @@ export default class AddRecipe extends Component {
                         return ingredient.listName;
                       })}
                       maxVisible={15}
-                      onOptionSelected={console.log('selected!')}
+                      onOptionSelected={this.handleSelect.bind(this)}
                     />
+                    {selectedIngredients}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
             </form>
