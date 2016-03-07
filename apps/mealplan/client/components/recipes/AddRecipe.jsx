@@ -3,10 +3,11 @@ import { Typeahead } from 'react-typeahead';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
+import Select from '../forms/Select';
 
 import Cuisines from 'mealplan/collections/Cuisines';
 import Ingredients from 'mealplan/collections/Ingredients';
-
+import Measurements from 'mealplan/lib/measurements';
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class AddRecipe extends Component {
@@ -53,6 +54,7 @@ export default class AddRecipe extends Component {
       return <div></div>
     }
     else {
+      console.log(Measurements);
       let cuisineOptions = this.data.cuisines.map(function(cuisine, index) {
         return (
           <option key={index}>{cuisine.name}</option>
@@ -69,8 +71,7 @@ export default class AddRecipe extends Component {
           return (
             <p>
               {ingredient}
-              <input type="text" />
-              <input type="text" />
+              <Select options={Measurements}/>
             </p>);
         });
       }

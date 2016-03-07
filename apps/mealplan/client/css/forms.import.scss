@@ -1,5 +1,9 @@
 @import './main.import.scss';
 
+input {
+  font-family: $font-headings;
+}
+
 ul.typeahead-selector {
   position: absolute;
   margin: 0;
