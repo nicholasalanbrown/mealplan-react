@@ -4,6 +4,11 @@ input {
   font-family: $font-headings;
 }
 
+.form-inline {
+  display: inline !important;
+  margin: 8px !important;
+}
+
 ul.typeahead-selector {
   position: absolute;
   margin: 0;

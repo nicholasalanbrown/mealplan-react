@@ -38,12 +38,9 @@ export default class AddRecipe extends Component {
   }
 
   handleSelect = (e) => {
-    console.log(e);
-    console.log(this.state.ingredients);
     let ingredients = this.state.ingredients;
     ingredients.push(e);
     this.setState({ingredients: ingredients});
-    console.log(this.state);
   }
 
   handleSubmit = (e) => {
@@ -54,7 +51,6 @@ export default class AddRecipe extends Component {
       return <div></div>
     }
     else {
-      console.log(Measurements);
       let cuisineOptions = this.data.cuisines.map(function(cuisine, index) {
         return (
           <option key={index}>{cuisine.name}</option>
@@ -69,10 +65,14 @@ export default class AddRecipe extends Component {
       if (this.state.ingredients) {
         selectedIngredients = this.state.ingredients.map(function (ingredient, index) {
           return (
-            <p>
-              {ingredient}
-              <Select options={Measurements}/>
-            </p>);
+            <form key={"ingredientForm"+index} className="pure-form">
+              <fieldset>
+                <span className="form-inline">{ingredient}</span>
+                <input className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
+                <Select className="form-inline" key={"select"+index} options={Measurements}/>
+                <input className="form-inline" placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
+              </fieldset>
+            </form>);
         });
       }
       return (
