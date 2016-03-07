@@ -57,7 +57,7 @@ export default class Header extends Component {
       <Headroom>
       <nav className="navbar">
         <div className="brand">
-          <a href="/">Meal Plan</a>
+          <a href="/"><span className="brand-1">eat</span><span className="brand-2">this</span></a>
         </div>
         {linkList}
       </nav>

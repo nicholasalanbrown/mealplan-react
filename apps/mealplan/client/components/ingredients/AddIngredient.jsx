@@ -63,6 +63,7 @@ export default class addIngredient extends Component {
   }
 
   render() {
+
       let results =
         this.data.ingredients.map(function(ingredient){
           return ingredient.name.long;

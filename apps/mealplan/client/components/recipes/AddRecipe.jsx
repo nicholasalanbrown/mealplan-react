@@ -34,20 +34,20 @@ export default class AddRecipe extends Component {
     let value = e.target.value;
     let name = e.target.name;
     let recipeDoc = this.state.recipeDoc;
-    recipeDoc[name] = value;
+    if (name === "servings") {
+      recipeDoc[name] = Number(value);
+    }
+    else {
+      recipeDoc[name] = value;
+    }
     this.setState({ recipeDoc: recipeDoc });
-  }
-
-  updateSearchValue = (e) => {
-    this.setState({searchValue: e.target.value});
   }
 
   handleSelect = (e) => {
     let ingredients = this.state.ingredients;
     let ingredient = Ingredients.findOne({listName: e});
-    ingredients.push({_id: ingredient._id, listName: e});
+    ingredients.push({_id: ingredient._id, listName: ingredient.listName});
     this.setState({ingredients: ingredients});
-    this.setState({searchValue: ''});
   }
 
   addInstruction = (e) => {
@@ -67,7 +67,6 @@ export default class AddRecipe extends Component {
     }
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
-    console.log(this.state.ingredients);
   }
 
   handleMeasurement = (index, value) => {
@@ -76,7 +75,6 @@ export default class AddRecipe extends Component {
     currentIngredient.measurement = value;
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
-    console.log(this.state.ingredients);
   }
 
   handleSuffix = (index) => {
@@ -88,12 +86,26 @@ export default class AddRecipe extends Component {
     }
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
-    console.log(this.state.ingredients);
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    Meteor.call('addRecipe',
+      this.state.recipeDoc.title,
+      this.state.recipeDoc.cuisine,
+      this.state.recipeDoc.servings,
+      this.state.recipeDoc.type,
+      this.state.ingredients,
+      this.state.instructions,
+      function (error, result) {
+        if (error) {
+          console.log(error);
+        }
+        else {
+          FlowRouter.go('listRecipes');
+        }
+      }
+    )
   }
 
   render() {
@@ -145,7 +157,8 @@ export default class AddRecipe extends Component {
                     <legend>Add a Recipe</legend>
                     <label for="title">Title</label>
                     <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
-                    <select className="form-inline pure-u-24-24 pure-u-md-12-24" name="cuisine">
+                    <select className="form-inline pure-u-24-24 pure-u-md-12-24" name="cuisine" onChange={this.handleChange.bind(this)}>
+                      <option value="" disabled selected>Select</option>
                       {cuisineOptions}
                     </select>
                     <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="servings" onChange={this.handleChange.bind(this)}>
@@ -160,8 +173,6 @@ export default class AddRecipe extends Component {
                     <div className="pure-u-24-24">
                     <Typeahead
                       ref="ingredientSearch"
-                      value={this.state.searchValue}
-                      onKeyUp={this.updateSearchValue.bind(this)}
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
                         return ingredient.listName;

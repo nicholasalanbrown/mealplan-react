@@ -31,7 +31,7 @@ export default class RecipeContent extends Component {
           measurement = ingredient.measurement+" ";
         }
         return (
-          <li key={index}>{quantity}{measurement}{ingredient.name}</li>
+          <li key={index}>{quantity}{measurement}{ingredient.listName}</li>
         );
       });
 

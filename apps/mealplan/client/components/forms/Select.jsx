@@ -13,6 +13,7 @@ export default class Select extends Component {
     });
     return (
       <select onChange={this.handleChange.bind(this)} className={this.props.className}>
+        <option value="" disabled selected>Select</option>
         {options}
       </select>
     );

@@ -9,6 +9,10 @@ Schema.RecipeIngredient = new SimpleSchema({
   _id: {
     type: String
   },
+  listName: {
+    type: String,
+    optional: true,
+  },
   name: {
     type: String,
     optional: true,
@@ -57,6 +61,10 @@ Recipes.attachSchema(new SimpleSchema({
     type: [Schema.RecipeIngredient],
     label: "List of ingredients and quantities"
   },
+  instructions: {
+    type: [String],
+    label: "List of instructions"
+  },
   foods: {
     type: [String],
     label: "Foods this recipe contains",
@@ -69,15 +77,13 @@ Recipes.attachSchema(new SimpleSchema({
   },
   isPaleo: {
     type: Boolean,
-    label: "Is this a paleo recipe"
+    label: "Is this a paleo recipe",
+    optional: true
   },
   hasDairy: {
     type: Boolean,
-    label: "Does this contain dairy?"
-  },
-  instructions: {
-    type: [String],
-    label: "List of instructions"
+    label: "Does this contain dairy?",
+    optional: true
   }
 }));
 
