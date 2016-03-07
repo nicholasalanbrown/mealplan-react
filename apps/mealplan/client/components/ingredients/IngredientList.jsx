@@ -11,7 +11,7 @@ export default class IngredientList extends Component {
 
   getMeteorData() {
     Meteor.subscribe('allIngredients');
-    const ingredients = Ingredients.find().fetch();
+    const ingredients = Ingredients.find({}, {sort: {listName: 1}}).fetch();
     return {
       ingredients
     };
