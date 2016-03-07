@@ -152,8 +152,8 @@ export default class AddRecipe extends Component {
                       <option value="side">Side</option>
                     </select>
                     <label for="ingredientSearch">Search for ingredients</label>
+                    <div className="pure-u-16-24">
                     <Typeahead
-                      className="pure-u-12-24"
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
                         return ingredient.listName;
@@ -161,6 +161,7 @@ export default class AddRecipe extends Component {
                       maxVisible={15}
                       onOptionSelected={this.handleSelect.bind(this)}
                     />
+                    </div>
                     {selectedIngredients}
                     {instructions}
                     {instructionForm}

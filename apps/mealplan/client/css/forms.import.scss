@@ -5,6 +5,13 @@ input, .pure-form select {
   height: 40px;
 }
 
+.typeahead {
+  position: relative;
+  typeahead-selector {
+    width: 100%;
+  }
+}
+
 .typeahead input {
   width: 100%;
   margin: 0;
@@ -15,7 +22,7 @@ input, .pure-form select {
     margin: 20px 0 20px 0;
   }
   button {
-    min-width: 160px;
+    min-width: 140px;
   }
 }
 
@@ -34,13 +41,13 @@ ul.typeahead-selector {
   margin: 0;
   padding: 0;
   width: 100%;
-  border: 1px solid #000;
   background-color: #fff;
   list-style: none;
   max-height: 200px;
   overflow-y: scroll;
   li {
     text-decoration: none;
+    padding: 10px;
     a {
       color: #000;
       font-family: $font-headings;
