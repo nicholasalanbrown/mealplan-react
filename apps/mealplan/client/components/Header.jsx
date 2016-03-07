@@ -54,6 +54,10 @@ export default class Header extends Component {
       </div>
     }
     return (
+      <div>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <Headroom>
       <nav className="navbar">
         <div className="brand">
@@ -62,6 +66,7 @@ export default class Header extends Component {
         {linkList}
       </nav>
       </Headroom>
+      </div>
     );
   }
 }
