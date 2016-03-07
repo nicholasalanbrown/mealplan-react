@@ -10,13 +10,18 @@ input, .pure-form select {
   margin: 0;
 }
 
+.pure-form {
+  input, select, textarea {
+    margin: 20px 0 20px 0;
+  }
+}
+
 textarea {
   min-height: 120px;
 }
 
 .form-inline {
   display: inline !important;
-  margin: 8px !important;
 }
 
 ul.typeahead-selector {
