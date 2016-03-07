@@ -28,7 +28,16 @@ export default class RecipeList extends Component {
     return (
       <Content>
         <h1>Recipes</h1>
-        {recipeRows}
+        <table className="pure-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recipeRows}
+          </tbody>
+        </table>
       </Content>
     );
   }

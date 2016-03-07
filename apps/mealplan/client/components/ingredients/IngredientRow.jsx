@@ -4,7 +4,9 @@ export default class IngredientRow extends Component {
 
   render() {
     return (
-      <li>{this.props.name}</li>
+      <tr>
+        <td>{this.props.name}</td>
+      </tr>
     );
   }
 }

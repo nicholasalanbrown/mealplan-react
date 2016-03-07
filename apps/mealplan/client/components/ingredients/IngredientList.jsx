@@ -26,7 +26,16 @@ export default class IngredientList extends Component {
     return (
       <Content>
         <h1>Ingredients</h1>
-        {ingredientRows}
+        <table className="pure-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ingredientRows}
+          </tbody>
+        </table>
       </Content>
     );
   }
