@@ -14,7 +14,12 @@ input, .pure-form select {
   input, select, textarea, button {
     margin: 20px 0 20px 0;
   }
+  button {
+    min-width: 160px;
+  }
 }
+
+
 
 textarea {
   min-height: 120px;
