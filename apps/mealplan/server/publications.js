@@ -106,7 +106,7 @@ Meteor.publish("search", function(searchValue) {
       // `score` property specified in the projection fields above.
       sort: {
         score: { $meta: "textScore" }
-      }, limit: 20
+      }, limit: 300
     }
   );
 });

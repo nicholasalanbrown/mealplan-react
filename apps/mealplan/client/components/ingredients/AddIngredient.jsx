@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { Typeahead } from 'react-typeahead';
+import fuzzy from 'fuzzy';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
@@ -62,6 +63,12 @@ export default class addIngredient extends Component {
   }
 
   render() {
+      let results =
+        this.data.ingredients.map(function(ingredient){
+          return ingredient.name.long;
+        });
+      let resultsSorted = fuzzy.filter(this.state.searchValue, results)
+      let matches = resultsSorted.map(function(el) { return el.string; });
       return (
         <Content>
             <form onSubmit={this.handleSubmit.bind(this)} className="pure-form pure-form-stacked">
@@ -69,9 +76,7 @@ export default class addIngredient extends Component {
                     <legend>Add an Ingredient</legend>
                     <Typeahead
                       name="ingredientSearch"
-                      options={this.data.ingredients.map(function(ingredient){
-                        return ingredient.name.long;
-                      })}
+                      options={matches}
                       maxVisible={300}
                       onKeyUp={this.handleSearch.bind(this)}
                       onOptionSelected={this.handleSelect.bind(this)}
