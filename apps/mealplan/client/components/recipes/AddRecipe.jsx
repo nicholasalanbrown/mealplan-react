@@ -53,6 +53,24 @@ export default class AddRecipe extends Component {
     this.setState({instructions: instructions});
   }
 
+  handleQuantity = (index) => {
+    let ingredients = this.state.ingredients;
+    let currentIngredient = ingredients[index];
+    currentIngredient.quantity = Number(this.refs['quantity'+index].value);
+    ingredients[index] = currentIngredient;
+    this.setState({ingredients: ingredients});
+    console.log(this.state.ingredients);
+  }
+
+  handleMeasurement = (index) => {
+    let ingredients = this.state.ingredients;
+    let currentIngredient = ingredients[index];
+    currentIngredient.measurement = this.refs['measurement'+index].value;
+    ingredients[index] = currentIngredient;
+    this.setState({ingredients: ingredients});
+    console.log(this.state.ingredients);
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
@@ -74,14 +92,15 @@ export default class AddRecipe extends Component {
         );
       });
       let selectedIngredients;
+      let self = this;
       if (this.state.ingredients) {
         selectedIngredients = this.state.ingredients.map(function (ingredient, index) {
           return (
             <form key={"ingredientForm"+index} className="pure-form">
               <fieldset>
                 <span className="form-inline">{ingredient.listName}</span>
-                <input className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
-                <Select className="form-inline" key={"select"+index} options={Measurements}/>
+                <input ref={'quantity'+index} onBlur={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
+                <Select ref={'measurement'+index} className="form-inline" onBlur={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
                 <input className="form-inline" placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
               </fieldset>
             </form>);
