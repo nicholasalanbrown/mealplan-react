@@ -7,6 +7,7 @@ input, .pure-form select {
 
 .typeahead {
   position: relative;
+  margin-bottom: 0;
   typeahead-selector {
     width: 100%;
   }
@@ -38,9 +39,10 @@ textarea {
 
 ul.typeahead-selector {
   position: absolute;
+  border: 1px solid #eee;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 99%;
   background-color: #fff;
   list-style: none;
   max-height: 200px;
