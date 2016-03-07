@@ -130,7 +130,7 @@ export default class AddRecipe extends Component {
       }
       let instructionForm =
         <div>
-          <textarea ref="instructionText" placeholder="Enter instruction"></textarea>
+          <textarea ref="instructionText" className="pure-u-24-24" placeholder="Enter instruction"></textarea>
           <button onClick={this.addInstruction.bind(this)} type="submit" className="pure-button pure-button-primary">Add</button>;
         </div>
       return (
@@ -139,23 +139,24 @@ export default class AddRecipe extends Component {
                 <fieldset>
                     <legend>Add a Recipe</legend>
                     <label for="title">Title</label>
-                    <input onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
+                    <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
                     <label for="cuisine">Cuisine</label>
-                    <select name="cuisine">
+                    <select className="pure-u-10-24" name="cuisine">
                       {cuisineOptions}
                     </select>
                     <label for="servings">Number of servings</label>
-                    <select name="servings" onChange={this.handleChange.bind(this)}>
+                    <select className="pure-u-6-24" name="servings" onChange={this.handleChange.bind(this)}>
                       {servingOptions}
                     </select>
                     <label for="type">Dish type</label>
-                    <select name="type" onChange={this.handleChange.bind(this)}>
+                    <select className="pure-u-6-24" name="type" onChange={this.handleChange.bind(this)}>
                       <option value="full">Full</option>
                       <option value="main">Main</option>
                       <option value="side">Side</option>
                     </select>
                     <label for="ingredientSearch">Search for ingredients</label>
                     <Typeahead
+                      className="pure-u-12-24"
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
                         return ingredient.listName;

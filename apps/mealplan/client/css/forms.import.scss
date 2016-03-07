@@ -1,7 +1,17 @@
 @import './main.import.scss';
 
-input {
+input, .pure-form select {
   font-family: $font-headings;
+  height: 40px;
+}
+
+.typeahead input {
+  width: 100%;
+  margin: 0;
+}
+
+textarea {
+  min-height: 120px;
 }
 
 .form-inline {
