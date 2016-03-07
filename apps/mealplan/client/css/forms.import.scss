@@ -25,7 +25,7 @@ ul.typeahead-selector {
       color: #000;
       font-family: $font-headings;
     }
-    &:hover {
+    &:hover, &:active {
       background-color: $brand-primary;
       a {
         color: #fff;

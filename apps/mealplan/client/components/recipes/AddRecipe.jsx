@@ -25,6 +25,7 @@ export default class AddRecipe extends Component {
   state = {
     recipeDoc: {},
     ingredients: [],
+    instructions: [],
     cuisineOptions: [],
     searchValue: ''
   };
@@ -39,11 +40,22 @@ export default class AddRecipe extends Component {
 
   handleSelect = (e) => {
     let ingredients = this.state.ingredients;
-    ingredients.push(e);
+    let ingredient = Ingredients.findOne({listName: e});
+    ingredients.push({_id: ingredient._id, listName: e});
     this.setState({ingredients: ingredients});
   }
 
+  addInstruction = (e) => {
+    e.preventDefault();
+    let instruction = this.refs.instructionText.value;
+    let instructions = this.state.instructions;
+    instructions.push(instruction);
+    this.setState({instructions: instructions});
+  }
+
   handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
   }
 
   render() {
@@ -67,7 +79,7 @@ export default class AddRecipe extends Component {
           return (
             <form key={"ingredientForm"+index} className="pure-form">
               <fieldset>
-                <span className="form-inline">{ingredient}</span>
+                <span className="form-inline">{ingredient.listName}</span>
                 <input className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
                 <Select className="form-inline" key={"select"+index} options={Measurements}/>
                 <input className="form-inline" placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
@@ -75,6 +87,18 @@ export default class AddRecipe extends Component {
             </form>);
         });
       }
+      let instructions = "hello!";
+
+      if (this.state.instructions) {
+        instructions = this.state.instructions.map(function(instruction,index) {
+        return <p>{instruction}</p>
+        })
+      }
+      let instructionForm =
+        <div>
+          <textarea ref="instructionText" placeholder="Enter instruction"></textarea>
+          <button onClick={this.addInstruction.bind(this)} type="submit" className="pure-button pure-button-primary">Add</button>;
+        </div>
       return (
         <Content>
             <form onSubmit={this.handleSubmit.bind(this)} className="pure-form pure-form-stacked">
@@ -106,6 +130,8 @@ export default class AddRecipe extends Component {
                       onOptionSelected={this.handleSelect.bind(this)}
                     />
                     {selectedIngredients}
+                    {instructions}
+                    {instructionForm}
                     <button type="submit" className="pure-button pure-button-primary">Sign in</button>
                 </fieldset>
             </form>

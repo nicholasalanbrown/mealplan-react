@@ -1,10 +1,5 @@
 let Measurements =
-[
-  "cups",
-  "tbsps",
-  "tsps",
-  "oz",
-  "lbs"
-]
+
+["lbs", "cups", "oz", "tbsp", "tsp", "pinch", "dash", "quart", "pint"];
 
 module.exports = Measurements;

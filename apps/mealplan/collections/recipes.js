@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import Measurements from 'mealplan/lib/measurements';
 
 const Recipes = new Mongo.Collection("recipes");
 
@@ -24,7 +25,7 @@ Schema.RecipeIngredient = new SimpleSchema({
   measurement: {
     type: String,
     optional: true,
-    allowedValues: ["lbs", "cups", "oz", "tbsp", "tsp", "pinch", "dash", "quart", "pint"],
+    allowedValues: Measurements
   },
   suffix: {
     type: String,
