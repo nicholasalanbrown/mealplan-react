@@ -140,19 +140,19 @@ export default class AddRecipe extends Component {
                     <legend>Add a Recipe</legend>
                     <label for="title">Title</label>
                     <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
-                    <select className="form-inline pure-u-10-24" name="cuisine">
+                    <select className="form-inline pure-u-24-24 pure-u-md-12-24" name="cuisine">
                       {cuisineOptions}
                     </select>
-                    <select className="form-inline pure-u-6-24" name="servings" onChange={this.handleChange.bind(this)}>
+                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="servings" onChange={this.handleChange.bind(this)}>
                       {servingOptions}
                     </select>
-                    <select className="form-inline pure-u-8-24" name="type" onChange={this.handleChange.bind(this)}>
+                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="type" onChange={this.handleChange.bind(this)}>
                       <option value="full">Full</option>
                       <option value="main">Main</option>
                       <option value="side">Side</option>
                     </select>
                     <label for="ingredientSearch">Search for ingredients</label>
-                    <div className="pure-u-16-24">
+                    <div className="pure-u-24-24">
                     <Typeahead
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
