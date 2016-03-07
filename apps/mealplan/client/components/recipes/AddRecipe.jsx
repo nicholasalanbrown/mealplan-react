@@ -17,7 +17,7 @@ export default class AddRecipe extends Component {
     let ingredientSubscription = Meteor.subscribe('allIngredients');
     return {
       subscriptionLoading: !subscription.ready() || !ingredientSubscription.ready(),
-      cuisines: Cuisines.find().fetch(),
+      cuisines: Cuisines.find({}, {sort: {name: 1}}).fetch(),
       ingredients: Ingredients.find().fetch()
     };
   }
@@ -38,11 +38,16 @@ export default class AddRecipe extends Component {
     this.setState({ recipeDoc: recipeDoc });
   }
 
+  updateSearchValue = (e) => {
+    this.setState({searchValue: e.target.value});
+  }
+
   handleSelect = (e) => {
     let ingredients = this.state.ingredients;
     let ingredient = Ingredients.findOne({listName: e});
     ingredients.push({_id: ingredient._id, listName: e});
     this.setState({ingredients: ingredients});
+    this.setState({searchValue: ''});
   }
 
   addInstruction = (e) => {
@@ -111,14 +116,14 @@ export default class AddRecipe extends Component {
       if (this.state.ingredients) {
         selectedIngredients = this.state.ingredients.map(function (ingredient, index) {
           return (
-            <form key={"ingredientForm"+index} className="pure-form">
+            <div className="pure-form" key={'ingredientForm'+index}>
               <fieldset>
                 <span className="ingredient-name pure-u-24-24">{ingredient.listName}</span>
                 <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-6-24" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
                 <Select ref={'measurement'+index} className="form-inline pure-u-6-24 " onChange={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
                 <input ref={'suffix'+index}className="form-inline pure-u-12-24" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
               </fieldset>
-            </form>);
+            </div>);
         });
       }
       let instructions = "hello!";
@@ -154,6 +159,9 @@ export default class AddRecipe extends Component {
                     <label for="ingredientSearch">Search for ingredients</label>
                     <div className="pure-u-24-24">
                     <Typeahead
+                      ref="ingredientSearch"
+                      value={this.state.searchValue}
+                      onKeyUp={this.updateSearchValue.bind(this)}
                       name="ingredientSearch"
                       options={this.data.ingredients.map(function(ingredient){
                         return ingredient.listName;

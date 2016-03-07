@@ -83,7 +83,7 @@ export default class addIngredient extends Component {
                     />
                     <label for="listName">Display name</label>
                     <input onChange={this.handleNameChange} type="text" value={this.state.listName} placeholder="Display name" />
-                    <button type="submit" className="pure-button pure-button-primary">Sign in</button>
+                    <button type="submit" className="pure-button pure-button-primary">Add Ingredient</button>
                 </fieldset>
             </form>
         </Content>
