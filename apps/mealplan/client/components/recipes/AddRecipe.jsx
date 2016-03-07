@@ -62,10 +62,10 @@ export default class AddRecipe extends Component {
     console.log(this.state.ingredients);
   }
 
-  handleMeasurement = (index) => {
+  handleMeasurement = (index, value) => {
     let ingredients = this.state.ingredients;
     let currentIngredient = ingredients[index];
-    currentIngredient.measurement = this.refs['measurement'+index].value;
+    currentIngredient.measurement = value;
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
     console.log(this.state.ingredients);
@@ -100,7 +100,7 @@ export default class AddRecipe extends Component {
               <fieldset>
                 <span className="form-inline">{ingredient.listName}</span>
                 <input ref={'quantity'+index} onBlur={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
-                <Select ref={'measurement'+index} className="form-inline" onBlur={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
+                <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
                 <input className="form-inline" placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
               </fieldset>
             </form>);

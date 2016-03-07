@@ -1,6 +1,9 @@
 import { Component } from 'react';
 
 export default class Select extends Component {
+  handleChange = (e) => {
+    this.props.onChange(e.target.value);
+  }
   render() {
     let self = this;
     let options = this.props.options.map(function(option, index) {
@@ -9,7 +12,7 @@ export default class Select extends Component {
       );
     });
     return (
-      <select className={this.props.className}>
+      <select onChange={this.handleChange.bind(this)} className={this.props.className}>
         {options}
       </select>
     );
