@@ -5,17 +5,19 @@ import Content from './Content';
 export default class Home extends Component {
 
   render() {
-    let loginStatus;
     if (Meteor.user()) {
-      loginStatus = "You are currently logged in."
+      return (
+        <Content>
+          <p>You are logged in!</p>
+        </Content>
+      );
     }
     else {
-      loginStatus = "Please log in."
+      return (
+        <div className="welcome-background">
+          <h1>Never plan another meal.</h1>
+        </div>
+      );
     }
-    return (
-      <Content>
-        <p>{loginStatus}</p>
-      </Content>
-    );
   }
 }

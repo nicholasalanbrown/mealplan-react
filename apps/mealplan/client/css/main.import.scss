@@ -16,6 +16,10 @@ p {
 p, a {
   font-family: $font-text;
 }
+html {
+  height: 100%;
+  width: 100%;
+}
 
 body {
   margin: 0;
