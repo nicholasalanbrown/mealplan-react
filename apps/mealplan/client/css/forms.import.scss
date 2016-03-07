@@ -37,10 +37,17 @@ textarea {
   display: inline !important;
 }
 
+.ingredient-name {
+  position: relative;
+  bottom: -10px;
+  left: 5px;
+}
+
 ul.typeahead-selector {
   position: absolute;
   border: 1px solid #eee;
   margin: 0;
+  z-index: 4;
   padding: 0;
   width: 99%;
   background-color: #fff;
