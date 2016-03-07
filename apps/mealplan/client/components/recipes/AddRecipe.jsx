@@ -56,7 +56,10 @@ export default class AddRecipe extends Component {
   handleQuantity = (index) => {
     let ingredients = this.state.ingredients;
     let currentIngredient = ingredients[index];
-    currentIngredient.quantity = Number(this.refs['quantity'+index].value);
+    let currentQuantity = Number(this.refs['quantity'+index].value);
+    if (currentQuantity > 0) {
+      currentIngredient.quantity = currentQuantity;
+    }
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
     console.log(this.state.ingredients);
@@ -66,6 +69,18 @@ export default class AddRecipe extends Component {
     let ingredients = this.state.ingredients;
     let currentIngredient = ingredients[index];
     currentIngredient.measurement = value;
+    ingredients[index] = currentIngredient;
+    this.setState({ingredients: ingredients});
+    console.log(this.state.ingredients);
+  }
+
+  handleSuffix = (index) => {
+    let ingredients = this.state.ingredients;
+    let currentIngredient = ingredients[index];
+    let suffix = this.refs['suffix'+index].value;
+    if (suffix) {
+      currentIngredient.suffix = suffix;
+    }
     ingredients[index] = currentIngredient;
     this.setState({ingredients: ingredients});
     console.log(this.state.ingredients);
@@ -99,9 +114,9 @@ export default class AddRecipe extends Component {
             <form key={"ingredientForm"+index} className="pure-form">
               <fieldset>
                 <span className="form-inline">{ingredient.listName}</span>
-                <input ref={'quantity'+index} onBlur={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
+                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={"quantity"+index} type="number" name={"quantity"+index} />
                 <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
-                <input className="form-inline" placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
+                <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
               </fieldset>
             </form>);
         });
