@@ -164,7 +164,7 @@ export default class AddRecipe extends Component {
                     {selectedIngredients}
                     {instructions}
                     {instructionForm}
-                    <button type="submit" className="pure-button pure-button-primary">Sign in</button>
+                    <button type="submit" className="pure-button pure-button-primary">Create Recipe</button>
                 </fieldset>
             </form>
         </Content>
