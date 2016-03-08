@@ -1,15 +1,7 @@
-//Fonts
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
-
-//Colors
 @import 'colors.import.scss';
-
-//Buttons
-@import 'buttons.import.scss';
-
 $font-headings: 'Lato';
 $font-text: 'Merriweather';
+
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;

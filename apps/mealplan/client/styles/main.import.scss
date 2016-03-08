@@ -1,0 +1,29 @@
+//Fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
+
+//Colors
+@import '_colors.import.scss';
+
+//Global Styles
+@import '_globals.import.scss';
+
+//Typography
+@import '_typography.import.scss';
+
+//Utility Classes
+@import '_utility.import.scss';
+
+
+
+//Buttons
+@import 'modules/_buttons.import.scss';
+
+//Forms
+@import 'modules/_forms.import.scss';
+
+//Tables
+@import 'modules/_tables.import.scss';
+
+//Womepage
+@import 'modules/_welcome.import.scss';
