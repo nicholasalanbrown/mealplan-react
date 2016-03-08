@@ -1,22 +1,16 @@
 .welcome-background {
-  margin-top: -60px;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: linear-gradient($background-darken, $background-darken), url('https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: $white;
+  height: 100%;
+  margin-top: -60px;
   text-align: center;
+  width: 100%;
+
   h1 {
     @media screen and (max-width: 35.5em) {
-    padding: 220px 40px 0 40px;
+      padding: 220px 40px 0;
     }
     padding-top: 360px;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
   }
 }

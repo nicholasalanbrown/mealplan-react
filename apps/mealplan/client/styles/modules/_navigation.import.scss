@@ -35,11 +35,9 @@
     }
     padding-right: 30px;
     width: auto;
+
     .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
-        background-color: $brand;
-    }
-    .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
-        background-color: $brand;
+      background-color: $brand;
     }
     .pure-menu-children {
       .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:active {
