@@ -98,3 +98,13 @@ a {
     }
   }
 }
+
+.content-wrapper {
+  ul, li, ol, a, p {
+    font-family: $font-text;
+    line-height: 1.7;
+  }
+  ul {
+    list-style: none;
+  }
+}
