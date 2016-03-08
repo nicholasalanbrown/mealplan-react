@@ -1,5 +1,14 @@
 // Set up login services
 Meteor.startup(function() {
+
+var admin = Meteor.users.findOne({"service.facebook.id": "10101823222893582"});
+
+if (admin) {
+  Roles.addUsersToRoles(admin._id, 'admins', Roles.GLOBAL_GROUP);
+}
+
+
+
 /*
   // Local Facebook configuration
   ServiceConfiguration.configurations.remove({});
