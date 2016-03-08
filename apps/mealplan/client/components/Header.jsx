@@ -63,7 +63,7 @@ export default class Header extends Component {
         ]}
       />
       <Headroom>
-      <nav className="navbar box-shadowed">
+      <nav className="navbar">
         <div className="brand">
           <a href="/"><span className="brand-1">eat</span><span className="brand-2">this</span></a>
         </div>
