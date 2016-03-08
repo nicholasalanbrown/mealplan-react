@@ -24,7 +24,6 @@ export default class RecipeList extends Component {
   }
 
   render() {
-    console.log(this.data.mainCount);
     const fullRecipeRows = this.data.recipes.map(function(recipe) {
       if (recipe.type === 'full') {
         return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
