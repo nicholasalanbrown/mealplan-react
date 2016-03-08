@@ -31,6 +31,7 @@ export default class IngredientList extends Component {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Plural Name</th>
             </tr>
           </thead>
           <tbody>
