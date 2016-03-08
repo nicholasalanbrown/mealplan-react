@@ -12,12 +12,19 @@ export default class RecipeList extends Component {
   getMeteorData() {
     Meteor.subscribe('allRecipes');
     const recipes = Recipes.find().fetch();
+    const fullCount = Recipes.find({type: 'full'}).count();
+    const mainCount = Recipes.find({type: 'main'}).count();
+    const sideCount = Recipes.find({type: 'side'}).count();
     return {
-      recipes
+      recipes,
+      fullCount,
+      mainCount,
+      sideCount
     };
   }
 
   render() {
+    console.log(this.data.mainCount);
     const fullRecipeRows = this.data.recipes.map(function(recipe) {
       if (recipe.type === 'full') {
         return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
@@ -51,7 +58,7 @@ export default class RecipeList extends Component {
         <table className="pure-table">
           <thead>
             <tr>
-              <th>Full meals</th>
+              <th>Full meals ({this.data.fullCount})</th>
             </tr>
           </thead>
           <tbody>
@@ -61,7 +68,7 @@ export default class RecipeList extends Component {
         <table className="pure-table">
           <thead>
             <tr>
-              <th>Mains</th>
+              <th>Mains ({this.data.mainCount})</th>
             </tr>
           </thead>
           <tbody>
@@ -71,7 +78,7 @@ export default class RecipeList extends Component {
         <table className="pure-table">
           <thead>
             <tr>
-              <th>Sides</th>
+              <th>Sides ({this.data.sideCount})</th>
             </tr>
           </thead>
           <tbody>
