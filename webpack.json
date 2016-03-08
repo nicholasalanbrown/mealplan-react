@@ -4,6 +4,6 @@
     "host": "localhost"
   },
   "sass": {
-    "includePaths": ["apps/mealplan/client/css"]
+    "includePaths": ["apps/mealplan/client/css", "public/assets"]
   }
 }

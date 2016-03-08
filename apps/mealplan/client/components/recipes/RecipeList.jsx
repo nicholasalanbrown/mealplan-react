@@ -18,11 +18,31 @@ export default class RecipeList extends Component {
   }
 
   render() {
+    const fullRecipeRows = this.data.recipes.map(function(recipe) {
+      if (recipe.type === 'full') {
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+      }
+      else {
+        return null;
+      }
+    });
 
-    const recipeRows = this.data.recipes.map(function(recipe) {
-      return (
-        <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
-      );
+    const mainRecipeRows = this.data.recipes.map(function(recipe) {
+      if (recipe.type === 'main') {
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+      }
+      else {
+        return null;
+      }
+    });
+
+    const sideRecipeRows = this.data.recipes.map(function(recipe) {
+      if (recipe.type === 'side') {
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+      }
+      else {
+        return null;
+      }
     });
 
     return (
@@ -31,11 +51,31 @@ export default class RecipeList extends Component {
         <table className="pure-table">
           <thead>
             <tr>
-              <th>Title</th>
+              <th>Full meals</th>
             </tr>
           </thead>
           <tbody>
-            {recipeRows}
+            {fullRecipeRows}
+          </tbody>
+        </table>
+        <table className="pure-table">
+          <thead>
+            <tr>
+              <th>Mains</th>
+            </tr>
+          </thead>
+          <tbody>
+            {mainRecipeRows}
+          </tbody>
+        </table>
+        <table className="pure-table">
+          <thead>
+            <tr>
+              <th>Sides</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sideRecipeRows}
           </tbody>
         </table>
       </Content>

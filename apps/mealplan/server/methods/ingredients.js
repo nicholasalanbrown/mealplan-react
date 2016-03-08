@@ -8,6 +8,7 @@ Meteor.methods({
     if (databaseName) {
       let databaseIngredient = Nutrition.findOne({"name.long": databaseName});
       databaseIngredient.listName = listName;
+      delete databaseIngredient._id;
       Ingredients.insert(databaseIngredient);
     }
     else {

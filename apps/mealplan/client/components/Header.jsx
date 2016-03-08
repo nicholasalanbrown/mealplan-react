@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import Helmet from "react-helmet";
 import Headroom from 'react-headroom';
 import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
 
@@ -55,9 +56,12 @@ export default class Header extends Component {
     }
     return (
       <div>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
+      <Helmet
+        title="Eat This"
+        meta={[
+            {"name": "viewport", "content": "width=device-width, initial-scale=1"}
+        ]}
+      />
       <Headroom>
       <nav className="navbar">
         <div className="brand">

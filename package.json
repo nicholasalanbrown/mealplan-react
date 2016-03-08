@@ -10,7 +10,8 @@
     "react-mixin": "^3.0.3",
     "react-headroom": "^1.7.3",
     "react-typeahead": "1.1.5",
-    "fuzzy": "0.1.1"
+    "fuzzy": "0.1.1",
+    "react-helmet": "2.3.1"
   },
   "devDependencies": {
     "webpack": "^1.12.9",
