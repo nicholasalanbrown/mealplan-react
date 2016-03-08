@@ -1,4 +1,6 @@
 
+//Making global containers full width and height
+
 html {
   height: 100%;
   width: 100%;
@@ -11,10 +13,7 @@ body {
   width: 100%;
 }
 
-.content-wrapper a, .content-wrapper a:visited, .content-wrapper a:active {
-  color: $brand;
-  text-decoration: none;
-}
+//Preventing React from shrinking global containers to fit content
 
 #react-root {
   margin: 0;
@@ -28,17 +27,4 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-}
-
-.content-wrapper {
-  ul, li, ol, a, p {
-    font-family: $font-text;
-    line-height: 1.7;
-  }
-  ul {
-    list-style: none;
-  }
-  ul, ol {
-    padding-left: 0;
-  }
 }

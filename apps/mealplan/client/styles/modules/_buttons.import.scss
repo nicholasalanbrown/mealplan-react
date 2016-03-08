@@ -1,5 +1,6 @@
 
 .pure-button {
+  font-family: $font-headings;
   padding: 15px;
 }
 
@@ -8,6 +9,6 @@
 }
 
 #facebook-login {
-  background-color: #47659B;
-  color: #fff;
+  background: $facebook;
+  color: $white;
 }

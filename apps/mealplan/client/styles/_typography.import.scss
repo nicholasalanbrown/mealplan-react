@@ -17,21 +17,19 @@ $font-size-h5:            $font-size-base;
 $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 
 
-p {
-  font-size: $font-size-base;
+body {
   font-family: $font-text;
-  line-height: 1.7;
 }
 
-p, a {
-  font-family: $font-text;
+p {
+  font-size: $font-size-base;
 }
 
 a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .navbar {
   font-weight: 400;
   font-family: $font-headings;
 }
@@ -58,4 +56,23 @@ h5 {
 
 h6 {
   font-size: $font-size-h6;
+}
+
+
+.content-wrapper a, .content-wrapper a:visited, .content-wrapper a:active {
+  color: $brand;
+  text-decoration: none;
+}
+
+.content-wrapper {
+  ul, li, ol, a, p {
+    font-family: $font-text;
+    line-height: 1.7;
+  }
+  ul {
+    list-style: none;
+  }
+  ul, ol {
+    padding-left: 0;
+  }
 }

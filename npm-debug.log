@@ -1,0 +1,337 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/nbrown/.nvm/v0.10.40/bin/node',
+1 verbose cli   '/Users/nbrown/.nvm/v0.10.40/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'eslint-config-airbnb',
+1 verbose cli   'babel-eslint',
+1 verbose cli   'eslint-plugin' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.40
+4 warn package.json assert@1.3.0 assert is also the name of a node core module.
+5 warn package.json babel-plugin-syntax-flow@6.5.0 No description
+6 warn package.json babel-plugin-syntax-jsx@6.5.0 No description
+7 warn package.json babel-traverse@6.6.4 No description
+8 warn package.json buffer@3.6.0 buffer is also the name of a node core module.
+9 warn package.json events@1.1.0 events is also the name of a node core module.
+10 warn package.json indexof@0.0.1 No repository field.
+11 warn package.json punycode@1.4.0 punycode is also the name of a node core module.
+12 warn package.json querystring@0.2.0 querystring is also the name of a node core module.
+13 warn package.json smart-mixin@1.2.1 No repository field.
+14 warn package.json string_decoder@0.10.31 string_decoder is also the name of a node core module.
+15 warn package.json url@0.10.3 url is also the name of a node core module.
+16 warn package.json util@0.10.3 util is also the name of a node core module.
+17 verbose readDependencies using package.json deps
+18 verbose cache add [ 'eslint-config-airbnb', null ]
+19 verbose cache add name=undefined spec="eslint-config-airbnb" args=["eslint-config-airbnb",null]
+20 verbose parsed url { protocol: null,
+20 verbose parsed url   slashes: null,
+20 verbose parsed url   auth: null,
+20 verbose parsed url   host: null,
+20 verbose parsed url   port: null,
+20 verbose parsed url   hostname: null,
+20 verbose parsed url   hash: null,
+20 verbose parsed url   search: null,
+20 verbose parsed url   query: null,
+20 verbose parsed url   pathname: 'eslint-config-airbnb',
+20 verbose parsed url   path: 'eslint-config-airbnb',
+20 verbose parsed url   href: 'eslint-config-airbnb' }
+21 verbose cache add [ 'babel-eslint', null ]
+22 verbose cache add name=undefined spec="babel-eslint" args=["babel-eslint",null]
+23 verbose parsed url { protocol: null,
+23 verbose parsed url   slashes: null,
+23 verbose parsed url   auth: null,
+23 verbose parsed url   host: null,
+23 verbose parsed url   port: null,
+23 verbose parsed url   hostname: null,
+23 verbose parsed url   hash: null,
+23 verbose parsed url   search: null,
+23 verbose parsed url   query: null,
+23 verbose parsed url   pathname: 'babel-eslint',
+23 verbose parsed url   path: 'babel-eslint',
+23 verbose parsed url   href: 'babel-eslint' }
+24 verbose cache add [ 'eslint-plugin', null ]
+25 verbose cache add name=undefined spec="eslint-plugin" args=["eslint-plugin",null]
+26 verbose parsed url { protocol: null,
+26 verbose parsed url   slashes: null,
+26 verbose parsed url   auth: null,
+26 verbose parsed url   host: null,
+26 verbose parsed url   port: null,
+26 verbose parsed url   hostname: null,
+26 verbose parsed url   hash: null,
+26 verbose parsed url   search: null,
+26 verbose parsed url   query: null,
+26 verbose parsed url   pathname: 'eslint-plugin',
+26 verbose parsed url   path: 'eslint-plugin',
+26 verbose parsed url   href: 'eslint-plugin' }
+27 silly lockFile 2cba2ab8-eslint-config-airbnb eslint-config-airbnb
+28 verbose lock eslint-config-airbnb /Users/nbrown/.npm/2cba2ab8-eslint-config-airbnb.lock
+29 silly lockFile 30bfc077-babel-eslint babel-eslint
+30 verbose lock babel-eslint /Users/nbrown/.npm/30bfc077-babel-eslint.lock
+31 silly lockFile 6566919f-eslint-plugin eslint-plugin
+32 verbose lock eslint-plugin /Users/nbrown/.npm/6566919f-eslint-plugin.lock
+33 silly lockFile 6566919f-eslint-plugin eslint-plugin
+34 silly lockFile 6566919f-eslint-plugin eslint-plugin
+35 silly lockFile 30bfc077-babel-eslint babel-eslint
+36 silly lockFile 30bfc077-babel-eslint babel-eslint
+37 verbose addNamed [ 'eslint-plugin', '' ]
+38 verbose addNamed [ null, '*' ]
+39 silly lockFile 2c59f38d-eslint-plugin eslint-plugin@
+40 verbose lock eslint-plugin@ /Users/nbrown/.npm/2c59f38d-eslint-plugin.lock
+41 silly lockFile 2cba2ab8-eslint-config-airbnb eslint-config-airbnb
+42 silly lockFile 2cba2ab8-eslint-config-airbnb eslint-config-airbnb
+43 verbose addNamed [ 'babel-eslint', '' ]
+44 verbose addNamed [ null, '*' ]
+45 silly lockFile 4bec8ef6-babel-eslint babel-eslint@
+46 verbose lock babel-eslint@ /Users/nbrown/.npm/4bec8ef6-babel-eslint.lock
+47 verbose addNamed [ 'eslint-config-airbnb', '' ]
+48 verbose addNamed [ null, '*' ]
+49 silly lockFile ec81ba62-eslint-config-airbnb eslint-config-airbnb@
+50 verbose lock eslint-config-airbnb@ /Users/nbrown/.npm/ec81ba62-eslint-config-airbnb.lock
+51 silly addNameRange { name: 'eslint-plugin', range: '*', hasData: false }
+52 silly addNameRange { name: 'babel-eslint', range: '*', hasData: false }
+53 silly addNameRange { name: 'eslint-config-airbnb', range: '*', hasData: false }
+54 verbose request where is /eslint-plugin
+55 verbose request registry http://registry.npmjs.org/
+56 verbose request id 7d5bf7faab531561
+57 verbose url raw /eslint-plugin
+58 verbose url resolving [ 'http://registry.npmjs.org/', './eslint-plugin' ]
+59 verbose url resolved http://registry.npmjs.org/eslint-plugin
+60 verbose request where is http://registry.npmjs.org/eslint-plugin
+61 info trying registry request attempt 1 at 15:06:56
+62 http GET http://registry.npmjs.org/eslint-plugin
+63 verbose request where is /eslint-config-airbnb
+64 verbose request registry http://registry.npmjs.org/
+65 verbose url raw /eslint-config-airbnb
+66 verbose url resolving [ 'http://registry.npmjs.org/', './eslint-config-airbnb' ]
+67 verbose url resolved http://registry.npmjs.org/eslint-config-airbnb
+68 verbose request where is http://registry.npmjs.org/eslint-config-airbnb
+69 info trying registry request attempt 1 at 15:06:56
+70 verbose etag "SDPRVL2LUVLAGTYJ6R0FE4WJ"
+71 http GET http://registry.npmjs.org/eslint-config-airbnb
+72 verbose request where is /babel-eslint
+73 verbose request registry http://registry.npmjs.org/
+74 verbose url raw /babel-eslint
+75 verbose url resolving [ 'http://registry.npmjs.org/', './babel-eslint' ]
+76 verbose url resolved http://registry.npmjs.org/babel-eslint
+77 verbose request where is http://registry.npmjs.org/babel-eslint
+78 info trying registry request attempt 1 at 15:06:56
+79 verbose etag "78JRBMZES167KL1UJLDT8TCY0"
+80 http GET http://registry.npmjs.org/babel-eslint
+81 http 200 http://registry.npmjs.org/eslint-config-airbnb
+82 silly registry.get cb [ 200,
+82 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+82 silly registry.get     etag: '"A1R8ENPHXQ2PZH8GREOSPUMSF"',
+82 silly registry.get     'content-type': 'application/json',
+82 silly registry.get     'cache-control': 'max-age=300',
+82 silly registry.get     'content-length': '42497',
+82 silly registry.get     'accept-ranges': 'bytes',
+82 silly registry.get     date: 'Tue, 08 Mar 2016 20:06:56 GMT',
+82 silly registry.get     via: '1.1 varnish',
+82 silly registry.get     age: '1',
+82 silly registry.get     connection: 'keep-alive',
+82 silly registry.get     'x-served-by': 'cache-jfk1037-JFK',
+82 silly registry.get     'x-cache': 'HIT',
+82 silly registry.get     'x-cache-hits': '1',
+82 silly registry.get     'x-timer': 'S1457467616.987451,VS0,VE0',
+82 silly registry.get     vary: 'Accept' } ]
+83 http 200 http://registry.npmjs.org/babel-eslint
+84 silly registry.get cb [ 200,
+84 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+84 silly registry.get     etag: '"3CJ8BISICIE1TB21Q76Y3J1T7"',
+84 silly registry.get     'content-type': 'application/json',
+84 silly registry.get     'cache-control': 'max-age=300',
+84 silly registry.get     'content-length': '116641',
+84 silly registry.get     'accept-ranges': 'bytes',
+84 silly registry.get     date: 'Tue, 08 Mar 2016 20:06:56 GMT',
+84 silly registry.get     via: '1.1 varnish',
+84 silly registry.get     age: '110',
+84 silly registry.get     connection: 'keep-alive',
+84 silly registry.get     'x-served-by': 'cache-jfk1036-JFK',
+84 silly registry.get     'x-cache': 'HIT',
+84 silly registry.get     'x-cache-hits': '737',
+84 silly registry.get     'x-timer': 'S1457467616.984753,VS0,VE0',
+84 silly registry.get     vary: 'Accept' } ]
+85 http 404 http://registry.npmjs.org/eslint-plugin
+86 silly registry.get cb [ 404,
+86 silly registry.get   { 'content-type': 'application/json',
+86 silly registry.get     'cache-control': 'max-age=0',
+86 silly registry.get     'content-length': '2',
+86 silly registry.get     'accept-ranges': 'bytes',
+86 silly registry.get     date: 'Tue, 08 Mar 2016 20:06:57 GMT',
+86 silly registry.get     via: '1.1 varnish',
+86 silly registry.get     age: '0',
+86 silly registry.get     connection: 'keep-alive',
+86 silly registry.get     'x-served-by': 'cache-jfk1026-JFK',
+86 silly registry.get     'x-cache': 'MISS',
+86 silly registry.get     'x-cache-hits': '0',
+86 silly registry.get     'x-timer': 'S1457467616.986324,VS0,VE22' } ]
+87 silly addNameRange number 2 { name: 'eslint-config-airbnb', range: '*', hasData: true }
+88 silly addNameRange versions [ 'eslint-config-airbnb',
+88 silly addNameRange   [ '0.0.1',
+88 silly addNameRange     '0.0.2',
+88 silly addNameRange     '0.0.4',
+88 silly addNameRange     '0.0.5',
+88 silly addNameRange     '0.0.6',
+88 silly addNameRange     '0.0.6-dev',
+88 silly addNameRange     '0.0.6-dev2',
+88 silly addNameRange     '0.0.7',
+88 silly addNameRange     '0.0.8',
+88 silly addNameRange     '0.0.9',
+88 silly addNameRange     '0.1.0',
+88 silly addNameRange     '0.1.1',
+88 silly addNameRange     '1.0.0',
+88 silly addNameRange     '1.0.2',
+88 silly addNameRange     '2.0.0',
+88 silly addNameRange     '2.1.0',
+88 silly addNameRange     '2.1.1',
+88 silly addNameRange     '3.0.0',
+88 silly addNameRange     '3.0.1',
+88 silly addNameRange     '3.0.2',
+88 silly addNameRange     '3.1.0',
+88 silly addNameRange     '4.0.0',
+88 silly addNameRange     '5.0.0',
+88 silly addNameRange     '5.0.1',
+88 silly addNameRange     '6.0.0',
+88 silly addNameRange     '6.0.1',
+88 silly addNameRange     '6.0.2',
+88 silly addNameRange     '6.1.0' ] ]
+89 verbose addNamed [ 'eslint-config-airbnb', '6.1.0' ]
+90 verbose addNamed [ '6.1.0', '6.1.0' ]
+91 silly lockFile 4ba4c58d-eslint-config-airbnb-6-1-0 eslint-config-airbnb@6.1.0
+92 verbose lock eslint-config-airbnb@6.1.0 /Users/nbrown/.npm/4ba4c58d-eslint-config-airbnb-6-1-0.lock
+93 silly addNameRange number 2 { name: 'babel-eslint', range: '*', hasData: true }
+94 silly addNameRange versions [ 'babel-eslint',
+94 silly addNameRange   [ '1.0.0',
+94 silly addNameRange     '1.0.1',
+94 silly addNameRange     '1.0.2',
+94 silly addNameRange     '1.0.3',
+94 silly addNameRange     '1.0.4',
+94 silly addNameRange     '1.0.6',
+94 silly addNameRange     '1.0.7',
+94 silly addNameRange     '1.0.8',
+94 silly addNameRange     '1.0.9',
+94 silly addNameRange     '1.0.10',
+94 silly addNameRange     '1.0.11',
+94 silly addNameRange     '1.0.12',
+94 silly addNameRange     '1.0.13',
+94 silly addNameRange     '1.0.14',
+94 silly addNameRange     '2.0.0',
+94 silly addNameRange     '2.0.2',
+94 silly addNameRange     '3.0.0',
+94 silly addNameRange     '3.0.1',
+94 silly addNameRange     '3.1.0',
+94 silly addNameRange     '3.1.1',
+94 silly addNameRange     '3.1.3',
+94 silly addNameRange     '3.1.4',
+94 silly addNameRange     '3.1.5',
+94 silly addNameRange     '3.1.6',
+94 silly addNameRange     '3.1.7',
+94 silly addNameRange     '3.1.8',
+94 silly addNameRange     '3.1.9',
+94 silly addNameRange     '3.1.10',
+94 silly addNameRange     '3.1.11',
+94 silly addNameRange     '3.1.12',
+94 silly addNameRange     '3.1.13',
+94 silly addNameRange     '3.1.14',
+94 silly addNameRange     '3.1.15',
+94 silly addNameRange     '3.1.16',
+94 silly addNameRange     '3.1.17',
+94 silly addNameRange     '3.1.18',
+94 silly addNameRange     '3.1.19',
+94 silly addNameRange     '3.1.20',
+94 silly addNameRange     '3.1.21',
+94 silly addNameRange     '3.1.22',
+94 silly addNameRange     '3.1.23',
+94 silly addNameRange     '3.1.24',
+94 silly addNameRange     '3.1.25',
+94 silly addNameRange     '3.1.26',
+94 silly addNameRange     '3.1.27',
+94 silly addNameRange     '4.0.0',
+94 silly addNameRange     '4.0.1',
+94 silly addNameRange     '4.0.2',
+94 silly addNameRange     '3.1.28',
+94 silly addNameRange     '4.0.3',
+94 silly addNameRange     '3.1.29',
+94 silly addNameRange     '4.0.4',
+94 silly addNameRange     '3.1.30',
+94 silly addNameRange     '4.0.5',
+94 silly addNameRange     '4.0.6',
+94 silly addNameRange     '4.0.7',
+94 silly addNameRange     '4.0.8',
+94 silly addNameRange     '4.0.9',
+94 silly addNameRange     '4.0.10',
+94 silly addNameRange     '4.1.0',
+94 silly addNameRange     '4.1.1',
+94 silly addNameRange     '4.1.2',
+94 silly addNameRange     '4.1.3',
+94 silly addNameRange     '4.1.4',
+94 silly addNameRange     '4.1.5',
+94 silly addNameRange     '4.1.6',
+94 silly addNameRange     '5.0.0-beta1',
+94 silly addNameRange     '5.0.0-beta2',
+94 silly addNameRange     '5.0.0-beta3',
+94 silly addNameRange     '5.0.0-beta4',
+94 silly addNameRange     '5.0.0-beta5',
+94 silly addNameRange     '5.0.0-beta6',
+94 silly addNameRange     '5.0.0-beta7',
+94 silly addNameRange     '5.0.0-beta8',
+94 silly addNameRange     '5.0.0-beta9',
+94 silly addNameRange     '4.1.7',
+94 silly addNameRange     '5.0.0-beta10',
+94 silly addNameRange     '4.1.8',
+94 silly addNameRange     '5.0.0',
+94 silly addNameRange     '6.0.0-beta.1',
+94 silly addNameRange     '6.0.0-beta.2',
+94 silly addNameRange     '6.0.0-beta.3',
+94 silly addNameRange     '6.0.0-beta.4',
+94 silly addNameRange     '6.0.0-beta.5' ] ]
+95 verbose addNamed [ 'babel-eslint', '5.0.0' ]
+96 verbose addNamed [ '5.0.0', '5.0.0' ]
+97 silly lockFile efd5cca6-babel-eslint-5-0-0 babel-eslint@5.0.0
+98 verbose lock babel-eslint@5.0.0 /Users/nbrown/.npm/efd5cca6-babel-eslint-5-0-0.lock
+99 silly lockFile bdf19bee-b-eslint-config-airbnb-6-1-0-tgz http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+100 verbose lock http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz /Users/nbrown/.npm/bdf19bee-b-eslint-config-airbnb-6-1-0-tgz.lock
+101 silly lockFile 2c59f38d-eslint-plugin eslint-plugin@
+102 silly lockFile 2c59f38d-eslint-plugin eslint-plugin@
+103 silly lockFile a8d1c849-el-eslint-babel-eslint-5-0-0-tgz http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+104 verbose lock http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz /Users/nbrown/.npm/a8d1c849-el-eslint-babel-eslint-5-0-0-tgz.lock
+105 verbose addRemoteTarball [ 'http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz',
+105 verbose addRemoteTarball   'a4908439073932a753fe5279dddc63d2bd4c93e6' ]
+106 verbose addRemoteTarball [ 'http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz',
+106 verbose addRemoteTarball   '47cfed8880090ffdf8569fa82adab5757ea5512f' ]
+107 info retry fetch attempt 1 at 15:06:56
+108 verbose fetch to= /var/folders/xs/djcn12ls2xn0fw1m7m_t09l4000fp6/T/npm-90382-8YuvUpCa/registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+109 info retry fetch attempt 1 at 15:06:56
+110 verbose fetch to= /var/folders/xs/djcn12ls2xn0fw1m7m_t09l4000fp6/T/npm-90382-8YuvUpCa/registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+111 http GET http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+112 http GET http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+113 http 200 http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+114 http 200 http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+115 silly lockFile bdf19bee-b-eslint-config-airbnb-6-1-0-tgz http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+116 silly lockFile bdf19bee-b-eslint-config-airbnb-6-1-0-tgz http://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-6.1.0.tgz
+117 silly lockFile a8d1c849-el-eslint-babel-eslint-5-0-0-tgz http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+118 silly lockFile a8d1c849-el-eslint-babel-eslint-5-0-0-tgz http://registry.npmjs.org/babel-eslint/-/babel-eslint-5.0.0.tgz
+119 silly lockFile 4ba4c58d-eslint-config-airbnb-6-1-0 eslint-config-airbnb@6.1.0
+120 silly lockFile 4ba4c58d-eslint-config-airbnb-6-1-0 eslint-config-airbnb@6.1.0
+121 silly lockFile efd5cca6-babel-eslint-5-0-0 babel-eslint@5.0.0
+122 silly lockFile efd5cca6-babel-eslint-5-0-0 babel-eslint@5.0.0
+123 silly lockFile ec81ba62-eslint-config-airbnb eslint-config-airbnb@
+124 silly lockFile ec81ba62-eslint-config-airbnb eslint-config-airbnb@
+125 silly lockFile 4bec8ef6-babel-eslint babel-eslint@
+126 silly lockFile 4bec8ef6-babel-eslint babel-eslint@
+127 error 404 Not Found
+127 error 404
+127 error 404 'eslint-plugin' is not in the npm registry.
+127 error 404 You should bug the author to publish it
+127 error 404 It was specified as a dependency of 'mealplan'
+127 error 404
+127 error 404 Note that you can also install from a
+127 error 404 tarball, folder, or http url, or git url.
+128 error System Darwin 14.5.0
+129 error command "/Users/nbrown/.nvm/v0.10.40/bin/node" "/Users/nbrown/.nvm/v0.10.40/bin/npm" "install" "--save-dev" "eslint-config-airbnb" "babel-eslint" "eslint-plugin"
+130 error cwd /Users/nbrown/Source/mealplan-react
+131 error node -v v0.10.40
+132 error npm -v 1.4.28
+133 error code E404
+134 verbose exit [ 1, true ]

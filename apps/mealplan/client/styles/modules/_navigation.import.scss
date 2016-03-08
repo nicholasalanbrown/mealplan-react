@@ -1,29 +1,43 @@
-.brand-1 {
+
+//Eat This logo styles
+
+.navbar-logo {
+  font-size: 28px;
+  letter-spacing: 1.2;
+  padding-left: 30px;
+}
+
+#navbar-logo-1 {
   font-weight: 700;
-  font-size: 28px;
-  letter-spacing: 1.2;
 }
 
-.brand-2 {
+#navbar-logo-2 {
   font-weight: 300;
-  font-size: 28px;
-  letter-spacing: 1.2;
 }
 
-.pure-menu-children li a:hover {
-  color: #fff;
-}
+//Navbar styles
 
 .navbar {
-  height: 70px;
-  width: 100%;
+  align-items: center;
   background-color: $brand;
   display: flex;
-  align-items: center;
+  height: 70px;
   justify-content: space-between;
+  width: 100%;
+
+  a {
+    color: $white;
+  }
+
   .pure-menu-horizontal {
-    width: auto;
+   :first-child {
+      color: $white;
+    }
     padding-right: 30px;
+    width: auto;
+    .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
+        background-color: $brand;
+    }
     .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
         background-color: $brand;
     }
@@ -36,17 +50,6 @@
       }
     }
     .pure-menu-list li a {
-      color: #fff;
-    }
-  }
-  .brand {
-    padding-left: 30px;
-  }
-  .brand a, a.pure-menu-link {
-    color: #fff;
-    font-family: $font-headings;
-    &:hover {
-      background-color: inherit;
       color: #fff;
     }
   }

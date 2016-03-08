@@ -148,7 +148,7 @@ export default class AddRecipe extends Component {
       let instructionForm =
         <div>
           <textarea ref="instructionText" className="pure-u-24-24" placeholder="Enter instruction"></textarea>
-          <button onClick={this.addInstruction.bind(this)} type="submit" className="pure-button pure-button-primary">Add</button>;
+          <button onClick={this.addInstruction.bind(this)} type="submit" className="pure-button pure-button-primary">Add</button>
         </div>
       return (
         <Content>

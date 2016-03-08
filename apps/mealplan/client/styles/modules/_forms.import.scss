@@ -1,26 +1,35 @@
 
-input, .pure-form select {
-  font-family: $font-headings;
-  height: 45px;
+input,
+.pure-form {
+  select {
+    font-family: $font-headings;
+    height: 45px;
+  }
 }
 
 .typeahead {
-  position: relative;
   margin-bottom: 0;
+  position: relative;
+
   typeahead-selector {
+    width: 100%;
+  }
+
+  input {
+    margin: 0;
     width: 100%;
   }
 }
 
-.typeahead input {
-  width: 100%;
-  margin: 0;
-}
-
 .pure-form {
-  input, select, textarea, button {
-    margin: 20px 0 20px 0;
+  input,
+  select,
+  textarea,
+
+  button {
+    margin: 20px 0;
   }
+
   button {
     min-width: 140px;
   }
@@ -37,33 +46,38 @@ textarea {
 }
 
 .ingredient-name {
-  position: relative;
   bottom: -10px;
   left: 5px;
+  position: relative;
 }
 
-ul.typeahead-selector {
-  position: absolute;
-  border: 1px solid #eee;
-  margin: 0;
-  z-index: 4;
-  padding: 0;
-  width: 99%;
-  background-color: #fff;
+.typeahead-selector {
+  background-color: $white;
+  border: 1px solid $gray;
   list-style: none;
+  margin: 0;
   max-height: 200px;
   overflow-y: scroll;
+  padding: 0;
+  position: absolute;
+  width: 99%;
+  z-index: 4;
+
   li {
-    text-decoration: none;
     padding: 10px;
+    text-decoration: none;
+
     a {
-      color: #000;
+      color: $dark;
       font-family: $font-headings;
     }
-    &:hover, &:active {
+
+    &:hover,
+    &:active {
       background-color: $brand;
+
       a {
-        color: #fff;
+        color: $white;
       }
     }
   }
