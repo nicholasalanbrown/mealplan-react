@@ -18,9 +18,10 @@ export default class IngredientList extends Component {
   }
 
   render() {
+    let self=this;
     var ingredientRows = this.data.ingredients.map(function(ingredient) {
       return (
-        <IngredientRow name={ingredient.listName} key={ingredient._id} ingredientId={ingredient._id}/>
+        <IngredientRow ingredientId={ingredient._id} name={ingredient.listName} key={ingredient._id} ingredientId={ingredient._id}/>
       );
     });
     return (
