@@ -29,6 +29,11 @@ body {
   font-family: sans-serif;
 }
 
+.content-wrapper a, .content-wrapper a:visited, .content-wrapper a:active {
+  color: $brand-primary;
+  text-decoration: none;
+}
+
 #react-root {
   margin: 0;
   padding: 0;
@@ -74,7 +79,7 @@ a {
       .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:active {
         color: $brand-primary;
       }
-      .pure-menu-link:hover {
+      .pure-menu-link:hover, .pure-menu-link:active {
         color: #fff;
       }
     }

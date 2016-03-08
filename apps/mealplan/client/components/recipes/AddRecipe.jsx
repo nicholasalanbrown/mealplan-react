@@ -115,12 +115,12 @@ export default class AddRecipe extends Component {
     else {
       let cuisineOptions = this.data.cuisines.map(function(cuisine, index) {
         return (
-          <option key={index}>{cuisine.name}</option>
+          <option key={'cuisine'+index}>{cuisine.name}</option>
         );
       });
       let servingOptions = [1,2,3,4,5,6,7,8,9,10].map(function(number, index) {
         return (
-          <option key={index} value={Number(number)}>{Number(number)}</option>
+          <option key={'servings'+index} value={Number(number)}>{Number(number)}</option>
         );
       });
       let selectedIngredients;
@@ -142,7 +142,7 @@ export default class AddRecipe extends Component {
 
       if (this.state.instructions) {
         instructions = this.state.instructions.map(function(instruction,index) {
-        return <p>{instruction}</p>
+        return <p index={'instruction'+index}>{instruction}</p>
         })
       }
       let instructionForm =
