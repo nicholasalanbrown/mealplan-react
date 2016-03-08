@@ -30,14 +30,14 @@ export default class Header extends Component {
           <ul className="pure-menu-list">
               <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                   <a href="" className="pure-menu-link">Recipes</a>
-                  <ul className="pure-menu-children">
+                  <ul className="pure-menu-children box-shadowed">
                       <li className="pure-menu-item"><a href={FlowRouter.path('addRecipe')} className="pure-menu-link">Add New</a></li>
                       <li className="pure-menu-item"><a href="/recipes" className="pure-menu-link">View All</a></li>
                   </ul>
               </li>
               <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                   <a href="" className="pure-menu-link">Ingredients</a>
-                  <ul className="pure-menu-children">
+                  <ul className="pure-menu-children box-shadowed">
                       <li className="pure-menu-item"><a href={FlowRouter.path('addIngredient')} className="pure-menu-link">Add New</a></li>
                       <li className="pure-menu-item"><a href="/ingredients" className="pure-menu-link">View All</a></li>
                   </ul>
@@ -63,7 +63,7 @@ export default class Header extends Component {
         ]}
       />
       <Headroom>
-      <nav className="navbar">
+      <nav className="navbar box-shadowed">
         <div className="brand">
           <a href="/"><span className="brand-1">eat</span><span className="brand-2">this</span></a>
         </div>
