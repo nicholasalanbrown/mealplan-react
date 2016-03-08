@@ -107,4 +107,7 @@ a {
   ul {
     list-style: none;
   }
+  ul, ol {
+    padding-left: 0;
+  }
 }
