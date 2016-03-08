@@ -12,11 +12,13 @@ export default class RecipeList extends Component {
   getMeteorData() {
     Meteor.subscribe('allRecipes');
     const recipes = Recipes.find().fetch();
+    const recipeCount = Recipes.find().count();
     const fullCount = Recipes.find({type: 'full'}).count();
     const mainCount = Recipes.find({type: 'main'}).count();
     const sideCount = Recipes.find({type: 'side'}).count();
     return {
       recipes,
+      recipeCount,
       fullCount,
       mainCount,
       sideCount
@@ -53,7 +55,7 @@ export default class RecipeList extends Component {
 
     return (
       <Content>
-        <h1>Recipes</h1>
+        <h1>Recipes ({this.data.recipeCount})</h1>
         <table className="pure-table">
           <thead>
             <tr>
