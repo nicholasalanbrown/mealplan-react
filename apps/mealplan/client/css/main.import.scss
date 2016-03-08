@@ -1,12 +1,12 @@
+//Fonts
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
 
-$brand: #509874;
-$brand2: #75BF98;
-$secondary: #44A0F0;
-$danger: #FF766F;
-$warning: #FFCD3D;
-$dark: #3F4040;
+//Colors
+@import 'colors.import.scss';
+
+//Buttons
+@import 'buttons.import.scss';
 
 $font-headings: 'Lato';
 $font-text: 'Merriweather';
