@@ -34,7 +34,7 @@ export default class AddRecipe extends Component {
     let value = e.target.value;
     let name = e.target.name;
     let recipeDoc = this.state.recipeDoc;
-    if (name === "servings") {
+    if (name === 'servings') {
       recipeDoc[name] = Number(value);
     }
     else {
@@ -131,14 +131,14 @@ export default class AddRecipe extends Component {
             <div className="pure-form" key={'ingredientForm'+index}>
               <fieldset>
                 <span className="ingredient-name pure-u-24-24">{ingredient.listName}</span>
-                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-6-24" placeholder="Quantity" key={"quantity"+index} type="number" step="any" name={"quantity"+index} />
-                <Select ref={'measurement'+index} className="form-inline pure-u-6-24 " onChange={self.handleMeasurement.bind(this, index)} key={"select"+index} options={Measurements}/>
-                <input ref={'suffix'+index}className="form-inline pure-u-12-24" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={"suffix"+index} type="text" name={"text"+index} />
+                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-6-24" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
+                <Select ref={'measurement'+index} className="form-inline pure-u-6-24 " onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
+                <input ref={'suffix'+index}className="form-inline pure-u-12-24" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={'suffix'+index} type="text" name={'text'+index} />
               </fieldset>
             </div>);
         });
       }
-      let instructions = "hello!";
+      let instructions = 'hello!';
 
       if (this.state.instructions) {
         instructions = this.state.instructions.map(function(instruction,index) {
@@ -157,14 +157,16 @@ export default class AddRecipe extends Component {
                     <legend>Add a Recipe</legend>
                     <label for="title">Title</label>
                     <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
-                    <select className="form-inline pure-u-24-24 pure-u-md-12-24" name="cuisine" onChange={this.handleChange.bind(this)}>
-                      <option value="" disabled selected>Select</option>
+                    <select className="form-inline pure-u-24-24 pure-u-md-12-24" name="cuisine" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <option value="" disabled>Select</option>
                       {cuisineOptions}
                     </select>
-                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="servings" onChange={this.handleChange.bind(this)}>
+                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="servings" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <option value="" disabled>Select</option>
                       {servingOptions}
                     </select>
-                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="type" onChange={this.handleChange.bind(this)}>
+                    <select className="form-inline pure-u-12-24 pure-u-md-6-24" name="type" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <option value="" disabled>Select</option>
                       <option value="full">Full</option>
                       <option value="main">Main</option>
                       <option value="side">Side</option>

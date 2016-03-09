@@ -64,7 +64,7 @@ textarea {
   z-index: 4;
 
   li {
-    padding: 10px;
+    padding: 8px;
     text-decoration: none;
 
     a {
@@ -73,8 +73,9 @@ textarea {
     }
 
     &:hover,
-    &:active {
-      background-color: $brand;
+    &:active,
+    &:focus {
+      background-color: $secondary;
 
       a {
         color: $white;

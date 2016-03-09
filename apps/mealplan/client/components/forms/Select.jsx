@@ -12,8 +12,8 @@ export default class Select extends Component {
       );
     });
     return (
-      <select onChange={this.handleChange.bind(this)} className={this.props.className}>
-        <option value="" disabled selected>Select</option>
+      <select onChange={this.handleChange.bind(this)} className={this.props.className} defaultValue={this.props.defaultValue}>
+        <option value="" disabled>Select</option>
         {options}
       </select>
     );
