@@ -46,7 +46,7 @@ export default class AddRecipe extends Component {
   handleSelect = (e) => {
     let ingredients = this.state.ingredients;
     let ingredient = Ingredients.findOne({listName: e});
-    ingredients.push({_id: ingredient._id, listName: ingredient.listName});
+    ingredients.push({_id: ingredient._id, listName: ingredient.listName, pluralName: ingredient.pluralName});
     this.setState({ingredients: ingredients});
   }
 

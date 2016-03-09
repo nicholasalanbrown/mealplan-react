@@ -6,12 +6,12 @@
   "main": "apps/server.js",
   "browser": "apps/client.js",
   "dependencies": {
-    "react": "~0.14.1",
-    "react-mixin": "^3.0.3",
-    "react-headroom": "^1.7.3",
-    "react-typeahead": "1.1.5",
     "fuzzy": "0.1.1",
-    "react-helmet": "2.3.1"
+    "react": "~0.14.1",
+    "react-headroom": "^1.7.3",
+    "react-helmet": "2.3.1",
+    "react-mixin": "^3.0.3",
+    "react-typeahead": "1.1.5"
   },
   "devDependencies": {
     "babel": "^6.3.26",

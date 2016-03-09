@@ -25,13 +25,13 @@ export default class RecipeContent extends Component {
       var recipeIngredients = recipe.ingredients.map(function(ingredient, index) {
         let quantity, measurement;
         if (ingredient.quantity) {
-          quantity = ingredient.quantity+" ";
+          quantity = ingredient.quantity+' ';
         }
         if (ingredient.measurement) {
-          measurement = ingredient.measurement+" ";
+          measurement = ingredient.measurement+' ';
         }
         return (
-          <li key={index}>{quantity}{measurement}{ingredient.listName}</li>
+          <li key={index}>{quantity}{measurement}{quantity > 1 && ingredient.pluralName ? ingredient.pluralName : ingredient.listName}</li>
         );
       });
 
