@@ -28,7 +28,7 @@ export default class RecipeList extends Component {
   render() {
     const fullRecipeRows = this.data.recipes.map(function(recipe) {
       if (recipe.type === 'full') {
-        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id} servings={recipe.servings}/>
       }
       else {
         return null;
@@ -37,7 +37,7 @@ export default class RecipeList extends Component {
 
     const mainRecipeRows = this.data.recipes.map(function(recipe) {
       if (recipe.type === 'main') {
-        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id} servings={recipe.servings}/>
       }
       else {
         return null;
@@ -46,7 +46,7 @@ export default class RecipeList extends Component {
 
     const sideRecipeRows = this.data.recipes.map(function(recipe) {
       if (recipe.type === 'side') {
-        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id}/>
+        return <RecipeRow title={recipe.title} key={recipe._id} recipeId={recipe._id} servings={recipe.servings}/>
       }
       else {
         return null;
@@ -60,6 +60,7 @@ export default class RecipeList extends Component {
           <thead>
             <tr>
               <th>Full meals ({this.data.fullCount})</th>
+              <th>Servings</th>
               <th></th>
             </tr>
           </thead>
@@ -71,6 +72,7 @@ export default class RecipeList extends Component {
           <thead>
             <tr>
               <th>Mains ({this.data.mainCount})</th>
+              <th>Servings</th>
               <th></th>
             </tr>
           </thead>
@@ -82,6 +84,7 @@ export default class RecipeList extends Component {
           <thead>
             <tr>
               <th>Sides ({this.data.sideCount})</th>
+              <th>Servings</th>
               <th></th>
             </tr>
           </thead>
