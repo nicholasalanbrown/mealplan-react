@@ -15,10 +15,16 @@ Meteor.methods({
       Ingredients.insert({listName: listName});
     }
   },
-  updateIngredient: function (ingredientId, listName) {
+  updateIngredient: function (ingredientId, type, value) {
     check(ingredientId, String);
-    check(listName, String);
-    Ingredients.update({_id: ingredientId}, {$set: {listName: listName}});
+    check(type, String);
+    check(value, String);
+    if (type === 'name') {
+      Ingredients.update({_id: ingredientId}, {$set: {listName: value}});
+    }
+    else {
+      Ingredients.update({_id: ingredientId}, {$set: {pluralName: value}});
+    }
   },
   updateIngredientNames: function () {
     var ingredients = Ingredients.find().fetch();

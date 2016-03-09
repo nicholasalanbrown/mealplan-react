@@ -4,32 +4,50 @@ import ReactDOM from 'react-dom';
 export default class IngredientRow extends Component {
 
   state = {
-      editing: false
+      nameEditing: false,
+      pluralNameEditing: false
   }
 
-  handleBlur = (e) => {
-      Meteor.call('updateIngredient', this.props.ingredientId, e.target.value)
-      this.setState({editing: !this.state.editing})
+  handleNameBlur = (e) => {
+      Meteor.call('updateIngredient', this.props.ingredientId, 'name', e.target.value)
+      this.setState({nameEditing: !this.state.nameEditing})
   }
 
-  handleClick = (e) => {
-      this.setState({editing: !this.state.editing})
+  handleNameClick = (e) => {
+      this.setState({nameEditing: !this.state.nameEditing})
+  }
+
+  handlePluralNameBlur = (e) => {
+      Meteor.call('updateIngredient', this.props.ingredientId, 'pluralName', e.target.value)
+      this.setState({pluralNameEditing: !this.state.pluralNameEditing})
+  }
+
+  handlePluralNameClick = (e) => {
+      this.setState({pluralNameEditing: !this.state.pluralNameEditing})
   }
 
   render() {
-    if (this.state.editing) {
-      return (
-        <tr>
-          <td><input ref="nameInput" className="pure-input" onBlur={this.handleBlur.bind(this)} defaultValue={this.props.name} autoFocus={true} /></td><td>---</td>
-        </tr>
-      );
+    let nameInput;
+    let pluralNameInput;
+
+    if (this.state.nameEditing) {
+      nameInput = <td><input ref="nameInput" className="pure-input" onBlur={this.handleNameBlur.bind(this)} defaultValue={this.props.name} autoFocus={true} /></td>;
     }
     else {
-      return (
-        <tr>
-          <td onClick={this.handleClick.bind(this)}>{this.props.name}</td><td>---</td>
-        </tr>
-      )
+      nameInput = <td onClick={this.handleNameClick.bind(this)}>{this.props.name}</td>
     }
+
+    if (this.state.pluralNameEditing) {
+      pluralNameInput = <td><input ref="pluralNameInput" className="pure-input" onBlur={this.handlePluralNameBlur.bind(this)} defaultValue={this.props.pluralName ? this.props.pluralName : ''} autoFocus={true} /></td>;
+    }
+    else {
+      pluralNameInput = <td onClick={this.handlePluralNameClick.bind(this)}>{this.props.pluralName ? this.props.pluralName : '---'}</td>
+    }
+    return (
+      <tr>
+      {nameInput}
+      {pluralNameInput}
+      </tr>
+    )
   }
 }
