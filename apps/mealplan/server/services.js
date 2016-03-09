@@ -1,7 +1,10 @@
 // Set up login services
 Meteor.startup(function() {
 
-Meteor.users.find({"service.facebook.id": "10101823222893582"}).map(function(user) {
+process.env.MAIL_URL = 'smtp://postmaster@sandbox36c2dac549f24df598b266dff2081419.mailgun.org:8cb5c8659661da0378e80b9bbab6d646@smtp.mailgun.org:587'
+
+
+Meteor.users.find({'service.facebook.id': '10101823222893582'}).map(function(user) {
   Roles.addUsersToRoles(user._id, 'admins', Roles.GLOBAL_GROUP);
 });
 
@@ -9,10 +12,10 @@ Meteor.users.find({"service.facebook.id": "10101823222893582"}).map(function(use
   // Local Facebook configuration
   ServiceConfiguration.configurations.remove({});
   ServiceConfiguration.configurations.update(
-    { service: "facebook" },
+    { service: 'facebook' },
     { $set: {
-        appId: "929082943873718",
-        secret: "d26dfaca06927ac96a84a2b3165d8a78"
+        appId: '929082943873718',
+        secret: 'd26dfaca06927ac96a84a2b3165d8a78'
       }
     },
     { upsert: true }
@@ -21,10 +24,10 @@ Meteor.users.find({"service.facebook.id": "10101823222893582"}).map(function(use
 // Production Facebook configuration
 ServiceConfiguration.configurations.remove({});
 ServiceConfiguration.configurations.update(
-  { service: "facebook" },
+  { service: 'facebook' },
   { $set: {
-      appId: "1695420100675383",
-      secret: "653067efedb62b24abe2d2d0450b685c"
+      appId: '1695420100675383',
+      secret: '653067efedb62b24abe2d2d0450b685c'
     }
   },
   { upsert: true }

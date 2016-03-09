@@ -21,11 +21,11 @@ Meteor.methods({
       var sideRecipes = [];
       while (mainsCount<servings) {
         var mainsDiff = servings-mainsCount;
-        var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ["main", "full"]}, servings: {$lte: mainsDiff}}).fetch();
+        var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ['main', 'full']}, servings: {$lte: mainsDiff}}).fetch();
         var random = _.sample(recipes);
         var newMainsCount = mainsCount + random.servings;
         mainsCount = newMainsCount;
-        if (random.type === "full") {
+        if (random.type === 'full') {
           var newSidesCount = sidesCount + random.servings;
           sidesCount = newSidesCount;
           fullRecipes.push({_id: random._id, servings: random.servings});
@@ -37,7 +37,7 @@ Meteor.methods({
       }
       while (sidesCount<servings) {
         var sidesDiff = servings-sidesCount;
-        var recipes = Recipes.find({_id: {$nin: recipeIds}, type: "side", servings: {$lte: sidesDiff}}).fetch();
+        var recipes = Recipes.find({_id: {$nin: recipeIds}, type: 'side', servings: {$lte: sidesDiff}}).fetch();
         var random = _.sample(recipes);
         var newSidesCount = sidesCount + random.servings;
         sidesCount = newSidesCount;
@@ -70,6 +70,7 @@ Meteor.methods({
           servingsTally = newServingsTally;
         }
       })
+      console.log(weeksRecipes);
       Meteor.call('addPlan', user, weeksRecipes);
     }
   },

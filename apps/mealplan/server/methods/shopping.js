@@ -10,10 +10,10 @@ Meteor.methods({
       _.each(ingredients, function (subItem) {
         var listItem;
         if(!subItem.quantity) {
-          listItem = {_id: subItem._id, name: subItem.name, suffix: subItem.suffix};
+          listItem = {_id: subItem._id, listName: subItem.listName, suffix: subItem.suffix};
         }
         else {
-          listItem = {_id: subItem._id, quantity: subItem.quantity, measurement: subItem.measurement, name: subItem.name, suffix: subItem.suffix};
+          listItem = {_id: subItem._id, quantity: subItem.quantity, measurement: subItem.measurement, listName: subItem.listName, suffix: subItem.suffix};
         }
         var existingItem = _.findWhere(shoppingList, {_id: subItem._id});
         if(existingItem) {
