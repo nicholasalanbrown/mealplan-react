@@ -12,6 +12,17 @@
   }
 }
 
+.search-container {
+  position: relative;
+  .fa-search {
+    color: $secondary;
+    font-size: 18px;
+    left: 12px;
+    position: absolute;
+    top: 16px;
+    z-index: 5;
+  }
+}
 
 .typeahead {
   margin-bottom: 0;
@@ -23,6 +34,7 @@
 
   input {
     margin: 0;
+    text-indent: 30px;
     width: 100%;
   }
 }
