@@ -116,6 +116,8 @@ Meteor.methods({
     check(year, Number);
     console.log('Preparing weekly email...');
     var mealPlan = Plans.findOne({user: recipientId, week: week, year: year});
+    if (mealPlan) {
+      console.log('Plan found, sending email...')
     var weeksRecipes = mealPlan.meals;
     var recipeIds = [];
     _.each(weeksRecipes, function (recipe) {
@@ -139,9 +141,13 @@ Meteor.methods({
     Email.send({
       to: recipientEmail,
       from: 'info@mealplan.com',
-      subject: 'Here"s your meal plan for the week!',
+      subject: 'Here"s your meal plan for the week!'+ new Date(),
       html: shoppingContent+'<p>'+recipeContent+'</p>'
     });
+  }
+  else {
+    console.log('No plan found. Not sending email to '+ recipientEmail);
+  }
   },
   distributeWeeklyEmails: function () {
     Meteor.users.find().map(function(user) {
