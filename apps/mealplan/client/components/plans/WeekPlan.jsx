@@ -25,13 +25,16 @@ export default class WeekPlan extends Component {
         let mealTitles = [];
         _.each(meal, function(dish) {
           let doc = _.findWhere(self.data.recipes, {_id: dish});
-          mealTitles.push(<div>{doc.title}</div>);
+          mealTitles.push(<div><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
         })
-        console.log(mealTitles);
         return (
           <div className="meal-container">
+            <h2 className="meal-heading">
             Meal {index+1}
+            </h2>
+            <div className="meal-titles">
             {mealTitles}
+            </div>
           </div>
         )
       })
