@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
-import Other from './Other';
+
+import HomeLoggedIn from './HomeLoggedIn';
 import Content from './Content';
 
 export default class Home extends Component {
@@ -8,7 +9,7 @@ export default class Home extends Component {
     if (Meteor.user()) {
       return (
         <Content>
-          <p>You are logged in!</p>
+          <HomeLoggedIn />
         </Content>
       );
     }

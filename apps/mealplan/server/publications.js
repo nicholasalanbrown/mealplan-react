@@ -7,58 +7,89 @@ import Cuisines from 'mealplan/collections/Cuisines';
 import Plans from 'mealplan/collections/Plans';
 import Nutrition from 'mealplan/collections/Nutrition';
 
-Meteor.publish("singleRecipe", function (recipeId) {
+Meteor.publish('singleRecipe', function (recipeId) {
   check(recipeId, String);
   return [
     Recipes.find({_id: recipeId})
   ];
 });
 
-Meteor.publish("singleFood", function (foodId) {
+Meteor.publish('multipleRecipes', function (recipeIds) {
+  check(recipeIds, Match.Any);
+  return [
+    Recipes.find({_id: {$in: recipeIds}})
+  ];
+});
+
+Meteor.publish('singleFood', function (foodId) {
   check(foodId, String);
   return [
     Foods.find({_id: foodId})
   ];
 });
 
-Meteor.publish("singleIngredient", function (ingredientId) {
+Meteor.publish('singleIngredient', function (ingredientId) {
   check(ingredientId, String);
   return [
     Ingredients.find({_id: ingredientId})
   ];
 });
 
-Meteor.publish("allFoods", function () {
+Meteor.publish('allFoods', function () {
   return [
     Foods.find()
   ];
 });
 
-Meteor.publish("allIngredients", function () {
+Meteor.publish('allIngredients', function () {
   return [
     Ingredients.find()
   ];
 });
 
-Meteor.publish("allNutrition", function () {
+Meteor.publish('allNutrition', function () {
   return [
-    Nutrition.find({"name.long": {$text: {$search: 'butter'}}})
+    Nutrition.find({'name.long': {$text: {$search: 'butter'}}})
   ];
 });
 
-Meteor.publish("allCuisines", function () {
+Meteor.publish('allCuisines', function () {
   return [
     Cuisines.find()
   ];
 });
 
-Meteor.publish("allRecipes", function () {
+Meteor.publish('allRecipes', function () {
   return [
     Recipes.find()
   ];
 });
 
-Meteor.publish("getCurrentWeekMealPlan", function () {
+Meteor.publish('getWeekPlan', function () {
+  if (this.userId) {
+    var user = this.userId;
+    var week = moment().weeks();
+    var year = moment().weekYear();
+    var mealPlan = Plans.find({user: user, week: week, year: year});
+    return mealPlan;
+  }
+  else {
+    return;
+  }
+});
+
+
+Meteor.publish('weeksRecipes', function (meals) {
+    var recipeIds = [];
+    _.each(meals, function(meal) {
+      recipeIds.push(_.values(meal));
+    })
+    var uniqueIds = _.uniq(_.flatten(recipeIds));
+    return Recipes.find({_id: {$in: uniqueIds}});
+  }
+);
+
+Meteor.publish('getCurrentWeekMealPlan', function () {
   if (this.userId) {
     var user = this.userId;
     var week = moment().weeks();
@@ -78,17 +109,17 @@ Meteor.publish("getCurrentWeekMealPlan", function () {
   }
 });
 
-Meteor.publish("ingredients", function (ingredientIds) {
+Meteor.publish('ingredients', function (ingredientIds) {
   return [
     Ingredients.find({_id: {$in: ingredientIds}})
   ];
 });
 
 Nutrition._ensureIndex({
-  "name.long": "text"
+  'name.long': 'text'
 });
 
-Meteor.publish("search", function(searchValue) {
+Meteor.publish('search', function(searchValue) {
   if (!searchValue) {
     return;
   }
@@ -100,12 +131,12 @@ Meteor.publish("search", function(searchValue) {
       // contains the document's search rank, a numerical value, with more
       // relevant documents having a higher score.
       fields: {
-        score: { $meta: "textScore" }
+        score: { $meta: 'textScore' }
       },
       // This indicates that we wish the publication to be sorted by the
       // `score` property specified in the projection fields above.
       sort: {
-        score: { $meta: "textScore" }
+        score: { $meta: 'textScore' }
       }, limit: 300
     }
   );
