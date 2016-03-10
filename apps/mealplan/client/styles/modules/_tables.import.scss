@@ -1,3 +1,6 @@
 .pure-table {
   width: 100%;
+  td, th {
+    max-width: 240px;
+  }
 }
