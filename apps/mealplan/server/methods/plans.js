@@ -10,6 +10,7 @@ Meteor.methods({
 
     var existingPlan = Plans.findOne({user: userId});
     if (!existingPlan) {
+      console.log('Creating a new plan..');
       var user = Meteor.users.findOne({_id: userId});
       var servings = meals*people;
       var recipeIds = [];
@@ -21,8 +22,10 @@ Meteor.methods({
       var sideRecipes = [];
       while (mainsCount<servings) {
         var mainsDiff = servings-mainsCount;
+        console.log('Looking for a main or full dish...');
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ['main', 'full']}, servings: {$lte: mainsDiff}}).fetch();
         var random = _.sample(recipes);
+        console.log('Main or full dish', random.title);
         var newMainsCount = mainsCount + random.servings;
         mainsCount = newMainsCount;
         if (random.type === 'full') {
@@ -37,12 +40,20 @@ Meteor.methods({
       }
       while (sidesCount<servings) {
         var sidesDiff = servings-sidesCount;
+        console.log('sidesDiff', sidesDiff);
+        console.log('Looking for a side dish..');
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: 'side', servings: {$lte: sidesDiff}}).fetch();
         var random = _.sample(recipes);
+        console.log('random', random);
+        console.log('Side dish', random.title);
         var newSidesCount = sidesCount + random.servings;
+        console.log('newSidesCount', newSidesCount);
         sidesCount = newSidesCount;
+        console.log('sidesCount', sidesCount);
         sideRecipes.push({_id: random._id, servings: random.servings});
+        console.log('sideRecipes', sideRecipes);
         recipeIds.push(random._id);
+        console.log('recipeIds', recipeIds);
       }
       _.each(fullRecipes, function(full) {
         var servingsTally = full.servings;
@@ -70,7 +81,6 @@ Meteor.methods({
           servingsTally = newServingsTally;
         }
       })
-      console.log(weeksRecipes);
       Meteor.call('addPlan', user, weeksRecipes);
     }
   },
@@ -94,8 +104,16 @@ Meteor.methods({
   },
   generateMyPlan: function () {
     let user = Meteor.user();
-    console.log(user);
-    Meteor.call('buildWeeklyPlan',user._id, user.profile.defaultMeals.dinners, user.profile.householdMembers);
+    Meteor.call('buildWeeklyPlan',user._id, user.profile.defaultMeals.dinners, user.profile.householdMembers,
+      function (error, result) {
+        if(error) {
+          console.log(error);
+        }
+        else {
+          return;
+        }
+      }
+  );
   },
   generateMealPlans: function () {
     Meteor.users.find().map(function(user) {
