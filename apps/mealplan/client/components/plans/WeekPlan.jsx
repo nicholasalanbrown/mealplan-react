@@ -13,6 +13,8 @@ export default class WeekPlan extends Component {
     };
   }
 
+
+
   render() {
     if (this.data.subscriptionLoading) {
       return (
@@ -21,6 +23,7 @@ export default class WeekPlan extends Component {
     }
     else {
       let self = this;
+
       let mealData = this.props.weekPlan.meals.map(function(meal, index) {
         let mealTitles = [];
         _.each(meal, function(dish, index) {

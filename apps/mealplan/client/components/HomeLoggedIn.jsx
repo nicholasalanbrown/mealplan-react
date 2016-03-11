@@ -16,6 +16,14 @@ export default class HomeLoggedIn extends Component {
     };
   }
 
+  generatePlan = () => {
+    Meteor.call('generateMyPlan');
+  }
+
+  deletePlan = () => {
+    Meteor.call('removePlan');
+  }
+
   render() {
     return (
       <div>You are logged in! Home!</div>
@@ -23,12 +31,30 @@ export default class HomeLoggedIn extends Component {
   }
 
   render() {
+    let adminButtons;
+    if (Roles.userIsInRole(Meteor.userId(), 'admins')) {
+      adminButtons =
+        <div>
+          <button onClick={this.generatePlan.bind(this)} className="pure-button pure-button-primary">Generate Meal Plan</button>
+          <a onClick={this.deletePlan.bind(this)}href="">Delete Meal Plan</a>
+        </div>
+    }
     if (this.data.planSubscriptionLoading) {
       return (<div>Loading</div>)
     }
+    else if (this.data.weekPlan){
+      return (
+        <div>
+        <WeekPlan weekPlan={this.data.weekPlan} />
+        {adminButtons}
+        </div>
+      );
+    }
     else {
       return (
-        <WeekPlan weekPlan={this.data.weekPlan} />
+        <div>
+        {adminButtons}
+        </div>
       );
     }
   }

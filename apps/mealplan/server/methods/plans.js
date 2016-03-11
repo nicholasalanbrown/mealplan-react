@@ -86,6 +86,17 @@ Meteor.methods({
     };
     Plans.update({user: user, week: week, year: year}, {$set: doc}, {upsert: true});
   },
+  removePlan: function () {
+    var user = this.userId;
+    var week = moment().week();
+    var year = moment().weekYear();
+    Plans.remove({user: user, week: week, year: year});
+  },
+  generateMyPlan: function () {
+    let user = Meteor.user();
+    console.log(user);
+    Meteor.call('buildWeeklyPlan',user._id, user.profile.defaultMeals.dinners, user.profile.householdMembers);
+  },
   generateMealPlans: function () {
     Meteor.users.find().map(function(user) {
       Meteor.call('buildWeeklyPlan',user._id, user.profile.defaultMeals.dinners, user.profile.householdMembers);
