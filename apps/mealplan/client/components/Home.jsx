@@ -6,7 +6,7 @@ import Content from './Content';
 export default class Home extends Component {
 
   render() {
-    if (Meteor.user()) {
+    if (Meteor.userId()) {
       return (
         <Content>
           <HomeLoggedIn />

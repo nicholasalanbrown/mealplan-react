@@ -23,12 +23,12 @@ export default class WeekPlan extends Component {
       let self = this;
       let mealData = this.props.weekPlan.meals.map(function(meal, index) {
         let mealTitles = [];
-        _.each(meal, function(dish) {
+        _.each(meal, function(dish, index) {
           let doc = _.findWhere(self.data.recipes, {_id: dish});
-          mealTitles.push(<div><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
+          mealTitles.push(<div key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
         })
         return (
-          <div className="meal-container">
+          <div key={'meal'+index} className="meal-container">
             <h2 className="meal-heading">
             Meal {index+1}
             </h2>
