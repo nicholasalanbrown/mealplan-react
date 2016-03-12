@@ -1,12 +1,20 @@
+Accounts.onCreateUser(function(options, user) {
+  if (options.profile)
+    user.profile = options.profile;
+    let defaultMeals = {
+      dinners: 3
+    };
+    let householdMembers = 2;
+    user.profile.defaultMeals = defaultMeals;
+    user.profile.householdMembers = householdMembers;
+  return user;
+});
+
 // Set up login services
+
 Meteor.startup(function() {
 
 process.env.MAIL_URL = 'smtp://postmaster@sandbox36c2dac549f24df598b266dff2081419.mailgun.org:8cb5c8659661da0378e80b9bbab6d646@smtp.mailgun.org:587'
-
-
-Meteor.users.find({'service.facebook.id': '10101823222893582'}).map(function(user) {
-  Roles.addUsersToRoles(user._id, 'admins', Roles.GLOBAL_GROUP);
-});
 
 /*
   // Local Facebook configuration

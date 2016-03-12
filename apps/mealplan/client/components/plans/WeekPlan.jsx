@@ -22,6 +22,7 @@ export default class WeekPlan extends Component {
       )
     }
     else {
+      console.log(this.data.recipes);
       let self = this;
 
       let mealData = this.props.weekPlan.meals.map(function(meal, index) {

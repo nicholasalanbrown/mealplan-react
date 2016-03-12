@@ -40,20 +40,12 @@ Meteor.methods({
       }
       while (sidesCount<servings) {
         var sidesDiff = servings-sidesCount;
-        console.log('sidesDiff', sidesDiff);
-        console.log('Looking for a side dish..');
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: 'side', servings: {$lte: sidesDiff}}).fetch();
         var random = _.sample(recipes);
-        console.log('random', random);
-        console.log('Side dish', random.title);
         var newSidesCount = sidesCount + random.servings;
-        console.log('newSidesCount', newSidesCount);
         sidesCount = newSidesCount;
-        console.log('sidesCount', sidesCount);
         sideRecipes.push({_id: random._id, servings: random.servings});
-        console.log('sideRecipes', sideRecipes);
         recipeIds.push(random._id);
-        console.log('recipeIds', recipeIds);
       }
       _.each(fullRecipes, function(full) {
         var servingsTally = full.servings;
@@ -72,13 +64,19 @@ Meteor.methods({
         }
       })
       _.each(sideRecipes, function(side) {
+        console.log('Apportioning recipe'+side._id);
         var servingsTally = side.servings;
+        console.log('Servings tally for this side dish is', servingsTally);
         while (servingsTally > 0) {
           var recipe = _.find(weeksRecipes, function (recipe) { return recipe.main && !recipe.side});
+          var index = weeksRecipes.findIndex(recipe => recipe.main && !recipe.side);
           recipe.side = side._id;
-          _.extend(_.findWhere(weeksRecipes, { main: recipe.main }), recipe);
+          console.log('After adding a side, the recipe is',recipe)
+          weeksRecipes[index] = recipe;
+          console.log('The week"s recipes are now' , weeksRecipes);
           var newServingsTally = servingsTally - people;
           servingsTally = newServingsTally;
+          console.log('The new servingsTally is ', servingsTally);
         }
       })
       Meteor.call('addPlan', user, weeksRecipes);

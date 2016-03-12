@@ -43,6 +43,7 @@ export default class HomeLoggedIn extends Component {
       return (<div>Loading</div>)
     }
     else if (this.data.weekPlan){
+      console.log(this.data.weekPlan);
       return (
         <div>
         <WeekPlan weekPlan={this.data.weekPlan} />
