@@ -1,30 +1,40 @@
 import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
+
+import Loading from '../Loading';
 import Recipes from 'mealplan/collections/Recipes';
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class WeekPlan extends Component {
 
+  static propTypes = {
+    weekPlan: React.PropTypes.object.isRequired,
+  }
+
   getMeteorData() {
-    let subscription = Meteor.subscribe('weeksRecipes', this.props.weekPlan.meals);
+    let subscription = Meteor.subscribe('getPlanRecipes', this.props.weekPlan.meals);
     return {
       subscriptionLoading: !subscription.ready(),
       recipes: Recipes.find().fetch()
     };
   }
 
-
+  logToConsole = () => {
+    console.log(this.data);
+    console.log(this.props);
+  }
 
   render() {
     if (this.data.subscriptionLoading) {
       return (
-        <div>Week plan goes here.</div>
+        <div>
+        <Loading />
+        <a onClick={this.logToConsole.bind(this)}href="">Console</a>
+        </div>
       )
     }
     else {
-      console.log(this.data.recipes);
       let self = this;
-
       let mealData = this.props.weekPlan.meals.map(function(meal, index) {
         let mealTitles = [];
         _.each(meal, function(dish, index) {
@@ -43,7 +53,10 @@ export default class WeekPlan extends Component {
         )
       })
       return (
+        <div>
         <div>{mealData}</div>
+        <a onClick={this.logToConsole.bind(this)}href="">Console</a>
+        </div>
       )
     }
   }

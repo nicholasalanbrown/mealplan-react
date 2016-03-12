@@ -25,7 +25,7 @@ Meteor.methods({
         console.log('Looking for a main or full dish...');
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ['main', 'full']}, servings: {$lte: mainsDiff}}).fetch();
         var random = _.sample(recipes);
-        console.log('Main or full dish', random.title);
+        console.log(`Main or full dish: ${random.title}`);
         var newMainsCount = mainsCount + random.servings;
         mainsCount = newMainsCount;
         if (random.type === 'full') {
@@ -39,9 +39,11 @@ Meteor.methods({
         recipeIds.push(random._id);
       }
       while (sidesCount<servings) {
+        console.log('Looking for a side dish...');
         var sidesDiff = servings-sidesCount;
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: 'side', servings: {$lte: sidesDiff}}).fetch();
         var random = _.sample(recipes);
+        console.log(`Side dish: ${random.title}`);
         var newSidesCount = sidesCount + random.servings;
         sidesCount = newSidesCount;
         sideRecipes.push({_id: random._id, servings: random.servings});
@@ -64,19 +66,14 @@ Meteor.methods({
         }
       })
       _.each(sideRecipes, function(side) {
-        console.log('Apportioning recipe'+side._id);
         var servingsTally = side.servings;
-        console.log('Servings tally for this side dish is', servingsTally);
         while (servingsTally > 0) {
           var recipe = _.find(weeksRecipes, function (recipe) { return recipe.main && !recipe.side});
           var index = weeksRecipes.findIndex(recipe => recipe.main && !recipe.side);
           recipe.side = side._id;
-          console.log('After adding a side, the recipe is',recipe)
           weeksRecipes[index] = recipe;
-          console.log('The week"s recipes are now' , weeksRecipes);
           var newServingsTally = servingsTally - people;
           servingsTally = newServingsTally;
-          console.log('The new servingsTally is ', servingsTally);
         }
       })
       Meteor.call('addPlan', user, weeksRecipes);

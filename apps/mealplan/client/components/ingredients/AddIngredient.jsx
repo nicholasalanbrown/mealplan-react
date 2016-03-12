@@ -4,6 +4,7 @@ import fuzzy from 'fuzzy';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
+import Loading from '../Loading';
 
 import Recipes from 'mealplan/collections/Recipes';
 import Nutrition from 'mealplan/collections/Nutrition';
@@ -63,11 +64,14 @@ export default class addIngredient extends Component {
   }
 
   render() {
-
+    if (this.data.subscriptionLoading) {
+      return (<Loading />)
+    }
+    else {
       let results =
-        this.data.ingredients.map(function(ingredient){
-          return ingredient.name.long;
-        });
+      this.data.ingredients.map(function(ingredient){
+        return ingredient.name.long;
+      });
       let resultsSorted = fuzzy.filter(this.state.searchValue, results)
       let matches = resultsSorted.map(function(el) { return el.string; });
       return (
@@ -89,5 +93,6 @@ export default class addIngredient extends Component {
             </form>
         </Content>
       );
+    }
   }
 }

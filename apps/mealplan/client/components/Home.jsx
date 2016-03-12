@@ -8,9 +8,7 @@ export default class Home extends Component {
   render() {
     if (Meteor.userId()) {
       return (
-        <Content>
           <HomeLoggedIn />
-        </Content>
       );
     }
     else {

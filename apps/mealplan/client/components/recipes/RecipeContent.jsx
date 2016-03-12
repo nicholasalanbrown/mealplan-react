@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
+import Loading from '../Loading';
 
 import Recipes from 'mealplan/collections/Recipes';
 
@@ -18,7 +19,7 @@ export default class RecipeContent extends Component {
 
   render() {
     if (this.data.subscriptionLoading) {
-      return <div></div>
+      return <Loading />
     }
     else {
       let recipe = this.data.recipe[0];

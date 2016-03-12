@@ -3,6 +3,7 @@ import { Typeahead } from 'react-typeahead';
 import ReactMixin from 'react-mixin';
 
 import Content from '../Content';
+import Loading from '../Loading';
 import Select from '../forms/Select';
 
 import Cuisines from 'mealplan/collections/Cuisines';
@@ -110,7 +111,7 @@ export default class AddRecipe extends Component {
 
   render() {
     if (this.data.subscriptionLoading) {
-      return <div></div>
+      return <Loading />
     }
     else {
       let cuisineOptions = this.data.cuisines.map(function(cuisine, index) {

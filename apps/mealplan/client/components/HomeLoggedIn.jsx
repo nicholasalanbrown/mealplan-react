@@ -2,32 +2,42 @@ import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
 
 import Content from './Content';
+import Loading from './Loading';
 import WeekPlan from './plans/WeekPlan';
 import Plans from 'mealplan/collections/Plans';
+import Recipes from 'mealplan/collections/Recipes';
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class HomeLoggedIn extends Component {
 
   getMeteorData() {
-    let planSubscription = Meteor.subscribe('getWeekPlan');
+    let subscription = Meteor.subscribe('getWeekPlan');
     return {
-      planSubscriptionLoading: !planSubscription.ready(),
+      subscriptionLoading: !subscription.ready(),
       weekPlan: Plans.findOne()
     };
   }
 
   generatePlan = () => {
-    Meteor.call('generateMyPlan');
+    Meteor.call('generateMyPlan', function(error, result) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        return result;
+      }
+    });
   }
 
   deletePlan = () => {
-    Meteor.call('removePlan');
-  }
-
-  render() {
-    return (
-      <div>You are logged in! Home!</div>
-    )
+    Meteor.call('removePlan', function(error, result) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        return result;
+      }
+    });
   }
 
   render() {
@@ -39,45 +49,26 @@ export default class HomeLoggedIn extends Component {
           <a onClick={this.deletePlan.bind(this)}href="">Delete Meal Plan</a>
         </div>
     }
-    if (this.data.planSubscriptionLoading) {
-      return (<div>Loading</div>)
-    }
-    else if (this.data.weekPlan){
-      console.log(this.data.weekPlan);
-      return (
-        <div>
-        <WeekPlan weekPlan={this.data.weekPlan} />
-        {adminButtons}
-        </div>
-      );
+    if (this.data.subscriptionLoading) {
+      return (<Loading />)
     }
     else {
-      return (
-        <div>
-        {adminButtons}
-        </div>
-      );
+      if (this.data.weekPlan){
+        return (
+          <Content>
+            <WeekPlan weekPlan={this.data.weekPlan} />
+            {adminButtons}
+          </Content>
+        );
+      }
+      else {
+        return (
+          <div className='centering-container'>
+          You don't have any meal plans yet.
+          {adminButtons}
+          </div>
+        );
+      }
     }
   }
-/*
-
-  getMeteorData() {
-    let planSubscription = Meteor.subscribe('getWeekPlan');
-    return {
-      planSubscriptionLoading: !planSubscription.ready(),
-      weekPlan: Plans.findOne()
-    };
-  }
-
-  render() {
-    if (planSubscriptionLoading) {
-      return <div></div>
-    }
-    else {
-      return (
-        <WeekPlan />
-      );
-    }
-  }
-*/
 }

@@ -14,6 +14,20 @@ Meteor.publish('singleRecipe', function (recipeId) {
   ];
 });
 
+Meteor.publish('getPlanRecipes', function (meals) {
+  var user = this.userId;
+  var week = moment().weeks();
+  var year = moment().weekYear();
+  let recipeIds = [];
+  _.each(meals, function(meal) {
+    recipeIds.push(_.values(meal));
+  })
+  var uniqueIds = _.uniq(_.flatten(recipeIds));
+  return [
+    Recipes.find({_id: {$in: uniqueIds}})
+  ];
+});
+
 Meteor.publish('multipleRecipes', function (recipeIds) {
   check(recipeIds, Match.Any);
   return [
@@ -66,16 +80,10 @@ Meteor.publish('allRecipes', function () {
 });
 
 Meteor.publish('getWeekPlan', function () {
-  if (this.userId) {
     var user = this.userId;
     var week = moment().weeks();
     var year = moment().weekYear();
-    var mealPlan = Plans.find({user: user, week: week, year: year});
-    return mealPlan;
-  }
-  else {
-    return;
-  }
+    return Plans.find({user: user, week: week, year: year});
 });
 
 
