@@ -64,8 +64,10 @@ export default class HomeLoggedIn extends Component {
       else {
         return (
           <div className='centering-container'>
-          You don't have any meal plans yet.
-          {adminButtons}
+          <form id="planSignUp">
+            <p><input type="checkbox" name="planOptIn" value="true"/>I would like to receive weekly meal plans</p>
+          </form>
+          You don't have any meal plans yet. Your next
           </div>
         );
       }
