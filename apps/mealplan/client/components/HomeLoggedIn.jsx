@@ -40,6 +40,10 @@ export default class HomeLoggedIn extends Component {
     });
   }
 
+  handleClick = () => {
+    this.refs.onoffswitch.checked = !this.refs.onoffswitch.checked;
+  }
+
   render() {
     let adminButtons;
     if (Roles.userIsInRole(Meteor.userId(), 'admins')) {
@@ -63,12 +67,18 @@ export default class HomeLoggedIn extends Component {
       }
       else {
         return (
-          <div className='centering-container'>
-          <form id="planSignUp">
-            <p><input type="checkbox" name="planOptIn" value="true"/>I would like to receive weekly meal plans</p>
-          </form>
-          You don't have any meal plans yet. Your next
-          </div>
+          <Content>
+            <div className="center">
+              <h3>Welcome to Eat This Alpha</h3>
+              <div onClick={this.handleClick.bind(this)} className="onoffswitch">
+                  <input ref="onoffswitch" type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"/>
+                  <label className="onoffswitch-label" for="myonoffswitch">
+                      <span className="onoffswitch-inner"></span>
+                      <span className="onoffswitch-switch"></span>
+                  </label>
+              </div>
+            </div>
+          </Content>
         );
       }
     }
