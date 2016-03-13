@@ -7,4 +7,5 @@ import './methods/ingredients';
 import './methods/plans';
 import './methods/recipes';
 import './methods/shopping';
+import './methods/users';
 import './cron/emails';

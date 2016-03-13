@@ -48,7 +48,7 @@ export default class HomeLoggedIn extends Component {
 
   handleClick = () => {
     this.refs.onoffswitch.checked = !this.refs.onoffswitch.checked;
-    console.log('checked', this.refs.onoffswitch.checked);
+    Meteor.call('togglePlanSubscription');
   }
 
   handleChange = (e) => {
