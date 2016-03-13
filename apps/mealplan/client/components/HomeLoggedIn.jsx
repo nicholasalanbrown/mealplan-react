@@ -68,6 +68,8 @@ export default class HomeLoggedIn extends Component {
       return (<Loading />)
     }
     else {
+      let dinners = Meteor.user().profile.defaultMeals.dinners;
+      let servings = Meteor.user().profile.householdMembers;
       let weekPlan;
       if (this.data.weekPlan){
         weekPlan = <WeekPlan weekPlan={this.data.weekPlan} />
@@ -95,6 +97,7 @@ export default class HomeLoggedIn extends Component {
           <div className="center">
           <h2>Welcome to Eat This Alpha!</h2>
           <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
+          <h4>Dinners per week: {dinners} Servings: {servings}</h4>
           <div className="weekplan-container">
             {weekPlan}
           </div>
