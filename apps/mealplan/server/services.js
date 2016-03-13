@@ -7,6 +7,7 @@ Accounts.onCreateUser(function(options, user) {
     let householdMembers = 2;
     user.profile.defaultMeals = defaultMeals;
     user.profile.householdMembers = householdMembers;
+    user.profile.receivingPlans = false;
   return user;
 });
 

@@ -20,6 +20,10 @@ Schema.UserProfile = new SimpleSchema({
       type: Number,
       defaultValue: 2,
       allowedValues: [1,2,3,4,5,6],
+    },
+    receivingPlans: {
+      type: Boolean,
+      defaultValue: true
     }
 });
 

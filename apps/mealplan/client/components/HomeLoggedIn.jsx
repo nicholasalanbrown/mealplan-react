@@ -12,8 +12,14 @@ export default class HomeLoggedIn extends Component {
 
   getMeteorData() {
     let subscription = Meteor.subscribe('getWeekPlan');
+    let user = Meteor.user();
+    let receivingPlans;
+    if (user) {
+      receivingPlans = user.profile.receivingPlans;
+    }
     return {
       subscriptionLoading: !subscription.ready(),
+      receivingPlans: receivingPlans,
       weekPlan: Plans.findOne()
     };
   }
@@ -42,6 +48,10 @@ export default class HomeLoggedIn extends Component {
 
   handleClick = () => {
     this.refs.onoffswitch.checked = !this.refs.onoffswitch.checked;
+    console.log('checked', this.refs.onoffswitch.checked);
+  }
+
+  handleChange = (e) => {
   }
 
   render() {
@@ -71,7 +81,7 @@ export default class HomeLoggedIn extends Component {
             <div className="center">
               <h3>Welcome to Eat This Alpha</h3>
               <div onClick={this.handleClick.bind(this)} className="onoffswitch">
-                  <input ref="onoffswitch" type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"/>
+                  <input onChange={this.handleChange} ref="onoffswitch" defaultChecked={this.data.receivingPlans} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"/>
                   <label className="onoffswitch-label" for="myonoffswitch">
                       <span className="onoffswitch-inner"></span>
                       <span className="onoffswitch-switch"></span>
