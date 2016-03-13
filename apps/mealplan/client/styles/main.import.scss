@@ -36,6 +36,10 @@
 //Home Dashboard
 @import 'modules/_home.import.scss';
 
+//Sign In
+@import 'modules/_sign-in.import.scss';
 
 //Meal Plan Styles
 @import 'modules/_plans.import.scss';
+
+@import 'vendor/_normalize.import.scss';

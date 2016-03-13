@@ -4,13 +4,21 @@
   color: $white;
   height: 100%;
   margin-top: -60px;
-  text-align: center;
   width: 100%;
-
   h1 {
-    @media screen and (max-width: 35.5em) {
-      padding: 220px 40px 0;
-    }
-    padding-top: 360px;
+  }
+}
+
+.welcome-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  @media screen and (max-width: 35.5em) {
+    padding-top: 160px;
+  }
+  .pure-button {
+    margin-top: 40px;
   }
 }

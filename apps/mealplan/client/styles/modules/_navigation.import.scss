@@ -19,6 +19,7 @@
 
 .navbar {
   align-items: center;
+  background-color: $white;
   box-shadow: 0 1px 0 0 rgba(0,0,0,.05),0 2px 4px 0 rgba(0,0,0,.06);
   display: flex;
   height: 60px;
@@ -38,7 +39,7 @@
     padding-right: 30px;
     width: auto;
 
-    .pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
+    .pure-menu-active>.pure-menu-link, .pure-menu-link:hover {
       background-color: $brand;
       color: $white;
     }
@@ -46,7 +47,7 @@
       .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:active {
         color: $brand;
       }
-      .pure-menu-link:hover, .pure-menu-link:active {
+      .pure-menu-link:hover {
         color: $white;
       }
     }

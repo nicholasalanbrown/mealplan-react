@@ -14,13 +14,19 @@ export default class HomeLoggedIn extends Component {
   getMeteorData() {
     let subscription = Meteor.subscribe('getWeekPlan');
     let user = Meteor.user();
+    let dinners;
+    let servings;
     let receivingPlans;
     if (user) {
+      dinners = user.profile.defaultMeals.dinners;
+      servings = user.profile.householdMembers;
       receivingPlans = user.profile.receivingPlans;
     }
     return {
       subscriptionLoading: !subscription.ready(),
       receivingPlans: receivingPlans,
+      dinners: dinners,
+      serings: servings,
       weekPlan: Plans.findOne()
     };
   }
@@ -68,8 +74,8 @@ export default class HomeLoggedIn extends Component {
       return (<Loading />)
     }
     else {
-      let dinners = Meteor.user().profile.defaultMeals.dinners;
-      let servings = Meteor.user().profile.householdMembers;
+      let dinners = this.data.dinners;
+      let servings = this.data.servings;
       let weekPlan;
       if (this.data.weekPlan){
         weekPlan = <WeekPlan weekPlan={this.data.weekPlan} />

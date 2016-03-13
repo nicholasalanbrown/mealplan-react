@@ -23,8 +23,10 @@ export default class SignIn extends Component {
   render() {
     return (
       <Content>
+        <div className="sign-in-container center">
         <h1>Sign In</h1>
         <a onClick={this.handleClick.bind(this)} id="facebook-login" className="pure-button center" href="">Sign In with Facebook</a>
+        </div>
       </Content>
     );
   }
