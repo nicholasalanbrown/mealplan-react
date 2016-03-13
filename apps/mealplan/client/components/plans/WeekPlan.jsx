@@ -19,17 +19,11 @@ export default class WeekPlan extends Component {
     };
   }
 
-  logToConsole = () => {
-    console.log(this.data);
-    console.log(this.props);
-  }
-
   render() {
     if (this.data.subscriptionLoading) {
       return (
         <div>
         <Loading />
-        <a onClick={this.logToConsole.bind(this)}href="">Console</a>
         </div>
       )
     }
@@ -43,9 +37,9 @@ export default class WeekPlan extends Component {
         })
         return (
           <div key={'meal'+index} className="meal-container">
-            <h2 className="meal-heading">
-            Meal {index+1}
-            </h2>
+            <h3 className="meal-heading">
+            Dinner {index+1}
+            </h3>
             <div className="meal-titles">
             {mealTitles}
             </div>
@@ -55,7 +49,6 @@ export default class WeekPlan extends Component {
       return (
         <div>
         <div>{mealData}</div>
-        <a onClick={this.logToConsole.bind(this)}href="">Console</a>
         </div>
       )
     }

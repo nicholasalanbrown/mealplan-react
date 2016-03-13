@@ -18,7 +18,7 @@ $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 
 
 body, .pure-g [class *="pure-u"] {
-  font-family: $font-text;
+  font-family: $font-headings;
 }
 
 p {

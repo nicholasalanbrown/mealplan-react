@@ -150,6 +150,7 @@ Meteor.methods({
   }
   },
   distributeWeeklyEmails: function () {
+    console.log('Distributing weekly meal plans to users...');
     Meteor.users.find().map(function(user) {
       var week = moment().weeks();
       var year = moment().weekYear();

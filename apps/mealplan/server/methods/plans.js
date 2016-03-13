@@ -111,6 +111,7 @@ Meteor.methods({
   );
   },
   generateMealPlans: function () {
+    console.log('Generating weekly meal plans...');
     Meteor.users.find().map(function(user) {
       Meteor.call('buildWeeklyPlan',user._id, user.profile.defaultMeals.dinners, user.profile.householdMembers);
     });

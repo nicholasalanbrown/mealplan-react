@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
+import moment from 'moment';
 
 import Content from './Content';
 import Loading from './Loading';
@@ -58,39 +59,48 @@ export default class HomeLoggedIn extends Component {
     let adminButtons;
     if (Roles.userIsInRole(Meteor.userId(), 'admins')) {
       adminButtons =
-        <div>
-          <button onClick={this.generatePlan.bind(this)} className="pure-button pure-button-primary">Generate Meal Plan</button>
-          <a onClick={this.deletePlan.bind(this)}href="">Delete Meal Plan</a>
+        <div className="plan-admin-buttons">
+          <button onClick={this.generatePlan.bind(this)} className="pure-button pure-button-primary">Regenerate</button>
+          <a className="danger" onClick={this.deletePlan.bind(this)}href="">Delete</a>
         </div>
     }
     if (this.data.subscriptionLoading) {
       return (<Loading />)
     }
     else {
+      let weekPlan;
       if (this.data.weekPlan){
-        return (
-          <Content>
-            <WeekPlan weekPlan={this.data.weekPlan} />
-            {adminButtons}
-          </Content>
-        );
+        weekPlan = <WeekPlan weekPlan={this.data.weekPlan} />
       }
       else {
-        return (
-          <Content>
-            <div className="center">
-              <h3>Welcome to Eat This Alpha</h3>
-              <div onClick={this.handleClick.bind(this)} className="onoffswitch">
-                  <input onChange={this.handleChange} ref="onoffswitch" defaultChecked={this.data.receivingPlans} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"/>
-                  <label className="onoffswitch-label" for="myonoffswitch">
-                      <span className="onoffswitch-inner"></span>
-                      <span className="onoffswitch-switch"></span>
-                  </label>
-              </div>
-            </div>
-          </Content>
-        );
+        weekPlan =
+        <h3>You don't have any meal plans!</h3>
       }
+      let emailSwitch =
+      <div className="switch-container">
+        <div onClick={this.handleClick.bind(this)} className="onoffswitch">
+            <input onChange={this.handleChange} ref="onoffswitch" defaultChecked={this.data.receivingPlans} type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"/>
+            <label className="onoffswitch-label" for="myonoffswitch">
+                <span className="onoffswitch-inner"></span>
+                <span className="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <div className="switch-cta">
+        Email my plan to me every Sunday
+        </div>
+      </div>
+      ;
+      return (
+        <Content>
+          <div>
+          <h2>Welcome to Eat This Alpha!</h2>
+          <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
+          {weekPlan}
+          {emailSwitch}
+          {adminButtons}
+          </div>
+        </Content>
+      );
     }
   }
 }

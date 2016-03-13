@@ -11,4 +11,11 @@ $dark: #3f4040;
 
 $facebook: #47659b;
 
-$background-darken: rgba(0, 0, 0, .5)
+$background-darken: rgba(0, 0, 0, .5);
+
+.content-wrapper {
+  .danger {
+    font-weight: 700;
+    color: $danger !important;
+  }
+}
