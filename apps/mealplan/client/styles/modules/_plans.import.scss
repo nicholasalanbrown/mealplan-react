@@ -1,3 +1,17 @@
+.weekplan-container {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    line-height: 1.7;
+  }
+  .weekplan-empty {
+    padding: 0 130px;
+    color: $inactive-text;
+  }
+}
+
 .meal-container {
   .meal-heading {
   }

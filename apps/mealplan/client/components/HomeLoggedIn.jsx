@@ -72,9 +72,9 @@ export default class HomeLoggedIn extends Component {
       if (this.data.weekPlan){
         weekPlan = <WeekPlan weekPlan={this.data.weekPlan} />
       }
-      else {
+      else  {
         weekPlan =
-        <h3>You don't have any meal plans!</h3>
+        <h4 className="weekplan-empty">You don't have a meal plan yet. Your first plan will appear here this Sunday.</h4>
       }
       let emailSwitch =
       <div className="switch-container">
@@ -95,7 +95,9 @@ export default class HomeLoggedIn extends Component {
           <div className="center">
           <h2>Welcome to Eat This Alpha!</h2>
           <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
-          {weekPlan}
+          <div className="weekplan-container">
+            {weekPlan}
+          </div>
           {emailSwitch}
           {adminButtons}
           </div>
