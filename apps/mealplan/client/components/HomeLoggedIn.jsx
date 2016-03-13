@@ -92,7 +92,7 @@ export default class HomeLoggedIn extends Component {
       ;
       return (
         <Content>
-          <div>
+          <div className="center">
           <h2>Welcome to Eat This Alpha!</h2>
           <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
           {weekPlan}
