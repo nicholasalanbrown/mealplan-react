@@ -43,14 +43,16 @@ export default class RecipeContent extends Component {
       });
     return (
       <Content>
-        <h1>{recipe.title}</h1>
-        <div className="recipe-meta">Servings: {recipe.servings}</div>
-        <ul>
-          {recipeIngredients}
-        </ul>
-        <ol>
-          {recipeInstructions}
-        </ol>
+        <div className="recipe-content-container">
+          <h1>{recipe.title}</h1>
+          <div className="recipe-meta">Servings: {recipe.servings}</div>
+          <ul >
+            {recipeIngredients}
+          </ul>
+          <ol clasName="instruction-list">
+            {recipeInstructions}
+          </ol>
+        </div>
       </Content>
     );
 
