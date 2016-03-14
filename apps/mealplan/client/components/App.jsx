@@ -31,7 +31,7 @@ export default class App extends Component {
         <Menu ref="right" alignment="right" visible={this.state.menuOpen}>
         </Menu>
         <Header toggleMenu={this.toggleMenu} />
-        <div onClick={this.closeMenu} className="page-wrapper">
+        <div onClick={this.closeMenu} id="page-wrapper">
           {this.props.content}
         </div>
       </div>
