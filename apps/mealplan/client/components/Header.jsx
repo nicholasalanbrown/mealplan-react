@@ -75,7 +75,7 @@ export default class Header extends Component {
       <Headroom>
       <nav className='navbar'>
         <div className='brand'>
-          <a onClick={this.toggleMenu} href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
+          <a href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
         </div>
         {linkList}
       </nav>
