@@ -20,7 +20,7 @@ export default class Header extends Component {
 
   toggleMenu = () => {
     console.log('test1');
-    this.props.toggleMenu;
+    this.props.toggleMenu();
   }
 
   render() {

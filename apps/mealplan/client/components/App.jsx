@@ -22,13 +22,19 @@ export default class App extends Component {
     this.setState({menuOpen: !this.state.menuOpen});
   }
 
+  closeMenu = (e) => {
+    this.setState({menuOpen: false});
+  }
+
   render() {
     return (
       <div>
         <Menu ref="right" alignment="right" visible={this.state.menuOpen}>
         </Menu>
         <Header toggleMenu={this.toggleMenu} />
-        {this.props.content}
+        <div onClick={this.closeMenu} className="page-wrapper">
+          {this.props.content}
+        </div>
       </div>
     );
   }
