@@ -18,6 +18,11 @@ export default class Header extends Component {
     });
   }
 
+  toggleMenu = () => {
+    console.log('test1');
+    this.props.toggleMenu;
+  }
+
   render() {
     let linkList;
     let loginLink = <a href={FlowRouter.path('login')} className='pure-menu-link'>Sign In</a>;
@@ -65,7 +70,7 @@ export default class Header extends Component {
       <Headroom>
       <nav className='navbar'>
         <div className='brand'>
-          <a href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
+          <a onClick={this.toggleMenu} href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
         </div>
         {linkList}
       </nav>
