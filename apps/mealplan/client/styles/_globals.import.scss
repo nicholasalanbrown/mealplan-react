@@ -4,8 +4,6 @@
 html {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
-  position: fixed;
 }
 
 body {
@@ -13,6 +11,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -23,6 +22,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -31,9 +31,9 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
 }
 
 #page-wrapper {
   overflow-x: hidden;
+  position: relative;
 }

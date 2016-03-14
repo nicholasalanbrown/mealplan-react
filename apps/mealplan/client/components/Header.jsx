@@ -1,9 +1,6 @@
 import { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import Headroom from 'react-headroom';
-import { BlazeToReact } from 'meteor/thereactivestack:blazetoreact';
-
-const LoginButtons = BlazeToReact('loginButtons');
 
 export default class Header extends Component {
 
@@ -72,14 +69,12 @@ export default class Header extends Component {
             {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
         ]}
       />
-      <Headroom>
       <nav className='navbar'>
         <div className='brand'>
           <a href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
         </div>
         {linkList}
       </nav>
-      </Headroom>
       </div>
     );
   }
