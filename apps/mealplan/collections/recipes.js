@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import Measurements from 'mealplan/lib/measurements';
 
-const Recipes = new Mongo.Collection("recipes");
+const Recipes = new Mongo.Collection('recipes');
 
 var Schema = {};
 
@@ -26,6 +26,10 @@ Schema.RecipeIngredient = new SimpleSchema({
     decimal: true,
     optional: true
   },
+  fraction: {
+    type: Object,
+    optional: true
+  },
   measurement: {
     type: String,
     optional: true,
@@ -34,7 +38,7 @@ Schema.RecipeIngredient = new SimpleSchema({
   suffix: {
     type: String,
     optional: true,
-    label: "Ingredient suffix"
+    label: 'Ingredient suffix'
   }
 });
 
@@ -42,47 +46,47 @@ Schema.RecipeIngredient = new SimpleSchema({
 Recipes.attachSchema(new SimpleSchema({
   title: {
     type: String,
-    label: "Recipe title"
+    label: 'Recipe title'
   },
   cuisine: {
     type: String,
-    label: "Cuisine category",
+    label: 'Cuisine category',
   },
   servings: {
     type: Number,
-    label: "Number of servings"
+    label: 'Number of servings'
   },
   type: {
     type: String,
-    label: "Type of dish",
-    allowedValues: ["main", "side", "full"],
+    label: 'Type of dish',
+    allowedValues: ['main', 'side', 'full'],
   },
   ingredients: {
     type: [Schema.RecipeIngredient],
-    label: "List of ingredients and quantities"
+    label: 'List of ingredients and quantities'
   },
   instructions: {
     type: [String],
-    label: "List of instructions"
+    label: 'List of instructions'
   },
   foods: {
     type: [String],
-    label: "Foods this recipe contains",
+    label: 'Foods this recipe contains',
     optional: true
   },
   compatibleSides: {
     type: [String],
-    label: "Compatible side dishes if a main",
+    label: 'Compatible side dishes if a main',
     optional: true
   },
   isPaleo: {
     type: Boolean,
-    label: "Is this a paleo recipe",
+    label: 'Is this a paleo recipe',
     optional: true
   },
   hasDairy: {
     type: Boolean,
-    label: "Does this contain dairy?",
+    label: 'Does this contain dairy?',
     optional: true
   }
 }));
