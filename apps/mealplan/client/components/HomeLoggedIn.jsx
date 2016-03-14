@@ -113,8 +113,8 @@ export default class HomeLoggedIn extends Component {
             {weekPlan}
           </div>
           <div className="pure-g">
-            <div className="pure-u-1-24 pure-u-md-4-24 pure-u-lg-6-24"></div>
-            <div className="pure-u-22-24 pure-u-md-16-24 pure-u-lg-12-24">
+            <div className="pure-u-1-24 pure-u-md-4-24 pure-u-lg-4-24"></div>
+            <div className="pure-u-22-24 pure-u-md-16-24 pure-u-lg-16-24">
               {emailSwitch}
             </div>
           </div>
