@@ -1,4 +1,10 @@
 
+//Disabling automatic touch higlighting in Safari
+
+*{
+
+}
+
 //Making global containers full width and height
 
 html {
@@ -38,4 +44,5 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
+  -webkit-tap-highlight-color:transparent;
 }

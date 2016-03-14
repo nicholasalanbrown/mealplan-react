@@ -15,6 +15,10 @@ export default class Header extends Component {
     });
   }
 
+  closeMenu = () => {
+    this.props.closeMenu();
+  }
+
   toggleMenu = () => {
     this.props.toggleMenu();
   }

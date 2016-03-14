@@ -4,7 +4,7 @@
 
 .menu {
     display:block;
-
+    -webkit-backface-visibility: hidden;
     $menu-width:250px;
 
     >div {
@@ -13,18 +13,20 @@
         top:0;
         width:$menu-width;
         height:100%;
-        transition: -webkit-transform ease 250ms;
-        transition: transform ease 250ms;
+        transition: -webkit-transform ease 300ms;
+        transition: transform ease 300ms;
         -webkit-backface-visibility: hidden;
 
         &.right {
             background:$gray;
             right:$menu-width*-1;
+            -webkit-backface-visibility: hidden;
         }
 
         &.visible.right {
             overflow-y: hidden;
             transform: translate3d($menu-width*-1, 0, 0);
+            -webkit-transform: translate3d($menu-width*-1, 0, 0);
             -webkit-backface-visibility: hidden;
         }
 
