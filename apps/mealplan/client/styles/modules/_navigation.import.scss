@@ -33,7 +33,7 @@
     .pure-menu-list {
      :first-child {
         color: $brand;
-        font-weight: 300;
+        font-weight: 400;
       }
     }
     padding-right: 30px;
@@ -55,4 +55,12 @@
       color: #fff;
     }
   }
+}
+
+.ion-navicon-round {
+  color: $brand;
+  font-size: 150%;
+  position: relative;
+  right: 20px;
+  top: 3px;
 }

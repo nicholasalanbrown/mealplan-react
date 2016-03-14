@@ -12,17 +12,8 @@
         transition: -webkit-transform ease 250ms;
         transition: transform ease 250ms;
 
-        &.left {
-            background:#273D7A;
-            left:$menu-width*-1;
-        }
-
-        &.visible.left {
-            transform: translate3d($menu-width, 0, 0);
-        }
-
         &.right {
-            background:#6B1919;
+            background:$gray;
             right:$menu-width*-1;
         }
 
@@ -38,7 +29,6 @@
             border-bottom:solid 1px #555;
             cursor:pointer;
             color:#B0B0B0;
-
             &:hover {
                 color:#F0F0F0;
             }

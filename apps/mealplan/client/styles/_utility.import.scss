@@ -7,3 +7,15 @@
 .box-shadowed {
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
 }
+
+.hidden-sm {
+  @media screen and (max-width: 35.5em) {
+    display: none;
+  }
+}
+
+.visible-sm {
+  @media screen and (min-width: 35.5em) {
+    display: none;
+  }
+}

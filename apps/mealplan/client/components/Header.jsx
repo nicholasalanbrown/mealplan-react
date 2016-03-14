@@ -19,7 +19,6 @@ export default class Header extends Component {
   }
 
   toggleMenu = () => {
-    console.log('test1');
     this.props.toggleMenu();
   }
 
@@ -31,7 +30,8 @@ export default class Header extends Component {
     }
     if (Roles.userIsInRole(Meteor.userId(), 'admins')) {
       linkList =
-      <div className='pure-menu pure-menu-horizontal'>
+      <div>
+      <div className='pure-menu pure-menu-horizontal hidden-sm'>
           <ul className='pure-menu-list'>
               <li className='pure-menu-item pure-menu-has-children pure-menu-allow-hover'>
                   <a href='' className='pure-menu-link'>Recipes</a>
@@ -50,13 +50,18 @@ export default class Header extends Component {
               <li className='pure-menu-item pure-menu-selected'>{loginLink}</li>
           </ul>
       </div>
+      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm"/>
+      </div>
     }
     else {
       linkList =
-      <div className='pure-menu pure-menu-horizontal'>
+      <div>
+      <div className='pure-menu pure-menu-horizontal hidden-sm'>
           <ul className='pure-menu-list'>
               <li className='pure-menu-item pure-menu-selected'>{loginLink}</li>
           </ul>
+      </div>
+      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm"/>
       </div>
     }
     return (

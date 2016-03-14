@@ -18,7 +18,6 @@ export default class App extends Component {
   }
 
   toggleMenu = (e) => {
-    console.log('test2');
     this.setState({menuOpen: !this.state.menuOpen});
   }
 
