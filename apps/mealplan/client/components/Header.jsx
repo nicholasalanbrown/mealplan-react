@@ -66,7 +66,7 @@ export default class Header extends Component {
       <Helmet
         title='Eat This'
         meta={[
-            {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
+            {'name': 'viewport', 'content': 'width=device-width, initial-scale=1, user-scalable=no'}
         ]}
       />
       <nav className='navbar'>
