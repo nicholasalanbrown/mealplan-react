@@ -134,9 +134,9 @@ export default class AddRecipe extends Component {
             <div className="pure-form" key={'ingredientForm'+index}>
               <fieldset>
                 <label for="quantity">{ingredient.listName}</label>
-                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-6-24" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
-                <Select ref={'fraction'+index} className="form-inline pure-u-6-24 " onChange={self.handleMeasurement.bind(this, index)} key={'fraction'+index} options={Fractions} defaultValue=""/>
-                <Select ref={'measurement'+index} className="form-inline pure-u-6-24 " onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
+                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-4-24" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
+                <Select ref={'fraction'+index} className="form-inline pure-u-4-24 " onChange={self.handleMeasurement.bind(this, index)} key={'fraction'+index} options={Fractions} defaultValue=""/>
+                <Select ref={'measurement'+index} className="form-inline pure-u-4-24 " onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
                 <input ref={'suffix'+index}className="form-inline pure-u-12-24" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={'suffix'+index} type="text" name={'text'+index} />
               </fieldset>
             </div>);
