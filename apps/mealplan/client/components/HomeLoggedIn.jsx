@@ -26,7 +26,7 @@ export default class HomeLoggedIn extends Component {
       subscriptionLoading: !subscription.ready(),
       receivingPlans: receivingPlans,
       dinners: dinners,
-      serings: servings,
+      servings: servings,
       weekPlan: Plans.findOne()
     };
   }
@@ -82,7 +82,12 @@ export default class HomeLoggedIn extends Component {
       }
       else  {
         weekPlan =
-        <h4 className="weekplan-empty">You don't have a meal plan yet. Your first plan will appear here this Sunday.</h4>
+        <div className="pure-g">
+          <div className="pure-u-1-24 pure-u-md-4-24 pure-u-lg-6-24"></div>
+          <div className="pure-u-22-24 pure-u-md-16-24 pure-u-lg-12-24">
+            <h4 className="weekplan-empty">You don't have a meal plan yet. Your first plan will appear here this Sunday.</h4>
+          </div>
+        </div>
       }
       let emailSwitch =
       <div className="switch-container">
@@ -107,7 +112,12 @@ export default class HomeLoggedIn extends Component {
           <div className="weekplan-container">
             {weekPlan}
           </div>
-          {emailSwitch}
+          <div className="pure-g">
+            <div className="pure-u-1-24 pure-u-md-4-24 pure-u-lg-6-24"></div>
+            <div className="pure-u-22-24 pure-u-md-16-24 pure-u-lg-12-24">
+              {emailSwitch}
+            </div>
+          </div>
           {adminButtons}
           </div>
         </Content>
