@@ -15,6 +15,7 @@
         height:100%;
         transition: -webkit-transform ease 250ms;
         transition: transform ease 250ms;
+        -webkit-backface-visibility: hidden;
 
         &.right {
             background:$gray;
@@ -24,6 +25,7 @@
         &.visible.right {
             overflow-y: hidden;
             transform: translate3d($menu-width*-1, 0, 0);
+            -webkit-backface-visibility: hidden;
         }
 
         >.menu-item {

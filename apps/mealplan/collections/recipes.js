@@ -27,7 +27,7 @@ Schema.RecipeIngredient = new SimpleSchema({
     optional: true
   },
   fraction: {
-    type: Object,
+    type: String,
     optional: true
   },
   measurement: {
