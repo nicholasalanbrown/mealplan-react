@@ -77,6 +77,8 @@ Meteor.methods({
         }
       })
       Meteor.call('addPlan', user, weeksRecipes);
+      const shoppingList = Meteor.call('buildShoppingList', recipeIds);
+      Meteor.call('addShoppingListToPlan', user._id, shoppingList);
     }
   },
   addPlan: function (user, weeksRecipes) {

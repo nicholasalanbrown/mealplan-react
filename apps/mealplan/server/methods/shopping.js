@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import Recipes from 'mealplan/collections/Recipes';
+import Plans from 'mealplan/collections/Plans';
 
 Meteor.methods({
   buildShoppingList: function (recipeIds) {
@@ -36,5 +37,12 @@ Meteor.methods({
       });
     });
     return shoppingList;
+  },
+  addShoppingListToPlan: function (user, shoppingList) {
+    check(user, String);
+    check(shoppingList, Array);
+    var week = moment().week();
+    var year = moment().weekYear();
+    Plans.update({user: user, week: week, year: year}, {$set: {shoppingList: shoppingList}});
   }
 });
