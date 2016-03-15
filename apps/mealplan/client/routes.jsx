@@ -12,14 +12,22 @@ import AddIngredient from './components/ingredients/AddIngredient';
 import IngredientList from './components/ingredients/IngredientList';
 
 
+
+
+const scrollToTop = function (context) {
+  $('#react-root').scrollTop(0,0);
+}
+
 const publicRoutes = FlowRouter.group(
   {
-    name: 'public'
+    name: 'public',
+    triggersEnter: [scrollToTop]
   }
 );
 const adminRoutes = FlowRouter.group(
   {
-    name: 'admin'
+    name: 'admin',
+    triggersEnter: [scrollToTop]
   }
 );
 

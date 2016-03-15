@@ -25,6 +25,10 @@ export default class App extends Component {
     this.setState({menuOpen: false});
   }
 
+  componentDidMount () {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div>

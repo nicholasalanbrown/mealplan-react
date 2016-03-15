@@ -20,6 +20,7 @@ const decimalToFractionString = function (number) {
   return fractionString;
 }
 
+
 Meteor.methods({
   buildShoppingList: function (recipeIds) {
     var shoppingList = [];
