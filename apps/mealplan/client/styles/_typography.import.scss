@@ -1,9 +1,10 @@
 //Fonts
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Quattrocento:400,700);
 
 $font-headings: 'Lato';
-$font-text: 'Merriweather';
+$font-text: 'Quattrocento';
 
 $font-size-base:          14px;
 $font-size-large:         ceil(($font-size-base * 1.25)); // ~18px
