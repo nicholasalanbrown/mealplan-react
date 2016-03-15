@@ -4,6 +4,22 @@ import math from 'mathjs';
 import Recipes from 'mealplan/collections/Recipes';
 import Plans from 'mealplan/collections/Plans';
 
+const decimalToFractionString = function (number) {
+  let fractionString;
+  let wholeNumber = Math.floor(Number(number));
+  let fraction = math.fraction(number-wholeNumber);
+  if (fraction.n > 0 && wholeNumber > 0) {
+    fractionString = wholeNumber + ' ' + fraction.n + '/' + fraction.d;
+  }
+  else if (fraction.n > 0) {
+    fractionString = fraction.n + '/' + fraction.d;
+  }
+  else {
+    fractionString = wholeNumber.toString();
+  }
+  return fractionString;
+}
+
 Meteor.methods({
   buildShoppingList: function (recipeIds) {
     var shoppingList = [];
@@ -51,32 +67,12 @@ Meteor.methods({
     _.each(shoppingList, function(item, index) {
       if (item.quantity) {
         let number = Number(item.quantity.toString());
-        let wholeNumber = Math.floor(Number(number));
-        let fraction = math.fraction(number-wholeNumber);
-        if (fraction.n > 0 && wholeNumber > 0) {
-          item.quantity = wholeNumber + ' ' + fraction.n + '/' + fraction.d;
-        }
-        else if (fraction.n > 0) {
-          item.quantity = fraction.n + '/' + fraction.d;
-        }
-        else {
-          item.quantity = wholeNumber.toString();
-        }
+        item.quantity = decimalToFractionString(number);
         shoppingList[index] = item;
       }
       if (item.addQuantity) {
         let number = Number(item.addQuantity.toString());
-        let wholeNumber = Math.floor(Number(number));
-        let fraction = math.fraction(number-wholeNumber);
-        if (fraction.n > 0 && wholeNumber > 0) {
-          item.addQuantity = wholeNumber + ' ' + fraction.n + '/' + fraction.d;
-        }
-        else if (fraction.n > 0) {
-          item.addQuantity = fraction.n + '/' + fraction.d;
-        }
-        else {
-          item.addQuantity = wholeNumber.toString();
-        }
+        item.addQuantity = decimalToFractionString(number);
         shoppingList[index] = item;
       }
     })
