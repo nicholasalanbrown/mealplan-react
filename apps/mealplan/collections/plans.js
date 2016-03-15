@@ -45,8 +45,11 @@ Schema.shoppingList = new SimpleSchema({
     optional: true,
   },
   quantity: {
-    type: Number,
-    decimal: true,
+    type: String,
+    optional: true
+  },
+  addQuantity: {
+    type: String,
     optional: true
   },
   measurement: {
