@@ -50,11 +50,33 @@ Meteor.methods({
     });
     _.each(shoppingList, function(item, index) {
       if (item.quantity) {
-        item.quantity = item.quantity.toString();
+        let number = Number(item.quantity.toString());
+        let wholeNumber = Math.floor(Number(number));
+        let fraction = math.fraction(number-wholeNumber);
+        if (fraction.n > 0 && wholeNumber > 0) {
+          item.quantity = wholeNumber + ' ' + fraction.n + '/' + fraction.d;
+        }
+        else if (fraction.n > 0) {
+          item.quantity = fraction.n + '/' + fraction.d;
+        }
+        else {
+          item.quantity = wholeNumber.toString();
+        }
         shoppingList[index] = item;
       }
       if (item.addQuantity) {
-        item.addQuantity = item.addQuantity.toString();
+        let number = Number(item.addQuantity.toString());
+        let wholeNumber = Math.floor(Number(number));
+        let fraction = math.fraction(number-wholeNumber);
+        if (fraction.n > 0 && wholeNumber > 0) {
+          item.addQuantity = wholeNumber + ' ' + fraction.n + '/' + fraction.d;
+        }
+        else if (fraction.n > 0) {
+          item.addQuantity = fraction.n + '/' + fraction.d;
+        }
+        else {
+          item.addQuantity = wholeNumber.toString();
+        }
         shoppingList[index] = item;
       }
     })
