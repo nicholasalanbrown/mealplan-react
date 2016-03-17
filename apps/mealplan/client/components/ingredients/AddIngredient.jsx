@@ -22,7 +22,7 @@ export default class addIngredient extends Component {
   state = {
     listName: '',
     databaseValue: '',
-    searchValue: ''
+    searchValue: null
   };
 
   handleSearch = (e) => {
@@ -64,10 +64,7 @@ export default class addIngredient extends Component {
   }
 
   render() {
-    if (this.data.subscriptionLoading) {
-      return (<Loading />)
-    }
-    else {
+
       let results =
       this.data.ingredients.map(function(ingredient){
         return ingredient.name.long;
@@ -94,5 +91,4 @@ export default class addIngredient extends Component {
         </Content>
       );
     }
-  }
 }

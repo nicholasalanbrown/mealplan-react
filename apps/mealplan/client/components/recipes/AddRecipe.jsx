@@ -140,8 +140,8 @@ export default class AddRecipe extends Component {
         selectedIngredients = this.state.ingredients.map(function (ingredient, index) {
           return (
             <div className="pure-form" key={'ingredientForm'+index}>
-              <fieldset>
-                <label for="quantity">{ingredient.listName}</label>
+              <fieldset key={'ingredient'+index+'fieldset'}>
+                <label key={'quantity'+index+'label'} for="quantity">{ingredient.listName}</label>
                 <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-4-24" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
                 <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline pure-u-4-24 " key={'fraction'+index} options={Fractions} defaultValue=""/>
                 <Select ref={'measurement'+index} className="form-inline pure-u-4-24 " onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
