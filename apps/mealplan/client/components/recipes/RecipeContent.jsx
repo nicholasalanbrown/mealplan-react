@@ -53,7 +53,7 @@ export default class RecipeContent extends Component {
             <ul >
               {recipeIngredients}
             </ul>
-            <ol clasName="instruction-list">
+            <ol className="instruction-list">
               {recipeInstructions}
             </ol>
           </Content>
