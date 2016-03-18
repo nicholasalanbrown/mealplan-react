@@ -41,24 +41,24 @@ export default class RecipeContent extends Component {
           <li key={index}>{instruction}</li>
         );
       });
-    return (
-        <div className="recipe-content-container">
-          <div className="recipe-hero">
+      return (
+          <div className="recipe-content-container">
+            <div className="recipe-hero">
+              <Content>
+                <h2>{recipe.title}</h2>
+              </Content>
+            </div>
             <Content>
-              <h2>{recipe.title}</h2>
+              <div className="recipe-meta">Servings: {recipe.servings}</div>
+              <ul >
+                {recipeIngredients}
+              </ul>
+              <ol className="instruction-list">
+                {recipeInstructions}
+              </ol>
             </Content>
           </div>
-          <Content>
-            <div className="recipe-meta">Servings: {recipe.servings}</div>
-            <ul >
-              {recipeIngredients}
-            </ul>
-            <ol className="instruction-list">
-              {recipeInstructions}
-            </ol>
-          </Content>
-        </div>
-    );
+      );
     }
   }
 }
