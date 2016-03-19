@@ -11,6 +11,7 @@
     "mathjs": "^3.0.0",
     "react": "~0.14.1",
     "react-body-classname": "^1.0.1",
+    "react-css-modules": "^3.7.6",
     "react-headroom": "^1.7.3",
     "react-helmet": "2.3.1",
     "react-mixin": "^3.0.3",

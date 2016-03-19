@@ -1,6 +1,9 @@
 import { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
 import Helmet from 'react-helmet';
 import Headroom from 'react-headroom';
+
+import styles from '../styles/modules/_test.css';
 
 export default class Header extends Component {
 
@@ -75,7 +78,7 @@ export default class Header extends Component {
       />
       <nav className='navbar'>
         <div className='brand'>
-          <a href='/' className='navbar-logo'><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
+          <a href='/' className='navbar-logo' styleName="test"><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
         </div>
         {linkList}
       </nav>
@@ -83,3 +86,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default CSSModules(Header, styles);
