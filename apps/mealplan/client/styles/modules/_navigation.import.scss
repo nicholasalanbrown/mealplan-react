@@ -1,20 +1,6 @@
 
 //Eat This logo styles
 
-.navbar-logo {
-  font-size: 28px;
-  letter-spacing: 1.2;
-  padding-left: 30px;
-}
-
-#navbar-logo-1 {
-  font-weight: 700;
-}
-
-#navbar-logo-2 {
-  font-weight: 300;
-}
-
 //Navbar styles
 
 .navbar {
@@ -56,12 +42,4 @@
       color: #fff;
     }
   }
-}
-
-.ion-navicon-round {
-  color: $brand;
-  font-size: 150%;
-  position: relative;
-  right: 20px;
-  top: 3px;
 }

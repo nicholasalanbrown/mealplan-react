@@ -8,11 +8,11 @@
   padding-left: 30px;
 }
 
-#navbar-logo-1 {
+.logo-1 {
   font-weight: 700;
 }
 
-#navbar-logo-2 {
+.logo-2 {
   font-weight: 300;
 }
 
@@ -59,10 +59,13 @@
   }
 }
 
-.ion-navicon-round {
+.hamburger {
   color: $brand;
   font-size: 150%;
   position: relative;
   right: 20px;
   top: 3px;
+  @media screen and (min-width: 35.5em) {
+    display: none;
+  }
 }

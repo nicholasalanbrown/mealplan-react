@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 import Helmet from 'react-helmet';
 import Headroom from 'react-headroom';
 
-import styles from '../styles/modules/_test.css';
+import styles from '../styles/modules/_header.import.scss';
 
 export default class Header extends Component {
 
@@ -54,7 +54,7 @@ export default class Header extends Component {
               <li className='pure-menu-item pure-menu-selected'>{loginLink}</li>
           </ul>
       </div>
-      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm"/>
+      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm" styleName="hamburger"/>
       </div>
     }
     else {
@@ -65,7 +65,7 @@ export default class Header extends Component {
               <li className='pure-menu-item pure-menu-selected'>{loginLink}</li>
           </ul>
       </div>
-      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm"/>
+      <i onClick={this.toggleMenu} className="ion-navicon-round visible-sm" styleName="hamburger"/>
       </div>
     }
     return (
@@ -78,7 +78,7 @@ export default class Header extends Component {
       />
       <nav className='navbar'>
         <div className='brand'>
-          <a href='/' className='navbar-logo' styleName="test"><span id='navbar-logo-1'>eat</span><span id='navbar-logo-2'>this</span></a>
+          <a href='/' styleName="navbar-logo"><span styleName='logo-1'>eat</span><span styleName='logo-2'>this</span></a>
         </div>
         {linkList}
       </nav>
