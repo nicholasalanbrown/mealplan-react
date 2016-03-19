@@ -3,6 +3,9 @@
   "devServer": {
     "host": "localhost"
   },
+  "css": {
+    "module": true
+  },
   "sass": {
     "includePaths": ["apps/mealplan/client/styles", "public/assets"]
   }

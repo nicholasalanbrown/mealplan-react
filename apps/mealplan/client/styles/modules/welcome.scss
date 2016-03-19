@@ -1,0 +1,25 @@
+.welcomeBackground {
+  background: url('https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  height: 100%;
+  margin-top: -60px;
+  width: 100%;
+}
+
+@media screen and (max-width: 35.5em) {
+  .welcome-cta {
+    padding-top: 160px;
+  }
+}
+
+.welcome-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .pure-button {
+    margin-top: 40px;
+  }
+}
