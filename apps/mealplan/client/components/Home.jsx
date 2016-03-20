@@ -1,10 +1,11 @@
 import { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
 import ReactMixin from 'react-mixin';
 
 import HomeLoggedIn from './HomeLoggedIn';
 import Content from './Content';
 
-import '../styles/modules/welcome.scss';
+import styles from '../styles/modules/welcome.scss';
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class Home extends Component {
@@ -35,7 +36,7 @@ export default class Home extends Component {
     }
     else {
       return (
-        <div className="welcomeBackground">
+        <div styleName="background">
           <div className="pure-g full-container">
             <div className="pure-u-1-24 pure-u-md-6-24 pure-u-lg-8-24"></div>
             <div className="pure-u-22-24 pure-u-md-12-24 pure-u-lg-8-24 welcome-cta">
@@ -50,3 +51,5 @@ export default class Home extends Component {
     }
   }
 }
+
+export default CSSModules(Home, styles);

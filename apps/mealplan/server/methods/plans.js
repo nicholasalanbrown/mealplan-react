@@ -8,7 +8,10 @@ Meteor.methods({
     check(meals, Number);
     check(people, Number);
 
-    var existingPlan = Plans.findOne({user: userId});
+    const week = moment().week();
+    const year = moment().weekYear();
+
+    var existingPlan = Plans.findOne({user: userId, week: week, year: year});
     if (!existingPlan) {
       console.log('Creating a new plan..');
       var user = Meteor.users.findOne({_id: userId});
@@ -22,10 +25,13 @@ Meteor.methods({
       var sideRecipes = [];
       while (mainsCount<servings) {
         var mainsDiff = servings-mainsCount;
-        console.log('Looking for a main or full dish...');
+        console.log('Looking for a main or f3ull dish...');
+        console.log(recipeIds, mainsDiff)
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ['main', 'full']}, servings: {$lte: mainsDiff}}).fetch();
+        console.log(recipes);
         var random = _.sample(recipes);
-        console.log(`Main or full dish: ${random.title}`);
+        console.log(random);
+        console.log('Main or full dish:' + random.title);
         var newMainsCount = mainsCount + random.servings;
         mainsCount = newMainsCount;
         if (random.type === 'full') {
