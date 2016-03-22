@@ -39,87 +39,156 @@ export default class EditRecipe extends Component {
   handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
-    let recipeDoc = this.state.recipeDoc;
-    if (name === 'servings') {
-      recipeDoc[name] = Number(value);
+    let recipeDoc;
+    if (_.isEmpty(this.state.recipeDoc)) {
+      this.setState({recipeDoc: this.data.recipe}, function () {
+        recipeDoc = this.state.recipeDoc;
+        if (name === 'servings') {
+          recipeDoc[name] = Number(value);
+        }
+        else {
+          recipeDoc[name] = value;
+        }
+        this.setState({recipeDoc: recipeDoc });
+      });
     }
     else {
-      recipeDoc[name] = value;
+      recipeDoc = this.state.recipeDoc;
+      if (name === 'servings') {
+        recipeDoc[name] = Number(value);
+      }
+      else {
+        recipeDoc[name] = value;
+      }
+      this.setState({recipeDoc: recipeDoc });
     }
-    this.setState({ recipeDoc: recipeDoc });
   }
 
   handleSelect = (e) => {
-    let ingredients = this.state.ingredients;
-    let ingredient = Ingredients.findOne({listName: e});
-    ingredients.push({_id: ingredient._id, listName: ingredient.listName, pluralName: ingredient.pluralName});
-    this.setState({ingredients: ingredients});
+    if (_.isEmpty(this.state.ingredients)) {
+      this.setState({ingredients: this.data.recipe.ingredients}, function () {
+        let ingredients = this.state.ingredients;
+        let ingredient = Ingredients.findOne({listName: e});
+        ingredients.push({_id: ingredient._id, listName: ingredient.listName, pluralName: ingredient.pluralName});
+        this.setState({ingredients: ingredients});
+      })
+    }
+    else {
+      let ingredients = this.state.ingredients;
+      let ingredient = Ingredients.findOne({listName: e});
+      ingredients.push({_id: ingredient._id, listName: ingredient.listName, pluralName: ingredient.pluralName});
+      this.setState({ingredients: ingredients});
+    }
   }
 
   addInstruction = (e) => {
     e.preventDefault();
     let instruction = this.refs.instructionText.value;
-    let instructions = this.state.instructions;
-    instructions.push(instruction);
-    this.setState({instructions: instructions});
+    if (_.isEmpty(this.state.instructions)) {
+      this.setState({instructions: this.data.recipe.instructions}, function () {
+        let instructions = this.state.instructions;
+        instructions.push(instruction);
+        this.setState({instructions: instructions});
+      })
+    }
+    else {
+      let instructions = this.state.instructions;
+      instructions.push(instruction);
+      this.setState({instructions: instructions});
+    }
   }
 
   handleQuantity = (index) => {
-    let ingredients = this.state.ingredients;
-    let currentIngredient = ingredients[index];
-    let currentQuantity = Number(this.refs['quantity'+index].value);
-    if (currentQuantity > 0) {
-      currentIngredient.quantity = currentQuantity;
+    if (_.isEmpty(this.state.ingredients)) {
+      this.setState({ingredients: this.data.recipe.ingredients}, function () {
+        let ingredients = this.state.ingredients;
+        let currentIngredient = ingredients[index];
+        let currentQuantity = Number(this.refs['quantity'+index].value);
+        if (currentQuantity > 0) {
+          currentIngredient.quantity = currentQuantity;
+        }
+        ingredients[index] = currentIngredient;
+        this.setState({ingredients: ingredients});
+      });
     }
-    ingredients[index] = currentIngredient;
-    this.setState({ingredients: ingredients});
+    else {
+      let ingredients = this.state.ingredients;
+      let currentIngredient = ingredients[index];
+      let currentQuantity = Number(this.refs['quantity'+index].value);
+      if (currentQuantity > 0) {
+        currentIngredient.quantity = currentQuantity;
+      }
+      ingredients[index] = currentIngredient;
+      this.setState({ingredients: ingredients});
+    }
   }
 
   handleFraction = (index, value) => {
-    let ingredients = this.state.ingredients;
-    let currentIngredient = ingredients[index];
-    currentIngredient.fraction = value;
-    ingredients[index] = currentIngredient;
-    this.setState({ingredients: ingredients});
+    if (_.isEmpty(this.state.ingredients)) {
+      this.setState({ingredients: this.data.recipe.ingredients}, function () {
+        let ingredients = this.state.ingredients;
+        let currentIngredient = ingredients[index];
+        currentIngredient.fraction = value;
+        ingredients[index] = currentIngredient;
+        this.setState({ingredients: ingredients});
+      });
+    }
+    else {
+      let ingredients = this.state.ingredients;
+      let currentIngredient = ingredients[index];
+      currentIngredient.fraction = value;
+      ingredients[index] = currentIngredient;
+      this.setState({ingredients: ingredients});
+    }
   }
 
   handleMeasurement = (index, value) => {
-    let ingredients = this.state.ingredients;
-    let currentIngredient = ingredients[index];
-    currentIngredient.measurement = value;
-    ingredients[index] = currentIngredient;
-    this.setState({ingredients: ingredients});
+    if (_.isEmpty(this.state.ingredients)) {
+      this.setState({ingredients: this.data.recipe.ingredients}, function () {
+        let ingredients = this.state.ingredients;
+        let currentIngredient = ingredients[index];
+        currentIngredient.measurement = value;
+        ingredients[index] = currentIngredient;
+        this.setState({ingredients: ingredients});
+      });
+    }
+    else {
+      let ingredients = this.state.ingredients;
+      let currentIngredient = ingredients[index];
+      currentIngredient.measurement = value;
+      ingredients[index] = currentIngredient;
+      this.setState({ingredients: ingredients});
+    }
   }
 
   handleSuffix = (index) => {
-    let ingredients = this.state.ingredients;
-    let currentIngredient = ingredients[index];
-    let suffix = this.refs['suffix'+index].value;
-    if (suffix) {
-      currentIngredient.suffix = suffix;
+    if (_.isEmpty(this.state.ingredients)) {
+      this.setState({ingredients: this.data.recipe.ingredients}, function () {
+        let ingredients = this.state.ingredients;
+        let currentIngredient = ingredients[index];
+        let suffix = this.refs['suffix'+index].value;
+        if (suffix) {
+          currentIngredient.suffix = suffix;
+        }
+        ingredients[index] = currentIngredient;
+        this.setState({ingredients: ingredients});
+      });
     }
-    ingredients[index] = currentIngredient;
-    this.setState({ingredients: ingredients});
+    else {
+      let ingredients = this.state.ingredients;
+      let currentIngredient = ingredients[index];
+      let suffix = this.refs['suffix'+index].value;
+      if (suffix) {
+        currentIngredient.suffix = suffix;
+      }
+      ingredients[index] = currentIngredient;
+      this.setState({ingredients: ingredients});
+    }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    Meteor.call('addRecipe',
-      this.state.recipeDoc.title,
-      this.state.recipeDoc.cuisine,
-      this.state.recipeDoc.servings,
-      this.state.recipeDoc.type,
-      this.state.ingredients,
-      this.state.instructions,
-      function (error, result) {
-        if (error) {
-          console.log(error);
-        }
-        else {
-          FlowRouter.go('listRecipes');
-        }
-      }
-    )
+    console.log(this.state);
   }
 
   render() {
@@ -146,16 +215,16 @@ export default class EditRecipe extends Component {
               <fieldset key={'ingredient'+index+'fieldset'}>
                 <label key={'quantity'+index+'label'} for="quantity">{ingredient.listName}</label>
                 <div className="pure-u-4-24">
-                  <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
+                  <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" value={ingredient.quantity} placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
                 </div>
                 <div className="pure-u-4-24">
-                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" key={'fraction'+index} options={Fractions} defaultValue=""/>
+                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" defaultValue={ingredient.fraction} key={'fraction'+index} options={Fractions} defaultValue=""/>
                 </div>
                 <div className="pure-u-4-24">
-                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
+                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} defaultValue={ingredient.measurement} key={'select'+index} options={Measurements} defaultValue=""/>
                 </div>
                 <div className="pure-u-12-24">
-                  <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={'suffix'+index} type="text" name={'text'+index} />
+                  <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" value={ingredient.suffix} key={'suffix'+index} type="text" name={'text'+index} />
                 </div>
               </fieldset>
             </div>);
@@ -174,7 +243,7 @@ export default class EditRecipe extends Component {
                   <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" defaultValue={ingredient.fraction} key={'fraction'+index} options={Fractions} />
                 </div>
                 <div className="pure-u-4-24">
-                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} efaultValue={ingredient.measurement} key={'select'+index} options={Measurements} />
+                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} defaultValue={ingredient.measurement} key={'select'+index} options={Measurements} />
                 </div>
                 <div className="pure-u-12-24">
                   <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" value={ingredient.suffix} key={'suffix'+index} type="text" name={'text'+index} />
