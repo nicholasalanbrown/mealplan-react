@@ -145,10 +145,40 @@ export default class EditRecipe extends Component {
             <div className="pure-form" key={'ingredientForm'+index}>
               <fieldset key={'ingredient'+index+'fieldset'}>
                 <label key={'quantity'+index+'label'} for="quantity">{ingredient.listName}</label>
-                <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline pure-u-4-24" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
-                <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline pure-u-4-24 " key={'fraction'+index} options={Fractions} defaultValue=""/>
-                <Select ref={'measurement'+index} className="form-inline pure-u-4-24 " onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
-                <input ref={'suffix'+index}className="form-inline pure-u-12-24" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={'suffix'+index} type="text" name={'text'+index} />
+                <div className="pure-u-4-24">
+                  <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
+                </div>
+                <div className="pure-u-4-24">
+                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" key={'fraction'+index} options={Fractions} defaultValue=""/>
+                </div>
+                <div className="pure-u-4-24">
+                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} key={'select'+index} options={Measurements} defaultValue=""/>
+                </div>
+                <div className="pure-u-12-24">
+                  <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" key={'suffix'+index} type="text" name={'text'+index} />
+                </div>
+              </fieldset>
+            </div>);
+        });
+      }
+      else {
+        selectedIngredients = this.data.recipe.ingredients.map(function (ingredient, index) {
+          return (
+            <div className="pure-form" key={'ingredientForm'+index}>
+              <fieldset key={'ingredient'+index+'fieldset'}>
+                <label key={'quantity'+index+'label'} for="quantity">{ingredient.listName}</label>
+                <div className="pure-u-4-24">
+                  <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" value={ingredient.quantity} placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
+                </div>
+                <div className="pure-u-4-24">
+                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" defaultValue={ingredient.fraction} key={'fraction'+index} options={Fractions} />
+                </div>
+                <div className="pure-u-4-24">
+                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} efaultValue={ingredient.measurement} key={'select'+index} options={Measurements} />
+                </div>
+                <div className="pure-u-12-24">
+                  <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" value={ingredient.suffix} key={'suffix'+index} type="text" name={'text'+index} />
+                </div>
               </fieldset>
             </div>);
         });
@@ -160,6 +190,13 @@ export default class EditRecipe extends Component {
         return <p index={'instruction'+index}>{instruction}</p>
         })
       }
+
+      else {
+        instructions = this.data.recipe.instructions.map(function(instruction,index) {
+        return <p index={'instruction'+index}>{instruction}</p>
+        })
+      }
+
       let instructionForm =
         <div>
           <textarea ref="instructionText" className="pure-u-24-24" placeholder="Enter instruction"></textarea>
