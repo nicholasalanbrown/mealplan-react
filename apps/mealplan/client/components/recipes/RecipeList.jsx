@@ -67,6 +67,7 @@ export default class RecipeList extends Component {
                 <th>Full meals ({this.data.fullCount})</th>
                 <th>Servings</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -79,6 +80,7 @@ export default class RecipeList extends Component {
                 <th>Mains ({this.data.mainCount})</th>
                 <th>Servings</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -90,6 +92,7 @@ export default class RecipeList extends Component {
               <tr>
                 <th>Sides ({this.data.sideCount})</th>
                 <th>Servings</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>

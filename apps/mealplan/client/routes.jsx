@@ -6,6 +6,7 @@ import SignIn from './components/accounts/SignIn';
 
 import RecipeList from './components/recipes/RecipeList';
 import AddRecipe from './components/recipes/AddRecipe';
+import EditRecipe from './components/recipes/EditRecipe';
 import RecipeContent from './components/recipes/RecipeContent';
 
 import AddIngredient from './components/ingredients/AddIngredient';
@@ -34,7 +35,7 @@ const adminRoutes = FlowRouter.group(
 
 //Global routes
 
-publicRoutes.route("/", {
+publicRoutes.route('/', {
   action: function() {
     ReactLayout.render(App, {
       content: <Home />
@@ -46,7 +47,7 @@ publicRoutes.route("/", {
 
 //Accounts
 
-publicRoutes.route("/login", {
+publicRoutes.route('/login', {
   action: function() {
     ReactLayout.render(App, {
       content: <SignIn />
@@ -58,13 +59,13 @@ publicRoutes.route("/login", {
 
 //Recipe routes
 
-adminRoutes.route("/recipes", {
+adminRoutes.route('/recipes', {
   action: function() {
     ReactLayout.render(App, {
       content: <RecipeList />
     });
   },
-  name: "listRecipes"
+  name: 'listRecipes'
 });
 
 adminRoutes.route('/add/recipe', {
@@ -73,35 +74,37 @@ adminRoutes.route('/add/recipe', {
       content: <AddRecipe />
     });
   },
-  name: "addRecipe"
+  name: 'addRecipe'
 })
 
 adminRoutes.route('/recipes/:recipeId', {
   action: function(params) {
-    console.log(params);
     ReactLayout.render(App, {
       content: <RecipeContent recipeId={params.recipeId}/>
     });
   },
-    name: "viewRecipe"
+    name: 'viewRecipe'
 });
 
 adminRoutes.route('/recipes/:recipeId/edit', {
     action: function(params) {
+      ReactLayout.render(App, {
+      content: <EditRecipe recipeId={params.recipeId}/>
+      });
     },
-    name: "editRecipe"
+    name: 'editRecipe'
 });
 
 
 //Ingredient routes
 
-adminRoutes.route("/ingredients", {
+adminRoutes.route('/ingredients', {
   action: function() {
     ReactLayout.render(App, {
       content: <IngredientList />
     });
   },
-  name: "listIngredients"
+  name: 'listIngredients'
 });
 
 adminRoutes.route('/add/ingredient', {
@@ -110,7 +113,7 @@ adminRoutes.route('/add/ingredient', {
       content: <AddIngredient />
     });
   },
-  name: "addIngredient"
+  name: 'addIngredient'
 })
 
 adminRoutes.route('/ingredients/:ingredientId/edit', {
@@ -128,5 +131,5 @@ adminRoutes.route('/add/food', {
 adminRoutes.route('/foods/:foodId/edit', {
     action: function(params) {
     },
-    name: "editFood"
+    name: 'editFood'
 });

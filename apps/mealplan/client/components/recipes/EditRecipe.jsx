@@ -13,7 +13,7 @@ import Fractions from 'mealplan/lib/fractions';
 import Measurements from 'mealplan/lib/measurements';
 
 @ReactMixin.decorate(ReactMeteorData)
-export default class AddRecipe extends Component {
+export default class EditRecipe extends Component {
 
   getMeteorData() {
     let subscription = Meteor.subscribe('allCuisines');

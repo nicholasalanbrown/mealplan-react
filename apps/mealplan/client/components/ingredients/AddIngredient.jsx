@@ -76,13 +76,16 @@ export default class addIngredient extends Component {
             <form onSubmit={this.handleSubmit.bind(this)} className="pure-form pure-form-stacked">
                 <fieldset>
                     <legend>Add an Ingredient</legend>
-                    <Typeahead
-                      name="ingredientSearch"
-                      options={matches}
-                      maxVisible={300}
-                      onKeyUp={this.handleSearch.bind(this)}
-                      onOptionSelected={this.handleSelect.bind(this)}
-                    />
+                    <div className='search-container'>
+                      <i className="fa fa-search"></i>
+                      <Typeahead
+                        name="ingredientSearch"
+                        options={matches}
+                        maxVisible={300}
+                        onKeyUp={this.handleSearch.bind(this)}
+                        onOptionSelected={this.handleSelect.bind(this)}
+                      />
+                    </div>
                     <label for="listName">Display name</label>
                     <input onChange={this.handleNameChange} type="text" value={this.state.listName} placeholder="Display name" />
                     <button type="submit" className="pure-button pure-button-primary">Add Ingredient</button>
