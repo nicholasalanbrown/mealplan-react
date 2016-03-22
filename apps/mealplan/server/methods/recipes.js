@@ -17,6 +17,26 @@ Meteor.methods({
       instructions: instructions
     });
   },
+  updateRecipe: function (recipeId, title, cuisine, servings, type, ingredients, instructions) {
+    check(recipeId, String);
+    check(title, String);
+    check(cuisine, String);
+    check(servings, Number);
+    check(ingredients, Match.Any);
+    check(instructions, Match.Any);
+    Recipes.update({
+      _id: recipeId
+    },
+    {$set: {
+        title: title,
+        cuisine: cuisine,
+        servings: servings,
+        type: type,
+        ingredients: ingredients,
+        instructions: instructions
+      }
+    });
+  },
   calculateServings: function () {
     var user = Meteor.user();
     var householdMembers = user.profile.householdMembers;

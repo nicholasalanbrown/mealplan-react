@@ -188,7 +188,23 @@ export default class EditRecipe extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    Meteor.call('updateRecipe',
+      this.data.recipe._id,
+      this.state.recipeDoc.title || this.data.recipe.title,
+      this.state.recipeDoc.cuisine || this.data.recipe.cuisine,
+      this.state.recipeDoc.servings || this.data.recipe.servings,
+      this.state.recipeDoc.type || this.data.recipe.type,
+      this.state.ingredients || this.data.recipe.ingredients,
+      this.state.instructions || this.data.recipe.instructions,
+      function (error, result) {
+        if (error) {
+          console.log(error);
+        }
+        else {
+          FlowRouter.go('listRecipes');
+        }
+      }
+    )
   }
 
   render() {
@@ -198,7 +214,7 @@ export default class EditRecipe extends Component {
     else {
       let cuisineOptions = this.data.cuisines.map(function(cuisine, index) {
         return (
-          <option key={'cuisine'+index}>{cuisine.name}</option>
+          <option key={'cuisine'+index} value={cuisine.name}>{cuisine.name}</option>
         );
       });
       let servingOptions = [1,2,3,4,5,6,7,8,9,10].map(function(number, index) {
@@ -236,14 +252,14 @@ export default class EditRecipe extends Component {
             <div className="pure-form" key={'ingredientForm'+index}>
               <fieldset key={'ingredient'+index+'fieldset'}>
                 <label key={'quantity'+index+'label'} for="quantity">{ingredient.listName}</label>
-                <div className="pure-u-4-24">
+                <div className="pure-u-2-24">
                   <input ref={'quantity'+index} onChange={self.handleQuantity.bind(this, index)} className="form-inline" value={ingredient.quantity} placeholder="Quantity" key={'quantity'+index} type="number" step="any" name={'quantity'+index} />
                 </div>
-                <div className="pure-u-4-24">
-                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" defaultValue={ingredient.fraction} key={'fraction'+index} options={Fractions} />
+                <div className="pure-u-5-24">
+                  <Select ref={'fraction'+index} onChange={self.handleFraction.bind(this, index)} className="form-inline" defaultValue={ingredient.fraction} key={'fraction'+index} options={Fractions} placeholder='Fraction'/>
                 </div>
-                <div className="pure-u-4-24">
-                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} defaultValue={ingredient.measurement} key={'select'+index} options={Measurements} />
+                <div className="pure-u-5-24">
+                  <Select ref={'measurement'+index} className="form-inline" onChange={self.handleMeasurement.bind(this, index)} defaultValue={ingredient.measurement} key={'select'+index} options={Measurements} placeholder='Measurement'/>
                 </div>
                 <div className="pure-u-12-24">
                   <input ref={'suffix'+index}className="form-inline" onChange={self.handleSuffix.bind(this, index)} placeholder="Suffix" value={ingredient.suffix} key={'suffix'+index} type="text" name={'text'+index} />
@@ -275,7 +291,7 @@ export default class EditRecipe extends Component {
         <Content>
             <form onSubmit={this.handleSubmit.bind(this)} className="pure-form pure-form-stacked">
                 <fieldset>
-                    <legend>Add a Recipe</legend>
+                    <legend>Edit Recipe</legend>
                     <label for="title">Title</label>
                     <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.recipeDoc.title ? this.state.recipeDoc.title : this.data.recipe.title} placeholder="Title" />
                     <div className="pure-u-24-24 pure-u-md-12-24">
@@ -316,7 +332,7 @@ export default class EditRecipe extends Component {
                     {selectedIngredients}
                     {instructions}
                     {instructionForm}
-                    <button type="submit" className="pure-button pure-button-primary">Create Recipe</button>
+                    <button type="submit" className="pure-button pure-button-primary">Save</button>
                 </fieldset>
             </form>
         </Content>
