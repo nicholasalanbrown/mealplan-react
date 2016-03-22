@@ -7,6 +7,7 @@ import Content from '../Content';
 import Loading from '../Loading';
 import Select from '../forms/Select';
 
+import Recipes from 'mealplan/collections/Recipes';
 import Cuisines from 'mealplan/collections/Cuisines';
 import Ingredients from 'mealplan/collections/Ingredients';
 import Fractions from 'mealplan/lib/fractions';
@@ -16,10 +17,12 @@ import Measurements from 'mealplan/lib/measurements';
 export default class EditRecipe extends Component {
 
   getMeteorData() {
-    let subscription = Meteor.subscribe('allCuisines');
+    let recipeSubscription = Meteor.subscribe('singleRecipe', this.props.recipeId);
+    let cuisineSubscription = Meteor.subscribe('allCuisines');
     let ingredientSubscription = Meteor.subscribe('allIngredients');
     return {
-      subscriptionLoading: !subscription.ready() || !ingredientSubscription.ready(),
+      subscriptionLoading: !recipeSubscription.ready() || !cuisineSubscription.ready() || !ingredientSubscription.ready(),
+      recipe: Recipes.findOne(),
       cuisines: Cuisines.find({}, {sort: {name: 1}}).fetch(),
       ingredients: Ingredients.find().fetch()
     };
@@ -27,10 +30,10 @@ export default class EditRecipe extends Component {
 
   state = {
     recipeDoc: {},
-    ingredients: [],
-    instructions: [],
-    cuisineOptions: [],
-    searchValue: ''
+    ingredients: null,
+    instructions: null,
+    cuisineOptions: null,
+    searchValue: null
   };
 
   handleChange = (e) => {
@@ -150,7 +153,7 @@ export default class EditRecipe extends Component {
             </div>);
         });
       }
-      let instructions = 'hello!';
+      let instructions;
 
       if (this.state.instructions) {
         instructions = this.state.instructions.map(function(instruction,index) {
@@ -168,21 +171,21 @@ export default class EditRecipe extends Component {
                 <fieldset>
                     <legend>Add a Recipe</legend>
                     <label for="title">Title</label>
-                    <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.title} placeholder="Title" />
+                    <input className="pure-u-24-24" onChange={this.handleChange.bind(this)} name="title" type="text" value={this.state.recipeDoc.title ? this.state.recipeDoc.title : this.data.recipe.title} placeholder="Title" />
                     <div className="pure-u-24-24 pure-u-md-12-24">
-                      <select className="form-inline" name="cuisine" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <select className="form-inline" name="cuisine" onChange={this.handleChange.bind(this)} defaultValue={this.state.recipeDoc.cuisine ? this.state.recipeDoc.cuisine : this.data.recipe.cuisine}>
                         <option value="" disabled>Cuisine</option>
                         {cuisineOptions}
                       </select>
                     </div>
                     <div className="pure-u-12-24 pure-u-md-6-24">
-                      <select className="form-inline " name="servings" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <select className="form-inline " name="servings" onChange={this.handleChange.bind(this)} defaultValue={this.state.recipeDoc.servings ? this.state.recipeDoc.servings : this.data.recipe.servings}>
                         <option value="" disabled>Servings</option>
                         {servingOptions}
                       </select>
                     </div>
                     <div className="pure-u-12-24 pure-u-md-6-24">
-                      <select className="form-inline" name="type" onChange={this.handleChange.bind(this)} defaultValue="">
+                      <select className="form-inline" name="type" onChange={this.handleChange.bind(this)} defaultValue={this.state.recipeDoc.type ? this.state.recipeDoc.type : this.data.recipe.type}>
                         <option value="" disabled>Type</option>
                         <option value="full">Full</option>
                         <option value="main">Main</option>
