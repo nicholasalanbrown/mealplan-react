@@ -5,6 +5,7 @@ import moment from 'moment';
 import Content from './Content';
 import Loading from './Loading';
 import WeekPlan from './plans/WeekPlan';
+import ShoppingList from './shopping/ShoppingList';
 import Plans from 'mealplan/collections/Plans';
 import Recipes from 'mealplan/collections/Recipes';
 
@@ -103,9 +104,11 @@ export default class HomeLoggedIn extends Component {
         </div>
       </div>
       ;
+
       return (
         <Content>
           <div className="center">
+          <ShoppingList weekPlan={this.data.weekPlan} />
           <h2>Welcome to Eat This Alpha!</h2>
           <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
           <h4>Dinners per week: {dinners} Servings: {servings}</h4>

@@ -58,6 +58,9 @@ export default class RecipeList extends Component {
       return <Loading />
     }
     else {
+      let distinctArray = _.uniq(this.data.recipes, false, function(d) {return d.cuisine});
+      let disctinctValues = _.pluck(distinctArray, 'cuisine');
+      console.log(disctinctValues);
       return (
         <Content>
           <h1>Recipes ({this.data.recipeCount})</h1>
