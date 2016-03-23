@@ -107,18 +107,18 @@ export default class HomeLoggedIn extends Component {
 
       return (
         <Content>
-          <div className="pure-u-8-24">
+          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
             <div className="home-column">
             <h4>Meal Plan</h4>
             {weekPlan}
             </div>
           </div>
-          <div className="pure-u-8-24">
+          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
             <div className="home-column">
             <h4>Recipes to Cook</h4>
             </div>
           </div>
-          <div className="pure-u-8-24">
+          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
           <div className="home-column">
             <h4>Shopping List</h4>
             <ShoppingList weekPlan={this.data.weekPlan} />
