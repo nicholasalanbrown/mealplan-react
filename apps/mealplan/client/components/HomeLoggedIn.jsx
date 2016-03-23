@@ -107,6 +107,22 @@ export default class HomeLoggedIn extends Component {
 
       return (
         <Content>
+          <div className="pure-u-8-24">
+            <div className="home-column">
+            <h4>Shopping List</h4>
+            </div>
+          </div>
+          <div className="pure-u-8-24">
+            <div className="home-column">
+            <h4>Shopping List</h4>
+            </div>
+          </div>
+          <div className="pure-u-8-24">
+          <div className="home-column">
+            <h4>Shopping List</h4>
+            </div>
+          </div>
+        {/*
           <div className="center">
           <ShoppingList weekPlan={this.data.weekPlan} />
           <h2>Welcome to Eat This Alpha!</h2>
@@ -123,6 +139,7 @@ export default class HomeLoggedIn extends Component {
           </div>
           {adminButtons}
           </div>
+          */}
         </Content>
       );
     }
