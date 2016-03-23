@@ -1,3 +1,5 @@
+@import '../_colors.import.scss';
+
 .recipe-content-container {
   .recipe-hero {
     display: flex;
@@ -14,4 +16,25 @@
       padding-bottom: 15px;
     }
   }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 150px;
+  width: 100%;
+  background-color: $brand;
+}
+
+.title {
+  color: $white;
+}
+
+.ingredients {
+  margin-left: 10px;
+}
+
+.instructions {
+  margin-left: 10px;
 }

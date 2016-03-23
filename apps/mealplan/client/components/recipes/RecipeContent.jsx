@@ -1,5 +1,8 @@
 import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
+import CSSModules from 'react-css-modules';
+
+import styles from '../../styles/modules/_recipes.import.scss';
 
 import Content from '../Content';
 import Loading from '../Loading';
@@ -43,17 +46,17 @@ export default class RecipeContent extends Component {
       });
       return (
           <div className="recipe-content-container">
-            <div className="recipe-hero">
+            <div className={styles.hero}>
               <Content>
-                <h2>{recipe.title}</h2>
+                <h2 className={styles.title}>{recipe.title}</h2>
               </Content>
             </div>
             <Content>
               <div className="recipe-meta">Servings: {recipe.servings}</div>
-              <ul >
+              <ul className={styles.ingredients}>
                 {recipeIngredients}
               </ul>
-              <ol className="instruction-list">
+              <ol className={styles.instructions}>
                 {recipeInstructions}
               </ol>
             </Content>
