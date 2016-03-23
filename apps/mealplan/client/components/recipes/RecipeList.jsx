@@ -12,7 +12,7 @@ export default class RecipeList extends Component {
 
   getMeteorData() {
     const subscription = Meteor.subscribe('allRecipes');
-    const recipes = Recipes.find().fetch();
+    const recipes = Recipes.find({}, {sort: {title: 1}}).fetch();
     const recipeCount = Recipes.find().count();
     const fullCount = Recipes.find({type: 'full'}).count();
     const mainCount = Recipes.find({type: 'main'}).count();
