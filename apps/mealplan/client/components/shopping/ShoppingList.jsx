@@ -10,7 +10,8 @@ export default class ShoppingList extends Component {
   console.log(this.props.weekPlan);
   let ingredientList =
     this.props.weekPlan.shoppingList.map(function (ingredient) {
-      return <li>{`${ingredient.quantity} ${ingredient.measurement} ${ingredient.listName}`}</li>;
+      let measurement = ingredient.measurement ? ingredient.measurement : '';
+      return <li>{`${ingredient.quantity} ${measurement} ${ingredient.listName}`}</li>;
     });
   ;
       return (
