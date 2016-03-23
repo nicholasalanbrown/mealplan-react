@@ -110,6 +110,7 @@ export default class HomeLoggedIn extends Component {
           <div className="pure-u-8-24">
             <div className="home-column">
             <h4>Meal Plan</h4>
+            {weekPlan}
             </div>
           </div>
           <div className="pure-u-8-24">
@@ -120,6 +121,7 @@ export default class HomeLoggedIn extends Component {
           <div className="pure-u-8-24">
           <div className="home-column">
             <h4>Shopping List</h4>
+            <ShoppingList weekPlan={this.data.weekPlan} />
             </div>
           </div>
         {/*
