@@ -9,6 +9,7 @@ export default class WeekPlan extends Component {
 
   static propTypes = {
     weekPlan: React.PropTypes.object.isRequired,
+    showPlan: React.PropTypes.bool.isRequired
   }
 
   getMeteorData() {
@@ -65,8 +66,7 @@ export default class WeekPlan extends Component {
       })
       return (
         <div>
-        <button onClick={() => this.setState({showPlan: !this.state.showPlan})}>Toggle</button>
-        <div>{this.state.showPlan ? mealData : recipeLinks}</div>
+          <div>{this.props.showPlan ? mealData : recipeLinks}</div>
         </div>
       )
     }

@@ -33,6 +33,10 @@ export default class HomeLoggedIn extends Component {
     };
   }
 
+  state = {
+    showPlan: true
+  }
+
   generatePlan = () => {
     Meteor.call('generateMyPlan', function(error, result) {
       if (error) {
@@ -60,7 +64,8 @@ export default class HomeLoggedIn extends Component {
     Meteor.call('togglePlanSubscription');
   }
 
-  handleChange = (e) => {
+  toggleView = (e) => {
+    this.setState({showPlan: !this.state.showPlan})
   }
 
   render() {
@@ -80,7 +85,7 @@ export default class HomeLoggedIn extends Component {
       let servings = this.data.servings;
       let weekPlan;
       if (this.data.weekPlan){
-        weekPlan = <WeekPlan weekPlan={this.data.weekPlan} />
+        weekPlan = <WeekPlan weekPlan={this.data.weekPlan} showPlan={this.state.showPlan}/>
       }
       else  {
         weekPlan =
@@ -91,6 +96,7 @@ export default class HomeLoggedIn extends Component {
           </div>
         </div>
       }
+      let recipeList;
       let emailSwitch =
       <div className="switch-container">
         <div onClick={this.handleClick.bind(this)} className="onoffswitch">
@@ -109,7 +115,7 @@ export default class HomeLoggedIn extends Component {
       return (
         <Content>
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
-            <h2>This Week</h2>
+            <h3>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3><i onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i><i onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
               {weekPlan}
           </div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
