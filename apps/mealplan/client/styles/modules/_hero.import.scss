@@ -3,14 +3,5 @@
 .hero {
   margin-top: 3px;
   min-height: 250px;
-  position: relative;
-}
-
-.gradient {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 75px;
-  background: linear-gradient($white, #fdfdfd)
+  background: linear-gradient($white 70%, #f8f8f8)
 }

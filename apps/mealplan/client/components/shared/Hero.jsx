@@ -8,8 +8,7 @@ export default class Hero extends Component {
   render() {
     return (
       <div styleName='hero'>
-        <div styleName='gradient'>
-        </div>
+        {this.props.children}
       </div>
     );
   }
