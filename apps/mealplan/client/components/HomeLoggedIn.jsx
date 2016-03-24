@@ -119,8 +119,8 @@ export default class HomeLoggedIn extends Component {
         <Content>
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
             <h3 styleName='planTitle'>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3>
-            <i styleName={this.state.showPlan ? 'active' : 'icon'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
-            <i styleName={this.state.showPlan ? 'icon' : 'active'} onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
+            <i styleName={this.state.showPlan ? 'active-calendar' : 'calendar'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
+            <i styleName={this.state.showPlan ? 'list' : 'active-list'} onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
               {weekPlan}
           </div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">

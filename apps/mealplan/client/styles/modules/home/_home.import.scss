@@ -25,9 +25,31 @@
   vertical-align: bottom;
 }
 
-.active {
+.icon {
+  color: $gray;
+  font-size: 150%;
+  padding: 30px 10px 0;
+  vertical-align: bottom;
+}
+
+.calendar {
   composes: icon;
-  transition: ease 200ms;
+  margin-left: 30px;
+}
+
+.list {
+  composes: icon;
+  position: relative;
+  top: 2px;
+}
+
+.active-calendar {
+  composes: calendar;
+  color: $secondary;
+}
+
+.active-list {
+  composes: list;
   color: $secondary;
 }
 
