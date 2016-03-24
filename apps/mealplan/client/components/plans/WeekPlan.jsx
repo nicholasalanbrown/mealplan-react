@@ -20,7 +20,7 @@ export default class WeekPlan extends Component {
   }
 
   state = {
-    showPlan: false
+    showPlan: true
   }
 
   render() {
