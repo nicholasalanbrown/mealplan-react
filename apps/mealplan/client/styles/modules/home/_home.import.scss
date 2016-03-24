@@ -1,3 +1,6 @@
+@import '../../_colors.import.scss';
+@import '../../_typography.import.scss';
+
 .week-title {
   font-size: $font-size-h4;
   font-family: $font-headings;
@@ -9,6 +12,25 @@
     margin-right: 20px;
   }
 }
+
+.planTitle {
+  float: left;
+  font-size: $font-size-h3;
+}
+
+.icon {
+  color: $gray;
+  font-size: 150%;
+  padding: 30px 10px 0;
+  vertical-align: bottom;
+}
+
+.active {
+  composes: icon;
+  transition: ease 200ms;
+  color: $secondary;
+}
+
 
 //Custom on/off switch
 

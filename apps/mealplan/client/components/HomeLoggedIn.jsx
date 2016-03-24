@@ -1,6 +1,9 @@
 import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
+import CSSModules from 'react-css-modules';
 import moment from 'moment';
+
+import styles from '../styles/modules/home/_home.import.scss';
 
 import Content from './Content';
 import Loading from './Loading';
@@ -111,11 +114,13 @@ export default class HomeLoggedIn extends Component {
         </div>
       </div>
       ;
-
+      console.log(styles);
       return (
         <Content>
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
-            <h3>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3><i onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i><i onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
+            <h3 styleName='planTitle'>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3>
+            <i styleName={this.state.showPlan ? 'active' : 'icon'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
+            <i styleName={this.state.showPlan ? 'icon' : 'active'} onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
               {weekPlan}
           </div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
@@ -145,3 +150,5 @@ export default class HomeLoggedIn extends Component {
     }
   }
 }
+
+export default CSSModules(HomeLoggedIn, styles);
