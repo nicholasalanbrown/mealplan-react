@@ -1,0 +1,15 @@
+@import '../../_colors.import.scss';
+@import '../../_typography.import.scss';
+
+.card {
+  min-height: 400px;
+  margin: 10px;
+}
+
+.titleContainer {
+  border-bottom: 2px solid $gray;
+}
+
+.title {
+  font-size: $font-size-h3;
+}

@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import Content from './Content';
 import Loading from './Loading';
+import HomeCard from './home/HomeCard';
 import WeekPlan from './plans/WeekPlan';
 import ShoppingList from './shopping/ShoppingList';
 import Plans from 'mealplan/collections/Plans';
@@ -107,22 +108,13 @@ export default class HomeLoggedIn extends Component {
 
       return (
         <Content>
-          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
-            <div className="home-column">
-            <h4>Meal Plan</h4>
-            {weekPlan}
-            </div>
+          <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
+            <h2>This Week</h2>
+              {weekPlan}
           </div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
-            <div className="home-column">
-            <h4>Recipes to Cook</h4>
-            </div>
-          </div>
-          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
-          <div className="home-column">
-            <h4>Shopping List</h4>
-            <ShoppingList weekPlan={this.data.weekPlan} />
-            </div>
+            <h3>Shopping List</h3>
+              <ShoppingList weekPlan={this.data.weekPlan} />
           </div>
         {/*
           <div className="center">

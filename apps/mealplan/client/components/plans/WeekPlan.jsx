@@ -19,6 +19,10 @@ export default class WeekPlan extends Component {
     };
   }
 
+  state = {
+    showPlan: false
+  }
+
   render() {
     if (this.data.subscriptionLoading) {
       return (
@@ -46,9 +50,23 @@ export default class WeekPlan extends Component {
           </div>
         )
       })
+      let recipeIds = [];
+      let recipeList = this.props.weekPlan.meals.map(function(meal, index) {
+        _.each(meal, function(dish, index) {
+          let doc = _.findWhere(self.data.recipes, {_id: dish});
+          recipeIds.push(doc._id);
+        })
+      });
+      let uniqueIds = _.uniq(_.values(recipeIds));
+      let recipeLinks = [];
+      uniqueIds.map(function(recipe, index) {
+          let doc = _.findWhere(self.data.recipes, {_id: recipe});
+          recipeLinks.push(<div key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
+      })
       return (
         <div>
-        <div>{mealData}</div>
+        <button onClick={() => this.setState({showPlan: !this.state.showPlan})}>Toggle</button>
+        <div>{this.state.showPlan ? mealData : recipeLinks}</div>
         </div>
       )
     }
