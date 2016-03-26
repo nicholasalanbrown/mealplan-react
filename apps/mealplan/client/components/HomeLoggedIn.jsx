@@ -7,7 +7,7 @@ import styles from '../styles/modules/home/_home.import.scss';
 
 import Content from './Content';
 import Loading from './Loading';
-import HomeCard from './home/HomeCard';
+import HomeHero from './home/HomeHero';
 import WeekPlan from './plans/WeekPlan';
 import ShoppingList from './shopping/ShoppingList';
 import Plans from 'mealplan/collections/Plans';
@@ -18,6 +18,7 @@ export default class HomeLoggedIn extends Component {
 
   getMeteorData() {
     let subscription = Meteor.subscribe('getWeekPlan');
+    let userSubscription = Meteor.subscribe('userData');
     let user = Meteor.user();
     let dinners;
     let servings;
@@ -28,10 +29,11 @@ export default class HomeLoggedIn extends Component {
       receivingPlans = user.profile.receivingPlans;
     }
     return {
-      subscriptionLoading: !subscription.ready(),
+      subscriptionLoading: !subscription.ready() || !userSubscription.ready(),
       receivingPlans: receivingPlans,
       dinners: dinners,
       servings: servings,
+      user: user,
       weekPlan: Plans.findOne()
     };
   }
@@ -114,9 +116,21 @@ export default class HomeLoggedIn extends Component {
         </div>
       </div>
       ;
-      console.log(styles);
+              console.log(this.data);
       return (
+        <div>
+        <HomeHero name={this.data.user.services.facebook.first_name}/>
         <Content>
+          <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
+            <h3 styleName='planTitle'>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3>
+            <i styleName={this.state.showPlan ? 'active-calendar' : 'calendar'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
+            <i styleName={this.state.showPlan ? 'list' : 'active-list'} onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
+              {weekPlan}
+          </div>
+          <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
+              <ShoppingList weekPlan={this.data.weekPlan} />
+          </div>
+        {/*
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
             <h3 styleName='planTitle'>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3>
             <i styleName={this.state.showPlan ? 'active-calendar' : 'calendar'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
@@ -127,9 +141,7 @@ export default class HomeLoggedIn extends Component {
             <h3>Shopping List</h3>
               <ShoppingList weekPlan={this.data.weekPlan} />
           </div>
-        {/*
           <div className="center">
-          <ShoppingList weekPlan={this.data.weekPlan} />
           <h2>Welcome to Eat This Alpha!</h2>
           <span className="week-title">Week of {moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</span>
           <h4>Dinners per week: {dinners} Servings: {servings}</h4>
@@ -146,6 +158,7 @@ export default class HomeLoggedIn extends Component {
           </div>
           */}
         </Content>
+        </div>
       );
     }
   }

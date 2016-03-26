@@ -1,0 +1,11 @@
+@import '../../_colors.import.scss';
+@import '../../_typography.import.scss';
+
+.container {
+  border: 3px solid $gray;
+  padding: 0px 15px 15px 30px;
+}
+
+.list-item {
+  font-family: $font-headings;
+}

@@ -1,0 +1,11 @@
+@import '../../_colors.import.scss';
+
+.hero {
+  background-color: $brand;
+  height: 120px;
+}
+
+.welcome-text {
+  color: $white;
+  padding-top: 20px;
+}
