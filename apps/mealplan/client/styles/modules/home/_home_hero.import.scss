@@ -1,8 +1,9 @@
 @import '../../_colors.import.scss';
 
 .hero {
-  background-color: $brand;
+  background: url('./hero.png') no-repeat;
   height: 120px;
+  text-align: center;
 }
 
 .welcome-text {

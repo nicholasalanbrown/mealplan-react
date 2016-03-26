@@ -14,7 +14,7 @@ export default class HomeHero extends Component {
       <div styleName='hero'>
         <div className="pure-u-1-24 pure-u-md-2-24 pure-u-lg-4-24"></div>
         <div className="pure-u-22-24 pure-u-md-20-24 pure-u-lg-16-24">
-          <h3 styleName='welcome-text'>Welcome, {this.props.name}</h3>
+          <h2 styleName='welcome-text'>Welcome, {this.props.name}</h2>
           </div>
           <div className="pure-u-1-24 pure-u-md-2-24 pure-u-lg-4-24"></div>
       </div>
