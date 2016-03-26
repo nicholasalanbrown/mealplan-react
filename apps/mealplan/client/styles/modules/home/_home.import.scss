@@ -6,6 +6,12 @@
   font-family: $font-headings;
 }
 
+.card {
+  border: 3px solid $gray;
+  margin-right: 10px;
+  min-height: 300px;
+}
+
 .plan-admin-buttons {
   margin-top: 40px;
   button {

@@ -116,16 +116,13 @@ export default class HomeLoggedIn extends Component {
         </div>
       </div>
       ;
-              console.log(this.data);
       return (
         <div>
         <HomeHero name={this.data.user.services.facebook.first_name}/>
         <Content>
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
-            <h3 styleName='planTitle'>{moment().startOf('week').format('MMMM Do')} - {moment().endOf('week').format('MMMM Do YYYY')}</h3>
-            <i styleName={this.state.showPlan ? 'active-calendar' : 'calendar'} onClick={this.toggleView.bind(this)} className="fa fa-calendar-o"></i>
-            <i styleName={this.state.showPlan ? 'list' : 'active-list'} onClick={this.toggleView.bind(this)} className='fa fa-th-list'></i>
-              {weekPlan}
+            <div styleName='card'>
+            </div>
           </div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
               <ShoppingList weekPlan={this.data.weekPlan} />
