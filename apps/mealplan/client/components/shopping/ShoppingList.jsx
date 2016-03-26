@@ -18,7 +18,7 @@ export default class ShoppingList extends Component {
   ;
       return (
         <div styleName='card'>
-          <h3>Shopping List</h3>
+          <h4>Shopping List</h4>
           <ul>
           {ingredientList}
           </ul>

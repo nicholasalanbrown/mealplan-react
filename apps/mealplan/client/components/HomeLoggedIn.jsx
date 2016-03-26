@@ -8,6 +8,7 @@ import styles from '../styles/modules/home/_home.import.scss';
 import Content from './Content';
 import Loading from './Loading';
 import HomeHero from './home/HomeHero';
+import MealPlan from './home/MealPlan';
 import WeekPlan from './plans/WeekPlan';
 import ShoppingList from './shopping/ShoppingList';
 import Plans from 'mealplan/collections/Plans';
@@ -120,10 +121,10 @@ export default class HomeLoggedIn extends Component {
         <div>
         <HomeHero name={this.data.user.services.facebook.first_name}/>
         <Content>
-          <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
-            <div styleName='card'>
+          <div className="pure-u-24-24 pure-u-md-15-24 pure-u-lg-15-24">
+              <MealPlan />
             </div>
-          </div>
+          <div className="pure-u-1-24 pure-u-md-1-24 pure-u-lg-1-24"></div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
               <ShoppingList weekPlan={this.data.weekPlan} />
           </div>
