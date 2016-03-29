@@ -37,12 +37,12 @@ export default class HomeLoggedIn extends Component {
         </div>
       )
     }
-    else if (this.data.plans){
+    else if (this.data.plan){
       return (
         <div>
           <HomeHero name={this.data.user.services.facebook.first_name} />
           <Content>
-            <Dashboard />
+            <Dashboard plan={this.data.plan} />
           </Content>
         </div>
         );
