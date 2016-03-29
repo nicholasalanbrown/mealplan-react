@@ -1,6 +1,9 @@
 import { Component, PropTypes } from 'react';
+import ReactMixin from 'react-mixin';
 import Loader from 'halogen/PulseLoader';
+import TimerMixin from 'react-timer-mixin';
 
+@ReactMixin.decorate(TimerMixin)
 export default class Loading extends Component {
 
   state = {
