@@ -89,12 +89,14 @@ export default class HomeLoggedIn extends Component {
     else {
       let dinners = this.data.dinners;
       let servings = this.data.servings;
-      let weekPlan;
+      let mealPlan;
+      let shoppingList;
       if (this.data.weekPlan){
-        weekPlan = <WeekPlan weekPlan={this.data.weekPlan} showPlan={this.state.showPlan}/>
+        mealPlan = <WeekPlan weekPlan={this.data.weekPlan} showPlan={this.state.showPlan}/>;
+        shoppingList = <ShoppingList weekPlan={this.data.weekPlan} />;
       }
       else  {
-        weekPlan =
+        mealPlan =
         <div className="pure-g">
           <div className="pure-u-1-24 pure-u-md-4-24 pure-u-lg-6-24"></div>
           <div className="pure-u-22-24 pure-u-md-16-24 pure-u-lg-12-24">
@@ -122,11 +124,11 @@ export default class HomeLoggedIn extends Component {
         <HomeHero name={this.data.user.services.facebook.first_name}/>
         <Content>
           <div className="pure-u-24-24 pure-u-md-15-24 pure-u-lg-15-24">
-              <MealPlan />
+              {mealPlan}
             </div>
           <div className="pure-u-1-24 pure-u-md-1-24 pure-u-lg-1-24"></div>
           <div className="pure-u-24-24 pure-u-md-8-24 pure-u-lg-8-24">
-              <ShoppingList weekPlan={this.data.weekPlan} />
+              {shoppingList}
           </div>
         {/*
           <div className="pure-u-24-24 pure-u-md-16-24 pure-u-lg-16-24">
