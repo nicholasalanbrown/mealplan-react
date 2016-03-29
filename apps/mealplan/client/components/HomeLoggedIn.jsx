@@ -42,7 +42,7 @@ export default class HomeLoggedIn extends Component {
         <div>
           <HomeHero name={this.data.user.services.facebook.first_name} />
           <Content>
-            <Dashboard plan={this.data.plan} />
+            <Dashboard plan={this.data.plan} recipes={this.data.recipes} />
           </Content>
         </div>
         );
