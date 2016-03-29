@@ -9,6 +9,7 @@ export default class WeekPlan extends Component {
 
   static propTypes = {
     weekPlan: React.PropTypes.object.isRequired,
+    showPlan: React.PropTypes.bool.isRequired
   }
 
   getMeteorData() {
@@ -17,6 +18,10 @@ export default class WeekPlan extends Component {
       subscriptionLoading: !subscription.ready(),
       recipes: Recipes.find().fetch()
     };
+  }
+
+  state = {
+    showPlan: true
   }
 
   render() {
@@ -46,9 +51,22 @@ export default class WeekPlan extends Component {
           </div>
         )
       })
+      let recipeIds = [];
+      let recipeList = this.props.weekPlan.meals.map(function(meal, index) {
+        _.each(meal, function(dish, index) {
+          let doc = _.findWhere(self.data.recipes, {_id: dish});
+          recipeIds.push(doc._id);
+        })
+      });
+      let uniqueIds = _.uniq(_.values(recipeIds));
+      let recipeLinks = [];
+      uniqueIds.map(function(recipe, index) {
+          let doc = _.findWhere(self.data.recipes, {_id: recipe});
+          recipeLinks.push(<div key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
+      })
       return (
         <div>
-        <div>{mealData}</div>
+          <div>{this.props.showPlan ? mealData : recipeLinks}</div>
         </div>
       )
     }

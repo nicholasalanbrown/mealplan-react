@@ -6,6 +6,7 @@ import SignIn from './components/accounts/SignIn';
 
 import RecipeList from './components/recipes/RecipeList';
 import AddRecipe from './components/recipes/AddRecipe';
+import AddCuisine from './components/cuisines/AddCuisine';
 import EditRecipe from './components/recipes/EditRecipe';
 import RecipeContent from './components/recipes/RecipeContent';
 
@@ -121,15 +122,13 @@ adminRoutes.route('/ingredients/:ingredientId/edit', {
 });
 
 
-//Food routes
+//Cuisine routes
 
-adminRoutes.route('/add/food', {
-    action: function(params) {
-    }
+adminRoutes.route('/add/cuisine', {
+  action: function() {
+    ReactLayout.render(App, {
+      content: <AddCuisine />
+    });
+  },
+  name: 'addCuisine'
 })
-
-adminRoutes.route('/foods/:foodId/edit', {
-    action: function(params) {
-    },
-    name: 'editFood'
-});

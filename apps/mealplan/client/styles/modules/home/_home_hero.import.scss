@@ -1,0 +1,12 @@
+@import '../../_colors.import.scss';
+
+.hero {
+  background: url('./hero.png') no-repeat;
+  height: 120px;
+  text-align: center;
+}
+
+.welcome-text {
+  color: $white;
+  padding-top: 20px;
+}

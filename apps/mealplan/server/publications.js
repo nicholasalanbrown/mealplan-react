@@ -7,6 +7,12 @@ import Cuisines from 'mealplan/collections/Cuisines';
 import Plans from 'mealplan/collections/Plans';
 import Nutrition from 'mealplan/collections/Nutrition';
 
+Meteor.publish('userData', function () {
+  let user = this.userId;
+  return Meteor.users.find({_id: user}, {fields: {'services.facebook.first_name': 1}});
+});
+
+
 Meteor.publish('singleRecipe', function (recipeId) {
   check(recipeId, String);
   return [

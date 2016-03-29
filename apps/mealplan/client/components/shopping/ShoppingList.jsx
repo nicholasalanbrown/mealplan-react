@@ -1,4 +1,7 @@
 import { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
+
+import styles from '../../styles/modules/home/_shopping_list.import.scss';
 
 export default class ShoppingList extends Component {
 
@@ -7,15 +10,15 @@ export default class ShoppingList extends Component {
   }
 
   render() {
-  console.log(this.props.weekPlan);
   let ingredientList =
     this.props.weekPlan.shoppingList.map(function (ingredient) {
       let measurement = ingredient.measurement ? ingredient.measurement : '';
-      return <li>{`${ingredient.quantity} ${measurement} ${ingredient.listName}`}</li>;
+      return <li styleName='list-item'>{`${ingredient.quantity} ${measurement} ${ingredient.listName}`}</li>;
     });
   ;
       return (
-        <div>
+        <div styleName='card'>
+          <h4>Shopping List</h4>
           <ul>
           {ingredientList}
           </ul>
@@ -23,3 +26,5 @@ export default class ShoppingList extends Component {
       )
     }
 }
+
+export default CSSModules(ShoppingList, styles);
