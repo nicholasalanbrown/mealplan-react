@@ -86,10 +86,35 @@ Meteor.publish('allRecipes', function () {
 });
 
 Meteor.publish('getWeekPlan', function () {
-    var user = this.userId;
-    var week = moment().weeks();
-    var year = moment().weekYear();
-    return Plans.find({user: user, week: week, year: year});
+    let user = this.userId;
+    let week = moment().weeks();
+    let year = moment().weekYear();
+    let recipeIds = [];
+    let plan = Plans.find({user: user, week: week, year: year});
+    plan.map(function (p) {
+      p.meals.forEach(function (m) {
+        if(m.full) {
+          recipeIds.push(m.full);
+        }
+        if (m.main) {
+          recipeIds.push(m.main);
+        }
+        if (m.side) {
+          recipeIds.push(m.side);
+        }
+      })
+    });
+
+    /*
+    _.each(meals, function(meal) {
+      recipeIds.push(_.values(meal));
+    })
+    var uniqueIds = _.uniq(_.flatten(recipeIds));
+    return [
+      Recipes.find({_id: {$in: uniqueIds}})
+    ];
+    */
+    return [plan, Recipes.find({_id: {$in: recipeIds}})];
 });
 
 
