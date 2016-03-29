@@ -91,6 +91,7 @@ Meteor.publish('getWeekPlan', function () {
     let year = moment().weekYear();
     let recipeIds = [];
     let plan = Plans.find({user: user, week: week, year: year});
+
     plan.map(function (p) {
       p.meals.forEach(function (m) {
         if(m.full) {
@@ -105,15 +106,6 @@ Meteor.publish('getWeekPlan', function () {
       })
     });
 
-    /*
-    _.each(meals, function(meal) {
-      recipeIds.push(_.values(meal));
-    })
-    var uniqueIds = _.uniq(_.flatten(recipeIds));
-    return [
-      Recipes.find({_id: {$in: uniqueIds}})
-    ];
-    */
     return [plan, Recipes.find({_id: {$in: recipeIds}})];
 });
 

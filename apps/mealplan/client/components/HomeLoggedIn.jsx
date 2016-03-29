@@ -9,6 +9,7 @@ import HomeHero from './home/HomeHero';
 import Content from './Content';
 import Loading from './Loading';
 import Dashboard from './home/Dashboard';
+import HomeEmpty from './home/HomeEmpty';
 
 import Plans from 'mealplan/collections/Plans';
 import Recipes from 'mealplan/collections/Recipes';
@@ -22,22 +23,36 @@ export default class HomeLoggedIn extends Component {
     return {
       subscriptionLoading: !planSubscription.ready() || !userSubscription.ready(),
       user: Meteor.user(),
-      plans: Plans.findOne(),
+      plan: Plans.findOne(),
       recipes: Recipes.find().fetch()
     }
   }
 
   render() {
     if (this.data.subscriptionLoading) {
-      return <Loading />
+      return (
+        <div>
+          <HomeHero />
+          <Loading />
+        </div>
+      )
     }
-    else {
-      console.log(this.data);
+    else if (this.data.plans){
       return (
         <div>
           <HomeHero name={this.data.user.services.facebook.first_name} />
           <Content>
             <Dashboard />
+          </Content>
+        </div>
+        );
+      }
+    else {
+      return (
+        <div>
+          <HomeHero name={this.data.user.services.facebook.first_name} />
+          <Content>
+            <HomeEmpty />
           </Content>
         </div>
         );
