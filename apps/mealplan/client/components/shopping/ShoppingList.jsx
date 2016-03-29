@@ -11,9 +11,9 @@ export default class ShoppingList extends Component {
 
   render() {
   let ingredientList =
-    this.props.plan.shoppingList.map(function (ingredient) {
+    this.props.plan.shoppingList.map(function (ingredient, index) {
       let measurement = ingredient.measurement ? ingredient.measurement : '';
-      return <li styleName='list-item'>{`${ingredient.quantity} ${measurement} ${ingredient.listName}`}</li>;
+      return <li key={index} styleName='list-item'>{`${ingredient.quantity} ${measurement} ${ingredient.listName}`}</li>;
     });
   ;
       return (
