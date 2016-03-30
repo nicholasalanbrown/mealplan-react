@@ -46,3 +46,4 @@ webpack:sass
 fourseven:scss
 agustino:purecss
 okgrow:router-autoscroll
+webpack:postcss

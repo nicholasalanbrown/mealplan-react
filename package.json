@@ -19,6 +19,7 @@
     "react-typeahead": "1.1.5"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.5",
     "babel": "^6.3.26",
     "babel-core": "^6.3.26",
     "babel-eslint": "^5.0.0",
@@ -35,6 +36,7 @@
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
     "node-sass": "^3.4.2",
+    "postcss-import": "^8.0.2",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
@@ -43,6 +45,7 @@
     "try-thread-sleep": "^1.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
-    "webpack-hot-middleware": "^2.4.1"
+    "webpack-hot-middleware": "^2.4.1",
+    "postcss-loader": "^0.8.1"
   }
 }

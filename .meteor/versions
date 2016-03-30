@@ -118,6 +118,7 @@ webpack:assets@1.0.0
 webpack:core-config@1.0.0
 webpack:css@1.0.0
 webpack:npmworkaround@1.0.0
+webpack:postcss@1.1.0
 webpack:react@1.1.1
 webpack:reload@1.0.0
 webpack:sass@1.0.2

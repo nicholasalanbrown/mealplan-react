@@ -8,5 +8,9 @@
   },
   "sass": {
     "includePaths": ["apps/mealplan/client/styles", "public/assets"]
-  }
+  },
+  "postcss": [
+    "postcss-import",
+    ["autoprefixer", { "browser": "last 2 versions" }]
+  ]
 }
