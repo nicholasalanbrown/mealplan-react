@@ -26,7 +26,7 @@ export default class RecipePlan extends Component {
       })
       return (
         <div>
-          <h3>
+          <h3 styleName='meal-heading'>
             Dinners
           </h3>
           <div>{recipeLinks}</div>
