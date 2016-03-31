@@ -1,4 +1,7 @@
 import { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
+
+import styles from '../../styles/modules/home/_meal_plan.import.scss';
 
 import Loading from '../Loading';
 import Recipes from 'mealplan/collections/Recipes';
@@ -15,14 +18,12 @@ export default class MealPlan extends Component {
         let mealTitles = [];
         _.each(meal, function(dish, index) {
           let doc = _.findWhere(self.props.recipes, {_id: dish});
-          mealTitles.push(<div key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>)
+          mealTitles.push(<div className="pure-u-10-24" styleName="dish-container" key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})} styleName="meal-title">{doc.title}</a></div>)
         })
         return (
-          <div key={'meal'+index} className="meal-container">
-            <h3 className="meal-heading">
-            Dinner {index+1}
-            </h3>
-            <div className="meal-titles">
+          <div key={'meal'+index}>
+            <div className="pure-g" styleName="meal-container">
+            <div className='pure-u-md-2-24' styleName='index-container'>{index+1}</div>
             {mealTitles}
             </div>
           </div>
@@ -30,8 +31,15 @@ export default class MealPlan extends Component {
       })
       return (
         <div>
-          <div>{mealPlan}</div>
+          <div>
+            <h3 styleName="meal-heading">
+              Dinners
+            </h3>
+            {mealPlan}
+          </div>
         </div>
       )
     }
 }
+
+export default CSSModules(MealPlan, styles);

@@ -1,8 +1,32 @@
 @import '../../_colors.import.scss';
 @import '../../_typography.import.scss';
 
-.card {
-  border: 3px solid $gray;
-  padding: 0px 15px 15px 30px;
-  min-height: 300px;
+.meal-heading {
+  margin-top: 18px;
+}
+
+.meal-container {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.index-container {
+  align-items: center;
+  border: 2px solid $gray;
+  display: flex;
+  justify-content: center;
+}
+
+.dish-container {
+  align-items: center;
+  background: $brand;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.meal-title {
+  color: $white;
 }

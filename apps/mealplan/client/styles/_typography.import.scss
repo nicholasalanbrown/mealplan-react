@@ -65,18 +65,21 @@ h6 {
 
 
 .content-wrapper a, .content-wrapper a:visited, .content-wrapper a:active {
-  color: $brand;
   text-decoration: none;
 }
 
 .content-wrapper {
-  ul, li, ol, p {
+  ul,
+  li,
+  ol,
+  p {
     line-height: 1.7;
   }
   ul {
     list-style: none;
   }
-  ul, ol {
+  ul,
+  ol {
     padding-left: 0;
   }
 }
