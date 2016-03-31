@@ -1,0 +1,15 @@
+@import '../../_colors.import.scss';
+
+.row {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  border-top: 2px solid $gray;
+  &:last-child {
+    border-bottom: 2px solid $gray;
+  }
+}
+
+.recipe-link {
+  color: $brand;
+}

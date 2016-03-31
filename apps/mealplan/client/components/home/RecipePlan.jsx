@@ -1,4 +1,7 @@
 import { Component, PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
+
+import styles from '../../styles/modules/home/_recipe_plan.import.scss';
 
 export default class RecipePlan extends Component {
 
@@ -19,12 +22,17 @@ export default class RecipePlan extends Component {
       let recipeLinks = [];
       uniqueIds.map(function(recipe, index) {
           let doc = _.findWhere(self.props.recipes, {_id: recipe});
-          recipeLinks.push(<div key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})}>{doc.title}</a></div>);
+          recipeLinks.push(<div styleName='row' key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})} styleName="recipe-link">{doc.title}</a></div>);
       })
       return (
         <div>
+          <h3>
+            Dinners
+          </h3>
           <div>{recipeLinks}</div>
         </div>
       )
     }
 }
+
+export default CSSModules(RecipePlan, styles);
