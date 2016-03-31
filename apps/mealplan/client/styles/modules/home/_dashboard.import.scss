@@ -1,0 +1,37 @@
+@import '../../_colors.import.scss';
+
+.left-container {
+  position: relative;
+}
+
+.calendar {
+  color: $gray;
+  font-size: 160%;
+  position: absolute;
+  top: 22px;
+  right: 40px;
+}
+
+.list {
+  color: $gray;
+  font-size: 160%;
+  position: absolute;
+  top: 24px;
+  right: 0;
+}
+
+.active-calendar {
+  color: $secondary;
+  font-size: 160%;
+  position: absolute;
+  top: 22px;
+  right: 40px;
+}
+
+.active-list {
+  color: $secondary;
+  font-size: 160%;
+  position: absolute;
+  top: 24px;
+  right: 0;
+}
