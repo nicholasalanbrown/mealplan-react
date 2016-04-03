@@ -10,8 +10,17 @@
     "halogen": "^0.1.10",
     "mathjs": "^3.0.0",
     "react": "~0.14.1",
+    "react-addons-create-fragment": "^0.14.8",
+    "react-addons-css-transition-group": "^0.14.8",
+    "react-addons-linked-state-mixin": "^0.14.8",
+    "react-addons-perf": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-addons-transition-group": "^0.14.8",
+    "react-addons-update": "^0.14.8",
     "react-body-classname": "^1.0.1",
     "react-css-modules": "^3.7.6",
+    "react-dom": "^0.14.8",
     "react-headroom": "^1.7.3",
     "react-helmet": "2.3.1",
     "react-mixin": "^3.0.3",
@@ -46,6 +55,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
     "webpack-hot-middleware": "^2.4.1",
-    "postcss-loader": "^0.8.1"
+    "postcss-loader": "^0.8.1",
+    "expose-loader": "^0.7.1"
   }
 }
