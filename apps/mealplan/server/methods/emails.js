@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import Plans from 'mealplan/collections/Plans';
 import Recipes from 'mealplan/collections/Recipes';
+import moment from 'moment';
 
 
 const formatShoppingList = function (list) {
@@ -137,11 +138,13 @@ Meteor.methods({
     console.log('Building recipe list...');
     var shoppingContent = formatShoppingList(ingredientList);
     var recipeContent = formatRecipes(weeksRecipes, recipeData);
+    let date = moment().startOf('week').format('MMMM Do')+' - '+moment().endOf('week').format('MMMM Do');
+    console.log(date);
     console.log('Sending email to '+recipientEmail+'...');
     Email.send({
       to: recipientEmail,
       from: 'info@mealplan.com',
-      subject: 'Here"s your meal plan for the week!'+ new Date(),
+      subject: 'Your Menu for '+ date,
       html: shoppingContent+'<p>'+recipeContent+'</p>'
     });
   }
