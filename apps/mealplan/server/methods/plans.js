@@ -1,6 +1,25 @@
 import { Meteor } from 'meteor/meteor';
 import Plans from 'mealplan/collections/Plans';
 import Recipes from 'mealplan/collections/Recipes';
+import moment from 'moment';
+
+const findPreviousPlanRecipes = function (userId) {
+  let recipeIds = [];
+  let now = moment();
+  let before = moment().subtract(7, 'days');
+  let beforeWeek = before.week();
+  let beforeYear = before.weekYear();
+  let beforePlan = Plans.findOne({user: userId, week: beforeWeek, year: beforeYear});
+  if (beforePlan) {
+    let tempIds = [];
+    _.each(beforePlan.meals, function(meal) {
+      tempIds.push(_.values(meal));
+    })
+    var uniqueIds = _.uniq(_.flatten(tempIds));
+    recipeIds = uniqueIds;
+  }
+  return recipeIds;
+}
 
 Meteor.methods({
   buildWeeklyPlan: function (userId, meals, people) {
@@ -15,8 +34,9 @@ Meteor.methods({
     if (!existingPlan) {
       console.log('Creating a new plan..');
       var user = Meteor.users.findOne({_id: userId});
+      let previousRecipes = findPreviousPlanRecipes(user._id, moment().week(), moment().weekYear());
       var servings = meals*people;
-      var recipeIds = [];
+      var recipeIds = previousRecipes;
       var weeksRecipes = []
       var mainsCount = 0;
       var sidesCount = 0;
@@ -26,11 +46,8 @@ Meteor.methods({
       while (mainsCount<servings) {
         var mainsDiff = servings-mainsCount;
         console.log('Looking for a main or f3ull dish...');
-        console.log(recipeIds, mainsDiff)
         var recipes = Recipes.find({_id: {$nin: recipeIds}, type: {$in: ['main', 'full']}, servings: {$lte: mainsDiff}}).fetch();
-        console.log(recipes);
         var random = _.sample(recipes);
-        console.log(random);
         console.log('Main or full dish:' + random.title);
         var newMainsCount = mainsCount + random.servings;
         mainsCount = newMainsCount;

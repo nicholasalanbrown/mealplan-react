@@ -1,12 +1,14 @@
 @import '../../_colors.import.scss';
 
 .hero {
+  align-items: center;
   background: url('./hero.png') no-repeat;
+  display: flex;
   height: 120px;
+  justify-content: center;
   text-align: center;
 }
 
 .welcome-text {
   color: $white;
-  padding-top: 20px;
 }

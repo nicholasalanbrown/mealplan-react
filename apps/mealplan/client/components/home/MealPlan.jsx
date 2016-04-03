@@ -35,7 +35,9 @@ export default class MealPlan extends Component {
             <h3 styleName="meal-heading">
               Dinners
             </h3>
-            {mealPlan}
+            <div styleName='plan-container'>
+              {mealPlan}
+            </div>
           </div>
         </div>
       )

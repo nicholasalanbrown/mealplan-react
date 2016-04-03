@@ -23,6 +23,7 @@ const decimalToFractionString = function (number) {
 
 Meteor.methods({
   buildShoppingList: function (recipeIds) {
+    console.log('Building shopping list...');
     var shoppingList = [];
     var recipes = Recipes.find({_id: {$in: recipeIds}}).fetch();
     _.each(recipes, function (item) {
@@ -32,13 +33,16 @@ Meteor.methods({
         if(!subItem.quantity && !subItem.fraction) {
           listItem = {_id: subItem._id, listName: subItem.listName, suffix: subItem.suffix};
         }
-        else if (subItem.fraction){
+        else if (subItem.quantity && subItem.fraction){
           let quantity = math.fraction(subItem.quantity);
           let fraction = math.fraction(subItem.fraction);
-          console.log('quantity', quantity)
-          console.log('fraction', fraction);
           let sum = math.add(quantity, fraction);
-          listItem = {_id: subItem._id, quantity: subItem.sum, measurement: subItem.measurement, listName: subItem.listName, suffix: subItem.suffix};
+          listItem = {_id: subItem._id, quantity: sum, measurement: subItem.measurement, listName: subItem.listName, suffix: subItem.suffix};
+        }
+        else if (!subItem.quantity && subItem.fraction){
+          let fraction = math.fraction(subItem.fraction);
+          let sum = math.add(0, fraction);
+          listItem = {_id: subItem._id, quantity: sum, measurement: subItem.measurement, listName: subItem.listName, suffix: subItem.suffix};
         }
         else {
           let quantity = math.fraction(subItem.quantity);
@@ -46,6 +50,8 @@ Meteor.methods({
         }
         var existingItem = _.findWhere(shoppingList, {_id: subItem._id});
         if(existingItem) {
+          console.log(existingItem);
+          console.log(listItem);
           var newItem = existingItem;
           if (existingItem.measurement === listItem.measurement) {
             let sum = math.add(existingItem.quantity, listItem.quantity);

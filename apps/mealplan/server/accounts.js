@@ -31,7 +31,6 @@ process.env.MAIL_URL = 'smtp://postmaster@sandbox36c2dac549f24df598b266dff208141
     },
     { upsert: true }
   );
-
 // Production Facebook configuration
 ServiceConfiguration.configurations.remove({});
 ServiceConfiguration.configurations.update(

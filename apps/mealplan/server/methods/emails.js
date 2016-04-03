@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import Plans from 'mealplan/collections/Plans';
 import Recipes from 'mealplan/collections/Recipes';
+import moment from 'moment';
 
 
 const formatShoppingList = function (list) {
-  var stringList = '<p><strong>This week"s shopping list:</strong></p><ul>';
+  var stringList = '<p><strong>Here&rsquo;s what you&rsquo;ll need:</strong></p><ul>';
   _.each(list, function (item) {
     if(item.measurement){
       var measurement = item.measurement+' ';
@@ -29,17 +30,17 @@ const formatShoppingList = function (list) {
 
 const formatRecipes = function (weeksRecipes, recipeData) {
   var stringList = '';
-  var mealList = '<p><strong>This weeks dinners:</strong></p>';
+  var mealList = '<p><strong>This week&rsquo;s dinners:</strong></p>';
   _.each(weeksRecipes, function (meal) {
     if (meal.full) {
       var doc = _.findWhere(recipeData, {_id: meal.full});
-      var newMealList = mealList.concat('<p>'+doc.title+'</p>');
+      var newMealList = mealList.concat('<p><a href="http://198.211.117.110/recipes/'+doc._id+'">'+doc.title+'</a></p>');
       mealList = newMealList;
     }
     else {
       var mainDoc = _.findWhere(recipeData, {_id: meal.main});
       var sideDoc = _.findWhere(recipeData, {_id: meal.side});
-      var newMealList = mealList.concat('<p>'+mainDoc.title+'<br>'+sideDoc.title+'</p>');
+      var newMealList = mealList.concat('<p><a href="http://198.211.117.110/recipes/'+mainDoc._id+'">'+mainDoc.title+'</a><br>'+'<a href="http://198.211.117.110/recipes/'+sideDoc.title+'</a></p>');
       mealList = newMealList;
     }
   });
@@ -80,7 +81,10 @@ const formatRecipes = function (weeksRecipes, recipeData) {
     var newRecipeTitles = recipeTitles.concat(recipe.title+'<br>');
     recipeTitles = newRecipeTitles;
   });
+  /*
   return mealList+'<br><br>'+stringList;
+  */
+  return mealList;
 }
 
 
@@ -137,12 +141,13 @@ Meteor.methods({
     console.log('Building recipe list...');
     var shoppingContent = formatShoppingList(ingredientList);
     var recipeContent = formatRecipes(weeksRecipes, recipeData);
+    var date = moment().startOf('week').format('MMMM Do')+' - '+moment().endOf('week').format('MMMM Do');
     console.log('Sending email to '+recipientEmail+'...');
     Email.send({
       to: recipientEmail,
-      from: 'info@mealplan.com',
-      subject: 'Here"s your meal plan for the week!'+ new Date(),
-      html: shoppingContent+'<p>'+recipeContent+'</p>'
+      from: 'Eat This <info@eatthis.io>',
+      subject: 'Your Menu for '+ date + new Date(),
+      html: '<p>'+recipeContent+'</p>'+shoppingContent
     });
   }
   else {
