@@ -18,6 +18,8 @@ import IngredientList from './components/ingredients/IngredientList';
 
 const scrollToTop = function (context) {
   $('#react-root').scrollTop(0,0);
+  $('div[data-reactid=".0"]').scrollTop(0,0);
+  $('#page-wrapper').scrollTop(0,0);
 }
 
 const publicRoutes = FlowRouter.group(
