@@ -18,12 +18,14 @@ export default class MealPlan extends Component {
         let mealTitles = [];
         _.each(meal, function(dish, index) {
           let doc = _.findWhere(self.props.recipes, {_id: dish});
-          mealTitles.push(<div className="pure-u-10-24" styleName="dish-container" key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})} styleName="meal-title">{doc.title}</a></div>)
+          mealTitles.push(
+            <div className="pure-u-7-24" styleName="dish-container" key={'dish'+index}><a href={FlowRouter.path('viewRecipe', {recipeId: doc._id})} styleName="meal-title">{doc.title}</a></div>
+          )
         })
         return (
           <div key={'meal'+index}>
             <div className="pure-g" styleName="meal-container">
-            <div className='pure-u-md-2-24' styleName='index-container'>{index+1}</div>
+            <div className='pure-u-2-24' styleName='index-container'>{index+1}</div>
             {mealTitles}
             </div>
           </div>
